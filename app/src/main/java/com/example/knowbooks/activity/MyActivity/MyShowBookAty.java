@@ -139,10 +139,12 @@ public class MyShowBookAty  extends Activity implements View.OnClickListener{
     private void SendToDelete(final int position) {
         RequestParams requestParams = new RequestParams();
         requestParams.put("bookId", list.get(position-1).getId());
-        HttpUtil.getInstance(this).post(this, UrlConstant.DeleteShowBook, requestParams, new JsonHttpResponseHandler() {
+        Log.i("del","要删除的书本的书名是："+list.get(position-1).getBookName());
+        HttpUtil.getInstance(this).get(this, UrlConstant.DeleteShowBook, requestParams, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
+                Log.i("del", "删除mySHowBook的成功信息是：" + response.toString());
                 try {
                     String result = (String) response.get("result");
                     if (result.equals("success")) {
@@ -160,6 +162,7 @@ public class MyShowBookAty  extends Activity implements View.OnClickListener{
 
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                Log.i("del","删除mySHowBook的错误信息是："+responseString);
                 super.onFailure(statusCode, headers, responseString, throwable);
                 Message message = new Message();
                 message.what = -2;

@@ -163,7 +163,7 @@ public class WriteBookCommentAty extends Activity implements View.OnClickListene
             if (msg.what == 200) {
                 Toast.makeText(WriteBookCommentAty.this, "评论发表成功", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(WriteBookCommentAty.this, BookDetailActivity.class);
-                intent.putExtra("book", book);
+                intent.putExtra("id", book.getId());
                 intent.putExtra("scroll2Comment", true);
                 startActivity(intent);
             } else {

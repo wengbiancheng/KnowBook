@@ -89,6 +89,7 @@ public class WriteSonCommentAty extends Activity implements View.OnClickListener
                         intent.putExtra("scroll2Comment",true);
                         intent.putExtras(bundle);
                         startActivity(intent);
+                        WriteSonCommentAty.this.finish();
                     }else{
                         Toast.makeText(WriteSonCommentAty.this,"发送评论失败",Toast.LENGTH_SHORT).show();
                     }

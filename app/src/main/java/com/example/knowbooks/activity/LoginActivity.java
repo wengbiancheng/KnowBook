@@ -138,6 +138,9 @@ public class LoginActivity extends Activity implements View.OnClickListener{
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 Log.i("Login2", responseString);
                 super.onFailure(statusCode, headers, responseString, throwable);
+                Message message=new Message();
+                message.what=-1;
+                handler.sendMessage(message);
             }
         });
 
@@ -158,7 +161,7 @@ public class LoginActivity extends Activity implements View.OnClickListener{
                 intent1.putExtra("PhoneNumber",PhoneNumber.getText().toString());
                 startActivity(intent1);
             }else{
-                Toast.makeText(LoginActivity.this,"错误原因为："+msg.obj,Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this,"登陆失败："+msg.obj,Toast.LENGTH_SHORT).show();
             }
             return false;
         }

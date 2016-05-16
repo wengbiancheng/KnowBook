@@ -109,8 +109,7 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
         bookid=getIntent().getLongExtra("id", 0);
         imageLoader=ImageLoader.getInstance();
         initView();
-//        setData();//设置穿过来的书籍详情数据
-        loadComment(0);//加载第一页的评论
+        loadDate();;//加载第一页的评论
         initListener();
 
         adapter = new ShowDetailCommentAdapter(BookDetailActivity.this, list);
@@ -160,11 +159,15 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
 
     @Override
     protected void onRestart() {
-        loadComment(0);
+        loadDate();
         super.onRestart();
     }
 
 
+    /**
+     * 设置评论上面的部分
+     * @param book
+     */
     private void setData(Book book) {
         //第一部分
         BookName.setText(book.getBookName());
@@ -187,7 +190,7 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
     }
 
     //与服务器连接获得数据
-    private void loadComment(final int page) {
+    private void loadDate() {
         //与服务器连接获得数据
 
         RequestParams requestParams = new RequestParams();
@@ -197,7 +200,7 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
-                Log.i("BOOKDETAILATY", response.toString());
+                Log.i("Log1", "加载更多评论传来的数据时:"+response.toString());
 
                 JSONArray jsonArray = new JSONArray();
                 try {
@@ -206,16 +209,8 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
 
                         jsonArray = response.getJSONArray("resultSet");
 
-                        if (page == 0) {
-                            list.clear();
-                        } else {
-                            if (jsonArray.length() == 0) {
-                                removeFootView(listView, footView);
-                            } else {
-                                addFootView(listView, footView);
-                            }
-                        }
-                        curPage = page;
+                        list.clear();
+                        curPage=0;
 
 
                         JSONObject json11 = (JSONObject) jsonArray.get(0);
@@ -278,7 +273,7 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
         listView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-                loadComment(0);
+                loadDate();
             }
         });
         listView.setOnLastItemVisibleListener(new PullToRefreshBase.OnLastItemVisibleListener() {
@@ -373,6 +368,11 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
                 } else {
                     removeFootView(listView, footView);
                 }
+
+                if (scroll2Comment) {
+                    listView.getRefreshableView().setSelection(2);
+                    scroll2Comment = false;
+                }
             }else if (msg.what == 300) {
                 list.remove(msg.arg1-2);
                 adapter.notifyDataSetChanged();
@@ -387,15 +387,52 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
 
 
     //加载更多评论的时候调用
-    private void addData() {
+    private void loadComment(final int page) {
 
-        adapter.notifyDataSetChanged();
+        RequestParams requestParams = new RequestParams();
+        requestParams.put("id", bookid);
+        requestParams.put("page",page);
+        HttpUtil.getInstance(BookDetailActivity.this).get(BookDetailActivity.this, UrlConstant.ShowbookCommentUrl, requestParams, new JsonHttpResponseHandler() {
 
-//        if(curPage < ) {
-//            addFootView(plv_home, footView);
-//        } else {
-//            removeFootView(plv_home, footView);
-//        }
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                Log.i("Log1", "加载更多评论传来的数据时:"+response.toString());
+
+                JSONArray jsonArray = new JSONArray();
+                try {
+                    String result = (String) response.get("result");
+                    if (result.equals("success")) {
+
+                        curPage=page;
+
+                        for (int i = 0; i < jsonArray.length(); i = i+2) {
+                            JSONObject json1 = (JSONObject) jsonArray.get(i);
+                            JSONObject json2 = (JSONObject) jsonArray.get(i + 1);
+                            Gson gson = new Gson();
+                            DetailComment detailComment = gson.fromJson(json1.toString(), DetailComment.class);
+                            detailComment.setCommentUser((String) json2.get("commentUser"));
+                            detailComment.setSonCommentCount((Integer) json2.get("sonCommentCount"));
+                            detailComment.setHeadPicture((String) json2.get("headPicture"));
+                            list.add(detailComment);
+                        }
+                        Message message = new Message();
+                        message.what = 200;
+                        handler.sendMessage(message);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+                Log.i("Log1", "加载更多评论传来的数据时失败的原因:" + responseString);
+            }
+        });
     }
 
     private void addFootView(PullToRefreshListView plv, View footView) {

@@ -173,6 +173,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                     SMSSDK.initSDK(RegisterActivity.this, SMSSDKConstant.AppKey, SMSSDKConstant.APPSecret);
                     SMSSDK.submitVerificationCode("86", PhoneNumber.getText().toString(), code.getText().toString());
                 }
+//                SendToServlet(PhoneNumber.getText().toString(), PassWord.getText().toString());
                 break;
         }
     }
@@ -239,31 +240,6 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
      * @param password
      */
     private void SendToServlet(final String phone, final String password) {
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//                try {
-//                    HttpClient client = new DefaultHttpClient(); // 建立一个客户端
-//                    HttpPost httpPost = new HttpPost(UrlConstant.RegisterUrl); // 包装POST请求
-//                    // 设置发送的实体参数
-//                    List<NameValuePair> parameters = new ArrayList<NameValuePair>();
-//                    parameters.add(new BasicNameValuePair("phoneNumber", phone));
-//                    parameters.add(new BasicNameValuePair("password", password));
-//                    httpPost.setEntity(new UrlEncodedFormEntity(parameters, HTTP.UTF_8));
-//                    HttpResponse response = client.execute(httpPost); // 执行POST请求
-//                    int code = response.getStatusLine().getStatusCode();
-//                    String result= EntityUtils.toString(response.getEntity());
-//                    Log.i("Register1",code+"");
-//                    Message message=new Message();
-//                    message.what=code;
-//                    message.obj=result;
-//                    handler1.sendMessage(message);
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }).start();
 
         RequestParams requestParams=new RequestParams();
         requestParams.put("phoneNumber", phone);

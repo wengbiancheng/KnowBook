@@ -15,20 +15,20 @@ import com.example.knowbooks.entity.User;
  */
 public class DButil {
 
-    private static final String[] COLS=new String[]{"PhoneNumber","Password","UserName","Sex","x","y","UserImageUrl","QQ","Weixin","ConnectPhone"};
+    private static final String[] COLS=new String[]{"PhoneNumber","Password","UserName","Sex","x","y","UserImageUrl","QQ","Weixin","ConnectPhone","token"};
 
     private static String DB="knowBookDB";
 
     private static String TABLE_USER="userDB";
     public static String create_table_user="create table "+TABLE_USER+
-            "(PhoneNumber text,Password text,UserName text,Sex text,x text,y text,UserImageUrl text,QQ text,Weixin text,ConnectPhone text);";
+            "(PhoneNumber text,Password text,UserName text,Sex text,x text,y text,UserImageUrl text,QQ text,Weixin text,ConnectPhone text,token text);";
 
     private Context ctx;
     private SQLiteDatabase read_sqlite;
     private SQLiteOpenHelper helper;
     private SQLiteDatabase write_sqlite;
 
-    private int version=4;
+    private int version=5;
 
     public DButil(Context context){
         this.ctx=context;
@@ -79,6 +79,9 @@ public class DButil {
                 if(!TextUtils.isEmpty(user.getConnectPhone())){
                     value.put("ConnectPhone",user.getConnectPhone());
                 }
+                if(!TextUtils.isEmpty(user.getToken())){
+                    value.put("token",user.getToken());
+                }
                 Log.i("LoginAdd1","写入数据库的数据时:"+user.toString());
                 return write_sqlite.update(TABLE_USER,value,"PhoneNumber="+phoneNumber,null);
             }
@@ -112,6 +115,9 @@ public class DButil {
         if(!TextUtils.isEmpty(user.getConnectPhone())){
             values.put("ConnectPhone",user.getConnectPhone());
         }
+        if(!TextUtils.isEmpty(user.getToken())){
+            values.put("token",user.getToken());
+        }
 
         Log.i("LoginAdd1","插入到数据库的数据时:"+user.toString());
         return write_sqlite.insert(TABLE_USER,null,values);
@@ -122,7 +128,7 @@ public class DButil {
         User user=new User();
         Cursor cursor=read_sqlite.query(TABLE_USER,COLS,"phoneNumber="+phoneNumber,null,null,null,null);
         cursor.moveToFirst();
-        if(cursor!=null){
+        if(cursor!=null&&cursor.getCount()>0){
             user.setPhoneNumber(cursor.getString(0));
             if(!TextUtils.isEmpty(cursor.getString(1)))
             {
@@ -160,6 +166,10 @@ public class DButil {
             {
                 user.setConnectPhone(cursor.getString(9));
             }
+            if(!TextUtils.isEmpty(cursor.getString(10)))
+            {
+                user.setToken(cursor.getString(10));
+            }
             Log.i("LoginAdd1","读取到的数据库的数据时:"+user.toString());
             return user;
         }
@@ -181,6 +191,7 @@ public class DButil {
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+            db.execSQL("DROP TABLE IF EXISTS "+TABLE_USER);
             this.onCreate(db);
         }
     }

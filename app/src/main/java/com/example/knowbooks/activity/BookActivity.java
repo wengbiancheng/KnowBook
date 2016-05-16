@@ -96,6 +96,7 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
     private String Sex;
     private String x;
     private String y;
+    private String token;
 
     private String PhoneNumber;
     private String LocalUserName;
@@ -153,8 +154,10 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
                 //从数据库获取User，如果是首次登陆，则获取到null
                 Log.i("LoginAdd1", "登陆后传来的电话号码是:---------" + PhoneNumber);
                 user = db.getUser(PhoneNumber);
-                Log.i("LoginAdd1", "登陆后读取到的数据时:---------" + user.toString());
-                if (!user.getPhoneNumber().equals(PhoneNumber) || (user == null)) {
+                if(user!=null) {
+                    Log.i("LoginAdd1", "登陆后读取到的数据时:---------" + user.toString());
+                }
+                if ((user == null)||!user.getPhoneNumber().equals(PhoneNumber)) {
                     flag = 0;
                     Log.i("LoginAdd1", "数据库找不到该电话号码");
                     initAlertDialog();
@@ -264,16 +267,17 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.title_leftImageBtn:
-//                SendToServlet();
                 toggle();
                 break;
             case R.id.title_rightBtn:
                 if (status == 0) {
                     Intent intent = new Intent(BookActivity.this, WriteBookAty.class);
                     startActivity(intent);
+                    BookActivity.this.finish();
                 } else if (status == 1) {
                     Intent intent = new Intent(BookActivity.this, WriteBookListAty.class);
                     startActivity(intent);
+                    BookActivity.this.finish();
                 } else if (status == 2) {
                     if(TextUtils.isEmpty(user.getConnectPhone())){
                         Log.i("Test", "启动更新联系人操作");
@@ -282,6 +286,7 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
                     }else{
                         Intent intent = new Intent(BookActivity.this, WriteBuyBookAty.class);
                         startActivity(intent);
+                        BookActivity.this.finish();
                     }
                 } else if (status == 3) {
                     if(TextUtils.isEmpty(user.getConnectPhone())){
@@ -289,17 +294,25 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
                     }else{
                         Intent intent = new Intent(BookActivity.this, WriteWantBookAty.class);
                         startActivity(intent);
+                        BookActivity.this.finish();
                     }
                 }
-                BookActivity.this.finish();
                 break;
         }
     }
+
+    /**
+     * -----------------------------------------------用户增加----------------
+     */
     private ImageView Connect_imageView;
     private ImageView Connect_deleteImageView;
     private Button Connect_image_btn;
     private AlertDialog alertDialog1;
     private AlertDialog alertDialog2;
+
+    /**
+     * 更新头像
+     */
     private void ConnectAlertDialog(){
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.alertdialog_connect, null);
@@ -318,6 +331,9 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
             public void onClick(View v) {
                 alertDialog1.dismiss();
                 ConnectAlertDialog1();
+             //--------------------------------------------------------------------------------------------------
+//               SendToServlet();//进行个人信息的更新，就是那个昵称，性别和图片
+// --------------------------------------------------------------------------------------------------
             }
         });
 
@@ -339,6 +355,10 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
         });
 
     }
+
+    /**
+     * 更新三个联系方式ＱＱ，微信
+     */
     private void ConnectAlertDialog1(){
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.alertdialog_connect1, null);
@@ -358,7 +378,7 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
                 Connect_weixin = Weixin.getText().toString();
                 Connect_QQ = QQ.getText().toString();
                 if (!TextUtils.isEmpty(Connect_phone) && !TextUtils.isEmpty(Connect_weixin) && !TextUtils.isEmpty(Connect_QQ)) {
-                    SendToAddServlet();
+                    SendToServlet();
                 } else {
                     Toast.makeText(BookActivity.this, "请补全信息", Toast.LENGTH_SHORT).show();
                 }
@@ -468,7 +488,7 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
 
 
     /**
-     * 登陆成功后的对话框
+     * 登陆成功后的对话框,更新昵称和性别
      */
     private void initAlertDialog() {
         LayoutInflater inflater = getLayoutInflater();
@@ -494,10 +514,15 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
                     Sex = "女";
                 }
                 if (!TextUtils.isEmpty(Name) && !TextUtils.isEmpty(Sex)) {
+
+                    //--------------------------------------------------------------------------------------------------------
+                    alertDialog.dismiss();
+                    ConnectAlertDialog();
+                    //--------------------------------------------------------------------------------------------------------
                     //服务器连接
-                    Message message = new Message();
-                    message.what = -5;
-                    handler.sendMessage(message);
+//                    Message message = new Message();
+//                    message.what = -5;
+//                    handler.sendMessage(message);
                 } else {
                     Toast.makeText(BookActivity.this, "请填完整信息", Toast.LENGTH_SHORT).show();
                 }
@@ -506,11 +531,11 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
     }
 
     /**
-     * 与服务器进行用户个人信息的增加操作
+     * 与服务器进行用户个人信息的增加操作，应该更新 昵称，行呗-------位置-------头像-----三个联系方式
      */
     private void SendToServlet() {
         RequestParams requestParams = new RequestParams();
-        if (!TextUtils.isEmpty(Name) && TextUtils.isEmpty(Sex)) {//第一次登陆
+        if (!TextUtils.isEmpty(Name) && !TextUtils.isEmpty(Sex)) {//第一次登陆
             requestParams.put("userName", Name);
             requestParams.put("sex", Sex);
             Log.i("LoginAdd1","第一次登陆");
@@ -521,6 +546,28 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
 //            requestParams.put("y", user.getY());
             Log.i("LoginAdd1","第二次登陆，刷新服务器");
         }
+        requestParams.put("bookLocation",x+","+y);
+
+
+        Uri uri=Uri.parse(Connect_image);
+        String img_path= ImageUtils.getImageAbsolutePath19(this, uri);
+        File file=new File(img_path);
+        if(file.exists()){
+            Log.i("Log1", "用户自己创建的照片is exist");
+        }else{
+            Log.i("Log1", "用户自己创建的照片 not exist");
+        }
+        try {
+            requestParams.put("BuyBookPicture",file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+
+        requestParams.put("ConnectPhone",Connect_phone);
+        requestParams.put("ConnectPhone",Connect_weixin);
+        requestParams.put("ConnectPhone",Connect_QQ);
 
 
         HttpUtil.getInstance(BookActivity.this).post(BookActivity.this, UrlConstant.LoginAddUrl, requestParams, new JsonHttpResponseHandler() {
@@ -596,9 +643,13 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
                 user.setSex(Sex);
                 user.setX(x);
                 user.setY(y);
+                //------------------------------------------------------------------------------------------//
+//                user.setToken(token);
                 db.addUser(user);
-//                AccessTokenKeeper.writeAccessData(BookActivity.this,PhoneNumber,Name,Sex,x,y);vcv
-                alertDialog.dismiss();
+//                AccessTokenKeeper.writeAccessData(BookActivity.this,PhoneNumber,Name,Sex,x,y);
+                if(alertDialog!=null){
+                    alertDialog.dismiss();
+                }
             } else if (msg.what == -1) {
                 Toast.makeText(BookActivity.this, "材料上传失败,请重新填写资料", Toast.LENGTH_SHORT).show();
                 Log.i("LoginAddFail", (String) msg.obj);

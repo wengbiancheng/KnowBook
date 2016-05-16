@@ -15,12 +15,21 @@ public class User {
     private String connectPhone;
     private String QQ;
     private String Weixin;
+    private String token;
 
     @Override
     public String toString() {
         return "phoneNumber:"+getPhoneNumber()+";password:"+getPassword()+";userName:"+getUserName()
                 +";sex:"+getSex()+";ImageUrl:"+getImageUrl()+";x:"+getX()+";y:"+getY()+";connectPhone:"+getConnectPhone()
-                +";QQ:"+getQQ()+";Weixin:"+getWeixin();
+                +";QQ:"+getQQ()+";Weixin:"+getWeixin()+";token:"+getToken();
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public String getImageUrl() {
