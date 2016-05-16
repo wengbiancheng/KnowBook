@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="booktype"
+        >
+        <item>全部</item>
+        <item>卖书</item>
+        <item>换书</item>
+        <item>借书</item>
+        <item>送书</item>
+    </string-array>
+
+    <string-array name="selltype">
+        <item>全部</item>
+        <item>校园教材</item>
+        <item>杂志</item>
+        <item>小说</item>
+        <item>考研材料</item>
+        <item>托福材料</item>
+    </string-array>
+
+    <string-array name="Sex">
+        <item>男生</item>
+        <item>女生</item>
+    </string-array>
+
+    <attr name="rightPadding" format="dimension" />
+
+    <declare-styleable name="SlidingMenu">
+        <attr name="rightPadding" />
+    </declare-styleable>
+
+    <declare-styleable name="CircleImageView">
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+    </declare-styleable>
+
+
+
+</resources>

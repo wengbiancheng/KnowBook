@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:paddingTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="vertical">
+
+
+        <RatingBar
+            android:id="@+id/SimpleComment_Score"
+            style="?android:ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:isIndicator="true"
+            android:rating="3.0"
+             />
+
+        <TextView
+            android:id="@+id/SimpleComment_Content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:singleLine="false"
+            android:text="前阵子，有一则新闻报道，说湖南有一个法官，工作十余载，突然提出辞职，辞职信写得是文采斐然啊：“初则喜正义之伸张，乐法律得施行，不屑媚俗，安于清贫。久矣疲命于杂务，掣肘各情形，荒于教子，未尽孝心……”
+也就是说，这位法官在熟悉的轨道奋斗了多年后，突然做出了180度的人生改变，确实让很多人无法理解——我敢打赌他老妈肯定不会理解，而且还愿意赌10快钱。
+然而，其做法之所以能够在网上疯传，正是因为他做了很多人想做却没有勇气做的选择，而从某种层面上来说，这跟90年前《月亮与六便士》里的那个男一号一样。
+他们都是因为对长年累月的那种看似幸福的生活产生了无可救药的厌倦和迷失，怀疑所做的一切违背了初心，于是毅然决然地采取了行动，只为了找寻内心的那朵蓝莲花，正如我们在书里所读到的一样：
+“做自己最想做的事，生活在自己喜欢的环境里，淡泊宁静，与世无争，这难道是糟蹋自己吗？与此相反，做一个著名的外科医生，年薪一万镑，娶一位美丽的妻子，就是成功吗？我想，这一切都取决于一个人如何看待生活的意义，取决于他认为对社会应尽什么义务，对自己有什么要求。”
+正所谓一百个人的心中有一百个哈姆雷特，在《月亮和六便士》里，相信每个人也会有不一样的解读。
+有的人读到了孤独：“我们每个人生在世界上都是孤独的。每个人都被囚禁在一座铁塔里，只能靠一些符号同别人传达自己的思想;而这些符号并没有共同的价值，因此它们的意义是模糊的、不确定的。”
+有的人读到了绝望的爱：“女人可以原谅男人对他的伤害，但是永远不能原谅他对她做出的牺牲。”"
+            android:textColor="#565656"
+            android:textSize="12sp"
+
+            android:layout_marginTop="5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/SimpleComment_Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="nlnb"
+                android:textColor="#999"
+                android:textSize="11sp"
+                android:layout_gravity="center"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/SimpleComment_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="2016-03-03"
+                android:textColor="#999"
+                android:textSize="11sp"
+                android:layout_gravity="center"
+                android:gravity="center"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/SimpleComment_Image_Support"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginRight="5dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/muzhi" />
+
+            <TextView
+                android:id="@+id/SimpleComment_Support_Count"
+                android:layout_width="12dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="10dp"
+                android:text="5"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="#999"
+                android:textSize="12dp" />
+
+            <ImageView
+                android:id="@+id/SimpleComment_Image_Comment"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_marginRight="5dp"
+                android:src="@mipmap/pinglun" />
+
+            <TextView
+                android:id="@+id/SimpleComment_Comment_Count"
+                android:layout_width="16dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="20dp"
+                android:text="15"
+                android:textColor="#999"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="12dp"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+

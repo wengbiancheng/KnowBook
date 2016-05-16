@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+
+    <include layout="@layout/include_title" />
+
+    <EditText
+        android:id="@+id/write_soncomment_conent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_weight="1"
+        android:gravity="top|left"
+        android:hint="请输入你对该评论的评价"
+        android:background="@color/transparent"/>
+
+    <Button
+        android:id="@+id/write_Soncomment_Sendbtn"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        android:text="发送"
+        android:textSize="20sp"
+        android:background="@drawable/button_shape"/>
+</LinearLayout>

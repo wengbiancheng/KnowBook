@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="出售类型:"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
+
+    <RadioGroup
+        android:id="@+id/write_buybook_rg"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/write_buybook_rbtn1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="借书"
+            android:button="@null"
+            android:gravity="center"
+            android:background="@drawable/radiogroup_background"
+            android:textColor="@drawable/txtcolor_gray2oran_sel"
+            />
+        <RadioButton
+            android:id="@+id/write_buybook_rbtn2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="换书"
+            android:button="@null"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/radiogroup_background"
+            android:textColor="@drawable/txtcolor_gray2oran_sel"/>
+        <RadioButton
+            android:id="@+id/write_buybook_rbtn3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="卖书"
+            android:checked="true"
+            android:button="@null"
+            android:gravity="center"
+            android:background="@drawable/radiogroup_background"
+            android:textColor="@drawable/txtcolor_gray2oran_sel"
+            android:layout_marginLeft="5dp"/>
+        <RadioButton
+            android:id="@+id/write_buybook_rbtn4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="送书"
+            android:button="@null"
+            android:gravity="center"
+            android:background="@drawable/radiogroup_background"
+            android:textColor="@drawable/txtcolor_gray2oran_sel"
+            android:layout_marginLeft="5dp"/>
+
+
+
+    </RadioGroup>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="10dp"
+        android:background="@color/divider_gray"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_vertical"
+       >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="书籍价格:"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/write_buybook_price_one"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:gravity="center"
+            android:textColor="#232323"
+            android:background="@drawable/edittext"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="."
+            android:layout_marginLeft="5dp"/>
+
+        <EditText
+            android:id="@+id/write_buybook_price_two"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:text="00"
+            android:textColor="#232323"
+            android:gravity="center"
+            android:background="@drawable/edittext"
+            android:layout_marginLeft="5dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="元"
+            android:textSize="16dp"
+
+            android:textColor="#999"
+            android:layout_marginLeft="5dp"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/write_buybook_priceBtn"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right"
+            android:text="直接送你"
+            android:background="@drawable/radiogroup_background"
+            android:textColor="@drawable/txtcolor_gray2oran_sel"/>
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/divider_gray"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="书籍近况:"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <EditText
+            android:id="@+id/write_buybook_newold"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/edittext"
+            android:hint="请点击下面的选项"
+            android:singleLine="true"
+            android:enabled="false"
+            android:clickable="false"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+
+            <Button
+                android:id="@+id/write_buybook_newold1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="基本全新"
+                android:textSize="16sp"
+                android:background="@drawable/radiogroup_background"
+                android:textColor="@drawable/txtcolor_gray2oran_sel"/>
+
+            <Button
+                android:id="@+id/write_buybook_newold2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="8成新"
+                android:textSize="16sp"
+                android:background="@drawable/radiogroup_background"
+                android:textColor="@drawable/txtcolor_gray2oran_sel"/>
+
+            <Button
+                android:id="@+id/write_buybook_newold3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="有笔记"
+                android:textSize="16sp"
+                android:background="@drawable/radiogroup_background"
+                android:textColor="@drawable/txtcolor_gray2oran_sel"/>
+
+            <Button
+                android:id="@+id/write_buybook_newold4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="5成新"
+                android:textSize="16sp"
+                android:background="@drawable/radiogroup_background"
+                android:textColor="@drawable/txtcolor_gray2oran_sel"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp">
+
+        <Button
+            android:id="@+id/write_book_leftBtn"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="上一页"
+            />
+
+        <Button
+            android:id="@+id/write_book_rightBtn"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="下一页"
+            />
+    </LinearLayout>
+
+</LinearLayout>

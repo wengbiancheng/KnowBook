@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="@color/s_black"
+    android:orientation="horizontal">
+
+
+    <ImageButton
+        android:id="@+id/title_leftImageBtn"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:background="@color/s_black"
+        android:src="@drawable/abc_ic_ab_back_mtrl_am_alpha"
+        />
+
+    <TextView
+        android:id="@+id/title_middleTextView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:text="使用牛客账号登陆"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/title_rightBtn"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_marginRight="10dp"
+        android:layout_gravity="center"
+        android:background="@android:color/transparent"
+        android:text="注册/重新登陆"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:gravity="right|center"
+
+        />
+</LinearLayout>

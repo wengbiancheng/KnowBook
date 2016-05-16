@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item"
+    android:background="@color/s_black"
+    android:layout_width="100dp"
+    android:layout_height="40dp"
+    android:textColor="@color/white"
+    android:textSize="15dp"
+    android:gravity="center"
+    android:padding="10dp"
+    android:text="书本"
+   >
+
+</Button>

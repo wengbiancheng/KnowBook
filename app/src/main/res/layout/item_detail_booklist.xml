@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/adapter_detail_booklist_imageView"
+        android:layout_width="64dp"
+        android:layout_height="128dp"
+        android:src="@mipmap/show_book1"
+        android:layout_gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/adapter_detail_booklist_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="欢乐颂"
+        android:paddingLeft="5dp"
+        android:layout_gravity="center"
+        />
+
+</LinearLayout>

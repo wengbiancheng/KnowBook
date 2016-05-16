@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <!-- 评论的第一部分-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="horizontal"
+        android:paddingTop="10dp">
+
+        <com.example.knowbooks.widget.CircleImageView
+            android:id="@+id/detail_comment_main_image"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="right"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/touxiang" />
+
+        <TextView
+            android:id="@+id/detail_comment_userName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
+            android:text="nodle"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="评论"
+            android:textColor="#999"
+            android:textSize="20dp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/detail_comment_bookName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="《欢乐颂》"
+            android:textColor="#999"
+            android:textSize="20dp" />
+
+    </LinearLayout>
+
+    <!-- 评论的第二部分-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <RatingBar
+            android:id="@+id/detail_comment_Score"
+            style="?android:ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:rating="3"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/detail_comment_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2016-02-03"
+            android:textColor="#999"
+            android:textSize="14dp" />
+
+
+    </LinearLayout>
+
+    <!-- 评论的第三部分-->
+    <TextView
+        android:id="@+id/detail_comment_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:text="前阵子，有一则新闻报道，说湖南有一个法官，工作十余载，突然提出辞职，辞职信写得是文采斐然啊：“初则喜正义之伸张，乐法律得施行，不屑媚俗，安于清贫。久矣疲命于杂务，掣肘各情形，荒于教子，未尽孝心……”
+也就是说，这位法官在熟悉的轨道奋斗了多年后，突然做出了180度的人生改变，确实让很多人无法理解——我敢打赌他老妈肯定不会理解，而且还愿意赌10快钱。
+然而，其做法之所以能够在网上疯传，正是因为他做了很多人想做却没有勇气做的选择，而从某种层面上来说，这跟90年前《月亮与六便士》里的那个男一号一样。
+他们都是因为对长年累月的那种看似幸福的生活产生了无可救药的厌倦和迷失，怀疑所做的一切违背了初心，于是毅然决然地采取了行动，只为了找寻内心的那朵蓝莲花，正如我们在书里所读到的一样：
+“做自己最想做的事，生活在自己喜欢的环境里，淡泊宁静，与世无争，这难道是糟蹋自己吗？与此相反，做一个著名的外科医生，年薪一万镑，娶一位美丽的妻子，就是成功吗？我想，这一切都取决于一个人如何看待生活的意义，取决于他认为对社会应尽什么义务，对自己有什么要求。”
+正所谓一百个人的心中有一百个哈姆雷特，在《月亮和六便士》里，相信每个人也会有不一样的解读。
+有的人读到了孤独：“我们每个人生在世界上都是孤独的。每个人都被囚禁在一座铁塔里，只能靠一些符号同别人传达自己的思想;而这些符号并没有共同的价值，因此它们的意义是模糊的、不确定的。”
+有的人读到了绝望的爱：“女人可以原谅男人对他的伤害，但是永远不能原谅他对她做出的牺牲。”"
+        android:textColor="#565656"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="vertical"
+        android:id="@+id/detail_comment_linear">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/divider_gray" />
+        <!-- 评论的支持和踩部分-->
+        <RadioGroup
+            android:id="@+id/detail_comment_rg"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+
+            <com.example.knowbooks.widget.MDMRadioButton
+                android:id="@+id/detail_comment_LeftRadioBtn"
+                style="@style/RadioButtonBottomTab"
+                android:layout_height="30dp"
+                android:drawableLeft="@mipmap/muzhiup"
+                android:gravity="left|center_vertical"
+                android:drawablePadding="10dp"
+                android:layout_gravity="center"
+                android:text="1"
+                android:textSize="14sp">
+
+            </com.example.knowbooks.widget.MDMRadioButton>
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:background="@color/divider_gray" />
+
+            <com.example.knowbooks.widget.MDMRadioButton
+                android:id="@+id/detail_comment_RightRadioBtn"
+                style="@style/RadioButtonBottomTab"
+                android:layout_height="30dp"
+                android:drawableLeft="@mipmap/muzhidown"
+                android:gravity="left|center_vertical"
+                android:drawablePadding="10dp"
+                android:layout_gravity="center"
+                android:text="1"
+                android:textSize="14sp">
+
+            </com.example.knowbooks.widget.MDMRadioButton>
+        </RadioGroup>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/divider_gray" />
+
+
+    </LinearLayout>
+</LinearLayout>

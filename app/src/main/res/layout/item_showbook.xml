@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    android:orientation="horizontal"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp"
+    android:background="@color/white"
+    android:descendantFocusability="blocksDescendants">
+
+
+    <ImageView
+        android:id="@+id/show_leftImageView"
+        android:layout_width="64dp"
+        android:layout_height="90dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="10dp"
+        android:src="@mipmap/ic_launcher" />
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="90dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="26dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/show_bookName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Android群英传"
+                    android:textColor="@color/black"
+                    android:textSize="17dp"
+                    android:textScaleX="1.1"/>
+                <TextView
+                    android:id="@+id/show_bookAuthor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:text="作者是 著"
+                    android:textColor="#999"
+                    android:layout_marginLeft="5dp"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+
+
+            <Button
+                android:id="@+id/show_isCollect"
+                android:layout_width="64dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|center"
+                android:layout_marginRight="10dp"
+                android:text="取消收藏"
+                android:background="@color/s_black"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:focusable="false"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/show_userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nox"
+                android:textColor="#232323"
+                android:textSize="12dp"
+                android:layout_gravity="center_vertical"/>
+
+            <ImageView
+                android:id="@+id/show_userSex"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="1dp"
+                android:src="@mipmap/man" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@color/transparent">
+
+
+            <!-- 这个控件在不同手机里面的形状大小并不一样，需要再研究研究-->
+            <RatingBar
+                android:id="@+id/show_RatingScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+
+                android:numStars="5"
+                android:rating="0"
+                android:stepSize="0.5"
+
+                android:maxHeight="24dp"
+                android:minHeight="16dp"
+
+                style="?android:ratingBarStyleSmall"/>
+
+            <TextView
+                android:id="@+id/show_booknumScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="9.9"
+                android:textSize="12sp"
+                android:layout_marginLeft="5dp"
+                android:textColor="@android:color/holo_red_light"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textSize="12sp"
+                android:text="("/>
+            <TextView
+                android:id="@+id/show_bookCommentCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="12"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="评价)"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+            <TextView
+                android:id="@+id/show_distance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:text="距离你2.2km"
+                android:textSize="10dp"
+                android:textColor="@color/blue"
+                android:layout_gravity="center_vertical"
+                />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/show_bookContent"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="这是一本好书，为什么呢？因为他就是一本好书，所以你为什么这是这是一本好书，为什么呢？因为他就是一本好书，所以你为什么这是..."
+                android:textSize="10dp"
+                android:textColor="#565656"
+                android:gravity="top"
+                android:background="@null"
+                android:layout_marginTop="3dp"
+                android:ellipsize="end"
+                android:singleLine="false"
+                android:maxLines="2"
+
+                />
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="..."-->
+                <!--android:layout_alignBottom="@id/show_bookContent"-->
+                <!--android:layout_marginLeft="60dp"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:textColor="@color/black"-->
+                <!--/>-->
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

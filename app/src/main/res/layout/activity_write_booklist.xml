@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <include layout="@layout/include_title"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="书籍名称:"
+        android:textColor="@color/black"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/write_booklist_bookName"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/edittext"
+        android:hint="请输入书单名称"
+        android:singleLine="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="书单封面:"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <RelativeLayout
+            android:id="@+id/write_book_bookImage1"
+            android:layout_width="102dp"
+            android:layout_height="130dp"
+            android:layout_marginLeft="10dp">
+
+            <ImageView
+                android:id="@+id/write_booklist_iv_image"
+                android:layout_width="100dp"
+                android:layout_height="128dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/compose_pic_add_more"></ImageView>
+
+            <ImageView
+                android:id="@+id/write_booklist_iv_delete_image"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_alignParentRight="true"
+                android:padding="2dp"
+                android:src="@mipmap/image_delete" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/write_booklist_btn"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:textSize="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/button_shape"
+        android:text="创建"/>
+
+
+</LinearLayout>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+
+    <include layout="@layout/include_title" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            android:id="@+id/detail_comment_sonCommentListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+        </com.handmark.pulltorefresh.library.PullToRefreshListView>
+
+        <LinearLayout
+            android:id="@+id/detail_comment_linear1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone"
+            android:background="@color/white">
+
+
+            <!-- 评论的支持和踩部分-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/divider_gray" />
+            <!-- 评论的支持和踩部分-->
+            <RadioGroup
+                android:id="@+id/detail_comment_rg1"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+                <com.example.knowbooks.widget.MDMRadioButton
+                    android:id="@+id/detail_comment_LeftRadioBtn1"
+                    style="@style/RadioButtonBottomTab"
+                    android:layout_height="30dp"
+                    android:drawableLeft="@mipmap/muzhiup"
+                    android:gravity="left|center_vertical"
+                    android:drawablePadding="10dp"
+                    android:text="1">
+
+                </com.example.knowbooks.widget.MDMRadioButton>
+
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="match_parent"
+                    android:background="@color/divider_gray" />
+
+                <com.example.knowbooks.widget.MDMRadioButton
+                    android:id="@+id/detail_comment_RightRadioBtn1"
+                    style="@style/RadioButtonBottomTab"
+                    android:layout_height="30dp"
+                    android:drawableLeft="@mipmap/muzhidown"
+                    android:gravity="left|center_vertical"
+                    android:drawablePadding="10dp"
+                    android:text="1">
+
+                </com.example.knowbooks.widget.MDMRadioButton>
+            </RadioGroup>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/divider_gray" />
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

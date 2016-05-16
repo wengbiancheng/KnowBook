@@ -1,0 +1,45 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RadioGroup
+        android:id="@+id/booklist_rg_tab"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/s_black"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/booklist_thisweek"
+            style="@style/RadioButtonBottomTabBooklist"
+            android:checked="true"
+            android:text="全部"
+            />
+
+        <RadioButton
+            android:id="@+id/booklist_worthchoose"
+            style="@style/RadioButtonBottomTabBooklist"
+            android:text="精选" />
+
+        <RadioButton
+            android:id="@+id/booklist_newchoose"
+            style="@style/RadioButtonBottomTabBooklist"
+            android:text="最新" />
+
+        <RadioButton
+            android:id="@+id/booklist_hotchoose"
+            style="@style/RadioButtonBottomTabBooklist"
+            android:text="最热" />
+
+    </RadioGroup>
+
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/booklist_viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+
+</LinearLayout>
