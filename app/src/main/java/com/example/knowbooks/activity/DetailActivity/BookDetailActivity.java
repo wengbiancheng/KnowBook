@@ -279,7 +279,7 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
         listView.setOnLastItemVisibleListener(new PullToRefreshBase.OnLastItemVisibleListener() {
             @Override
             public void onLastItemVisible() {
-                loadComment(curPage + 1);
+              loadComment(curPage);
             }
         });
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -389,6 +389,7 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
     //加载更多评论的时候调用
     private void loadComment(final int page) {
 
+        curPage++;
         RequestParams requestParams = new RequestParams();
         requestParams.put("id", bookid);
         requestParams.put("page",page);
@@ -397,7 +398,7 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
-                Log.i("Log1", "加载更多评论传来的数据时:"+response.toString());
+                Log.i("Log1", "BookDetailAty加载更多评论传来的数据时:"+response.toString());
 
                 JSONArray jsonArray = new JSONArray();
                 try {

@@ -82,7 +82,7 @@ public class DButil {
                 if(!TextUtils.isEmpty(user.getToken())){
                     value.put("token",user.getToken());
                 }
-                Log.i("LoginAdd1","写入数据库的数据时:"+user.toString());
+                Log.i("LoginAdd1","更新数据库的数据时:"+user.toString());
                 return write_sqlite.update(TABLE_USER,value,"PhoneNumber="+phoneNumber,null);
             }
 

@@ -54,6 +54,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 import org.apache.http.Header;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -97,6 +98,7 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
     private String x;
     private String y;
     private String token;
+    private String headImage;
 
     private String PhoneNumber;
     private String LocalUserName;
@@ -399,7 +401,7 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
             Log.i("Log1","用户自己创建的照片 not exist");
         }
         try {
-            requestParams.put("BuyBookPicture",file);
+            requestParams.put("headPicture",file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -546,7 +548,7 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
 //            requestParams.put("y", user.getY());
             Log.i("LoginAdd1","第二次登陆，刷新服务器");
         }
-        requestParams.put("bookLocation",x+","+y);
+        requestParams.put("location",x+","+y);
 
 
         Uri uri=Uri.parse(Connect_image);
@@ -558,16 +560,14 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
             Log.i("Log1", "用户自己创建的照片 not exist");
         }
         try {
-            requestParams.put("BuyBookPicture",file);
+            requestParams.put("headPicture",file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
 
-
-        requestParams.put("ConnectPhone",Connect_phone);
-        requestParams.put("ConnectPhone",Connect_weixin);
-        requestParams.put("ConnectPhone",Connect_QQ);
+        requestParams.put("weixin",Connect_weixin);
+        requestParams.put("qq",Connect_QQ);
 
 
         HttpUtil.getInstance(BookActivity.this).post(BookActivity.this, UrlConstant.LoginAddUrl, requestParams, new JsonHttpResponseHandler() {
@@ -582,6 +582,9 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
                     String result = response.getString("result");
                     if (result.equals("success")) {
                         Log.i("LoginAdd1", "result:" + result);
+                        JSONArray jsonArray= (JSONArray) response.get("resultSet");
+                        JSONObject jsonObject= (JSONObject) jsonArray.get(0);
+                        headImage=jsonObject.getString("headPicture");
                         message.what = 200;
                         handler.sendMessage(message);
                     } else {
@@ -621,6 +624,7 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
             } else if (msg.what == -10) {
                 flag++;
                 if (flag == 2) {
+                    Log.i("LoginAdd1","个人信息准备完毕，准备验证位置信息");
                     if (!TextUtils.isEmpty(user.getX())) {
                         if (!user.getX().equals(x) || !user.getY().equals(y)) {
                             SendToServlet();
@@ -643,12 +647,18 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
                 user.setSex(Sex);
                 user.setX(x);
                 user.setY(y);
+                user.setImageUrl(UrlConstant.url + headImage);
+                user.setConnectPhone(PhoneNumber);
+                user.setQQ(Connect_QQ);
+                user.setWeixin(Connect_weixin);
+                Log.i("LoginAdd1","返回succeed后的user是(准备写入数据库):"+user.toString());
+
                 //------------------------------------------------------------------------------------------//
 //                user.setToken(token);
                 db.addUser(user);
 //                AccessTokenKeeper.writeAccessData(BookActivity.this,PhoneNumber,Name,Sex,x,y);
-                if(alertDialog!=null){
-                    alertDialog.dismiss();
+                if(alertDialog2!=null){
+                    alertDialog2.dismiss();
                 }
             } else if (msg.what == -1) {
                 Toast.makeText(BookActivity.this, "材料上传失败,请重新填写资料", Toast.LENGTH_SHORT).show();
