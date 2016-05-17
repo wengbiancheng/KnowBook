@@ -54,15 +54,23 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 
 import org.apache.http.Header;
+import org.apache.http.HttpServerConnection;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
+
+import io.rong.ApiHttpClient;
+import io.rong.imkit.RongIM;
+import io.rong.imlib.RongIMClient;
+import io.rong.models.FormatType;
+import io.rong.models.SdkHttpResult;
 
 import static com.example.knowbooks.R.id.connect_image_btn;
 
@@ -127,7 +135,7 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
         controller.showFragment(0);
         //由标题栏左边控件结束按钮导致的界面重新恢复到具体的fragment
         if (!TextUtils.isEmpty(getIntent().getStringExtra("onStart"))) {
-            Log.i("Log2","重新恢复界面1");
+            Log.i("Log2", "重新恢复界面1");
             int postion = Integer.parseInt(getIntent().getStringExtra("onStart"));
             rb_show.setChecked(false);
             if (postion == 1) {
@@ -167,13 +175,19 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
                 } else {
                     flag = 1;
                     Log.i("LoginAdd1", "数据库找到了该电话号码");
+                    if (!TextUtils.isEmpty(user.getToken())) {
+                        Log.i("LoginAdd1", "进行IM的连接操作");
+                     connect(user.getToken());
+                    }else{
+                        Log.i("LoginAdd1", "进行IM的GetToken(token过期或者不存在)");
+                       GetTokenForIncorrect();
+                    }
                 }
 
                 mLocationClient.start();
             }
         }
     }
-
 
     /**
      * 初始化侧滑菜单
@@ -639,21 +653,28 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
 
                 Toast.makeText(BookActivity.this, "个人信息更新成功", Toast.LENGTH_SHORT).show();
                 Log.i("LoginAdd1", "nowLocation:x:" + x + ",y:" + y);
-                User user = new User();
-                user.setPhoneNumber(PhoneNumber);
-                user.setUserName(Name);
-                user.setSex(Sex);
-                user.setX(x);
-                user.setY(y);
-                user.setImageUrl(UrlConstant.url + headImage);
-                user.setConnectPhone(PhoneNumber);
-                user.setQQ(Connect_QQ);
-                user.setWeixin(Connect_weixin);
-                Log.i("LoginAdd1", "返回succeed后的user是(准备写入数据库):" + user.toString());
+//                User user = new User();
+//                user.setPhoneNumber(PhoneNumber);
+//                user.setUserName(Name);
+//                user.setSex(Sex);
+//                user.setX(x);
+//                user.setY(y);
+//                user.setImageUrl(UrlConstant.url + headImage);
+//                user.setConnectPhone(PhoneNumber);
+//                user.setQQ(Connect_QQ);
+//                user.setWeixin(Connect_weixin);
+//                Log.i("LoginAdd1", "返回succeed后的user是(准备写入数据库):" + user.toString());
 
                 //------------------------------------------------------------------------------------------//
 //                user.setToken(token);
-                db.addUser(user);
+//                db.addUser(user);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        GetToken();
+                    }
+                }).start();
+
 //                AccessTokenKeeper.writeAccessData(BookActivity.this,PhoneNumber,Name,Sex,x,y);
                 if (alertDialog2 != null) {
                     alertDialog2.dismiss();
@@ -676,6 +697,131 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
             return false;
         }
     });
+
+    private void GetToken() {
+        String key = "0vnjpoadnsvqz";//替换成您的appkey
+        String secret = "zHj5TMkbxVf";//替换成匹配上面key的secret
+
+        SdkHttpResult result = null;
+
+        Log.i("LoginAdd1", "GetToken:");
+
+
+        //获取token
+        try {
+            result = ApiHttpClient.getToken(key, secret, PhoneNumber, Name,
+                    UrlConstant.url+headImage, FormatType.json);
+            Log.i("LoginActivity", result.toString());
+            JSONObject json = new JSONObject(result.toString());
+            JSONObject json1 = (JSONObject) json.get("result");
+            token = (String) json1.get("token");
+            Log.i("LoginActivity", "getToken=" + token);
+            AddUser();
+            connect(token);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    private void AddUser(){
+        User user = new User();
+        user.setPhoneNumber(PhoneNumber);
+        user.setUserName(Name);
+        user.setSex(Sex);
+        user.setX(x);
+        user.setY(y);
+        user.setImageUrl(UrlConstant.url + headImage);
+        user.setConnectPhone(PhoneNumber);
+        user.setQQ(Connect_QQ);
+        user.setWeixin(Connect_weixin);
+        user.setToken(token);
+
+        db.addUser(user);
+        Log.i("LoginAdd1", "返回succeed后的user是(准备写入数据库):" + user.toString());
+    }
+
+    /**
+     * 因为token过期而重新申请token
+     */
+    private void GetTokenForIncorrect(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                SdkHttpResult result = null;
+
+                String key = "0vnjpoadnsvqz";//替换成您的appkey
+                String secret = "zHj5TMkbxVf";//替换成匹配上面key的secret
+                Log.i("LoginAdd1", "GetTokenForIncorrect:");
+                //获取token
+                try {
+                    Log.i("LoginAdd1", "GetTokenForIncorrect:的数据是:"+"phone:"+user.getPhoneNumber()+";name:"+user.getUserName()+";image:"+user.getImageUrl());
+                    result = ApiHttpClient.getToken(key, secret, user.getPhoneNumber(), user.getUserName(),
+                            user.getImageUrl(), FormatType.json);
+                    Log.i("LoginAdd1", "GetTokenForIncorrect的结果是:"+result.toString());
+                    JSONObject json = new JSONObject(result.toString());
+                    JSONObject json1 = (JSONObject) json.get("result");
+                    token = (String) json1.get("token");
+
+                    user.setToken(token);
+                    Log.i("LoginAdd1", "获取新的token成功：即将写入数据库:"+user.toString());
+                    db.addUser(user);
+                    connect(token);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }).start();
+    }
+
+    /**
+     * 建立与融云服务器的连接
+     *
+     * @param token
+     */
+    private void connect(final String token) {
+
+        if (getApplicationInfo().packageName.equals(BaseApplication.getCurProcessName(getApplicationContext()))) {
+
+            /**
+             * IMKit SDK调用第二步,建立与服务器的连接
+             */
+            RongIM.connect(token, new RongIMClient.ConnectCallback() {
+
+                /**
+                 * Token 错误，在线上环境下主要是因为 Token 已经过期，您需要向 App Server 重新请求一个新的 Token
+                 */
+                @Override
+                public void onTokenIncorrect() {
+                    GetTokenForIncorrect();
+                    Log.d("LoginActivity", "--onTokenIncorrect");
+                }
+
+                /**
+                 * 连接融云成功
+                 * @param userid 当前 token
+                 */
+                @Override
+                public void onSuccess(String userid) {
+                    Toast.makeText(BookActivity.this, "IM连接成功", Toast.LENGTH_SHORT).show();
+                    Log.d("LoginAdd1", "--onTokenSuccess-IM连接成功");
+
+
+                }
+
+                /**
+                 * 连接融云失败
+                 * @param errorCode 错误码，可到官网 查看错误码对应的注释
+                 *                  http://www.rongcloud.cn/docs/android.html#常见错误码
+                 */
+                @Override
+                public void onError(RongIMClient.ErrorCode errorCode) {
+
+                    Log.d("LoginAdd1", "IM连接失败--onError" + errorCode);
+                }
+            });
+        }
+    }
 
     private void UpdateLocation() {
         RequestParams requestParams = new RequestParams();

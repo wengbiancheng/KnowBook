@@ -46,6 +46,7 @@ public class BaseApplication extends Application {
              * IMKit SDK调用第一步 初始化
              */
             RongIM.init(this);
+            Log.d("LoginActivity", "初始化RongIm");
 
         }
     }
