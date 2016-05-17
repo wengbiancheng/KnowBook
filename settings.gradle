@@ -1,1 +1,1 @@
-include ':app', ':slidingmenu_library', ':pulltorefresh'
+include ':app', ':slidingmenu_library', ':pulltorefresh', ':IMKit'

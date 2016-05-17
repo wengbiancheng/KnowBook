@@ -1,5 +1,6 @@
 package com.example.knowbooks;
 
+import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 import android.util.Log;
@@ -20,6 +21,7 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import java.util.List;
 
 import cn.smssdk.SMSSDK;
+import io.rong.imkit.RongIM;
 
 /**
  * Created by qq on 2016/4/27.
@@ -36,11 +38,46 @@ public class BaseApplication extends Application {
         mLocationClient = new LocationClient(this);
         initLocation();
         initImageLoader(this);
+
+        if (getApplicationInfo().packageName.equals(getCurProcessName(getApplicationContext())) ||
+                "io.rong.push".equals(getCurProcessName(getApplicationContext()))) {
+
+            /**
+             * IMKit SDK调用第一步 初始化
+             */
+            RongIM.init(this);
+
+        }
     }
 
-    public LocationClient getInstance(){
-        if(mLocationClient==null){
-            mLocationClient=new LocationClient(this);
+    /**
+     * 获得当前进程的名字
+     *
+     * @param context
+     * @return
+     */
+    public static String getCurProcessName(Context context) {
+
+        int pid = android.os.Process.myPid();
+
+        ActivityManager activityManager = (ActivityManager) context
+                .getSystemService(Context.ACTIVITY_SERVICE);
+
+        for (ActivityManager.RunningAppProcessInfo appProcess : activityManager
+                .getRunningAppProcesses()) {
+
+            if (appProcess.pid == pid) {
+
+                return appProcess.processName;
+            }
+        }
+        return null;
+    }
+
+
+    public LocationClient getInstance() {
+        if (mLocationClient == null) {
+            mLocationClient = new LocationClient(this);
             initLocation();
         }
         return mLocationClient;
@@ -63,6 +100,7 @@ public class BaseApplication extends Application {
         option.setEnableSimulateGps(false);//可选，默认false，设置是否需要过滤gps仿真结果，默认需要
         mLocationClient.setLocOption(option);
     }
+
     // 初始化图片处理
     private void initImageLoader(Context context) {
         // This configuration tuning is custom. You can tune every option, you
