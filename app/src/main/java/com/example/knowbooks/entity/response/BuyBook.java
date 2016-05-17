@@ -18,6 +18,7 @@ public class BuyBook implements Parcelable{
     private Long createDate;
     private String bookClass;
     private String bookSituation;
+    private String locationRange;
 
     protected BuyBook(Parcel in) {
         id=in.readLong();
@@ -30,6 +31,7 @@ public class BuyBook implements Parcelable{
         createDate=in.readLong();
         bookClass = in.readString();
         bookSituation=in.readString();
+        locationRange=in.readString();
     }
 
     public static final Creator<BuyBook> CREATOR = new Creator<BuyBook>() {
@@ -65,7 +67,15 @@ public class BuyBook implements Parcelable{
         return "id:"+getId()+";bookPicture:"+getBookPicture()+";bookName:"+getBookName()+";BuyBookUser:"+
                 getBuyBookUser()+";bookAuthor:"+getBookAuthor()+";BuyBookUserSex:"+getBuyBookUserSex()+
                 ";bookPrice:"+getBookPrice()+";createDate:"+getCreateDate()+";bookClass:"+getBookClass()
-                +";bookType:"+getBookSituation();
+                +";bookType:"+getBookSituation()+";locationRange:"+getLocationRange();
+    }
+
+    public String getLocationRange() {
+        return locationRange;
+    }
+
+    public void setLocationRange(String locationRange) {
+        this.locationRange = locationRange;
     }
 
     public BuyBook(){
@@ -155,5 +165,6 @@ public class BuyBook implements Parcelable{
         dest.writeLong(createDate);
         dest.writeString(bookClass);
         dest.writeString(bookSituation);
+        dest.writeString(locationRange);
     }
 }

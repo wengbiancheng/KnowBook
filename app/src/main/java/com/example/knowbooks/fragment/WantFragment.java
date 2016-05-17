@@ -44,7 +44,7 @@ import java.util.List;
 /**
  * Created by qq on 2016/4/19.
  */
-public class WantFragment extends BaseFragment implements RadioGroup.OnCheckedChangeListener{
+public class WantFragment extends BaseFragment implements RadioGroup.OnCheckedChangeListener {
 
 
     private RadioGroup rg;
@@ -53,13 +53,13 @@ public class WantFragment extends BaseFragment implements RadioGroup.OnCheckedCh
     private PullToRefreshListView listView;
     private WantFragmentAdapter adapter;
 
-    private WantBook wantBook=new WantBook();
-    private List<WantBook> list=new ArrayList<>();
+    private WantBook wantBook = new WantBook();
+    private List<WantBook> list = new ArrayList<>();
 
     private View footView;
     private int curPage = 0;
 
-    private String WantBookType="";
+    private String WantBookType = "";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -97,7 +97,7 @@ public class WantFragment extends BaseFragment implements RadioGroup.OnCheckedCh
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(Baseactivity, WantDetailActivity.class);
-                intent.putExtra("WantBook", list.get(position-1));
+                intent.putExtra("WantBook", list.get(position - 1));
                 startActivity(intent);
                 Baseactivity.finish();
             }
@@ -111,7 +111,11 @@ public class WantFragment extends BaseFragment implements RadioGroup.OnCheckedCh
         listView.setOnLastItemVisibleListener(new PullToRefreshBase.OnLastItemVisibleListener() {
             @Override
             public void onLastItemVisible() {
-                loadData(curPage + 1);
+                if(TextUtils.isEmpty(WantBookType)){
+                    loadData(curPage + 1);
+                }else{
+                    loadData(curPage+1);
+                }
             }
         });
 
@@ -177,69 +181,87 @@ public class WantFragment extends BaseFragment implements RadioGroup.OnCheckedCh
 
     private void loadData(final int page) {
         RequestParams requestParams = new RequestParams();
-        requestParams.put("page", page);
-        requestParams.put("pageSize", 10);
-        String url=UrlConstant.FragmentWantUrl;
+        int locationRange = 8 - page;
+        if (locationRange >= 1) {
+            requestParams.put("locationRange", locationRange);
+            requestParams.put("page", page);
+            requestParams.put("pageSize", 10);
+            String url = UrlConstant.FragmentWantUrl;
 
-        if(!TextUtils.isEmpty(WantBookType)){
-            requestParams.put("type",WantBookType);
-            url=UrlConstant.FragmentWantSomeUrl;
-        }
+            if (!TextUtils.isEmpty(WantBookType)) {
+                requestParams.put("type", WantBookType);
+                url = UrlConstant.FragmentWantSomeUrl;
+            }
 
-        HttpUtil.getInstance(Baseactivity).get(Baseactivity, url, requestParams, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                super.onSuccess(statusCode, headers, response);
-                Log.i("Log1", "WantFrgment界面加载的数据为:" + response.toString());
-                try {
-                    String result = (String) response.get("result");
-                    Message message = new Message();
-                    if (result.equals("success")) {
-                        message.what = 200;
-                        curPage = page;
-                        JSONArray resultSet = (JSONArray) response.get("resultSet");
-                        if (page == 0) {
-                            list.clear();
-                        } else {
-                            if (resultSet.length() == 0) {
-                                removeFootView(listView, footView);
+            HttpUtil.getInstance(Baseactivity).get(Baseactivity, url, requestParams, new JsonHttpResponseHandler() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                    super.onSuccess(statusCode, headers, response);
+                    Log.i("Log12", "WantFrgment界面加载的数据为:" + response.toString());
+                    try {
+                        String result = (String) response.get("result");
+                        Message message = new Message();
+                        if (result.equals("success")) {
+                            message.what = 200;
+                            curPage = page;
+                            JSONArray resultSet = (JSONArray) response.get("resultSet");
+                            if (page == 0) {
+                                list.clear();
                             } else {
-                                addFootView(listView, footView);
+                                if (resultSet.length() == 0) {
+                                    removeFootView(listView, footView);
+                                } else {
+                                    addFootView(listView, footView);
+                                }
                             }
-                        }
-                        for (int i = 0; i < resultSet.length(); i = i + 2) {
-                            JSONObject json = (JSONObject) resultSet.get(i);
-                            WantBook wantBook = new Gson().fromJson(json.toString(), WantBook.class);
+                            for (int i = 0; i < resultSet.length(); i = i + 2) {
+                                JSONObject json = (JSONObject) resultSet.get(i);
+                                WantBook wantBook = new Gson().fromJson(json.toString(), WantBook.class);
 
-                            JSONObject json1 = (JSONObject) resultSet.get(i + 1);
-                            String userSex = json1.getString("UserSex");
-                            String userName = json1.getString("UserName");
-                            wantBook.setUserSex(userSex);
-                            wantBook.setUserName(userName);
-                            Log.i("Log1", "WantFragment加载后的数据为:" + wantBook.toString());
-                            list.add(wantBook);
+                                JSONObject json1 = (JSONObject) resultSet.get(i + 1);
+                                String userSex = json1.getString("UserSex");
+                                String userName = json1.getString("UserName");
+                                String locationRange = json1.getString("locationRange");
+                                wantBook.setUserSex(userSex);
+                                wantBook.setUserName(userName);
+                                wantBook.setLocationRange(locationRange);
+                                Log.i("Log12", "WantFragment加载后的数据为:" + wantBook.toString());
+                                list.add(wantBook);
+                            }
+                            if (list.size() < 10) {
+                                loadData(curPage + 1);
+                            } else {
+                                message.what = 200;
+                                handler.sendMessage(message);
+                            }
+                        } else if (result.equals("nodata")) {
+                            Log.i("Log12", "loadData(curpage+1)" + curPage);
+                            curPage = page;
+                            loadData(curPage + 1);
+                        } else {
+                            message.obj = result;
+                            message.what = -1;
+                            handler.sendMessage(message);
                         }
-                        handler.sendMessage(message);
-                    } else {
-                        message.obj = result;
-                        message.what = -1;
-                        handler.sendMessage(message);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                } catch (JSONException e) {
-                    e.printStackTrace();
+
                 }
 
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-                Message message = new Message();
-                message.obj = responseString;
-                message.what = -1;
-                handler.sendMessage(message);
-            }
-        });
+                @Override
+                public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                    super.onFailure(statusCode, headers, responseString, throwable);
+                    Message message = new Message();
+                    message.obj = responseString;
+                    message.what = -1;
+                    handler.sendMessage(message);
+                }
+            });
+        } else {
+            listView.onRefreshComplete();
+            removeFootView(listView, footView);
+        }
     }
 
     private Handler handler = new Handler(new Handler.Callback() {
@@ -273,28 +295,97 @@ public class WantFragment extends BaseFragment implements RadioGroup.OnCheckedCh
         }
     }
 
+    private void loadSomeData(final int page) {
+        RequestParams requestParams = new RequestParams();
+        requestParams.put("page", page);
+        requestParams.put("pageSize", 10);
+
+        String url="";
+        if (!TextUtils.isEmpty(WantBookType)) {
+            requestParams.put("type", WantBookType);
+            url = UrlConstant.FragmentWantSomeUrl;
+        }
+
+        HttpUtil.getInstance(Baseactivity).get(Baseactivity, url, requestParams, new JsonHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                Log.i("Log12", "WantFrgment界面加载的数据为:" + response.toString());
+                try {
+                    String result = (String) response.get("result");
+                    Message message = new Message();
+                    if (result.equals("success")) {
+                        message.what = 200;
+                        curPage = page;
+                        JSONArray resultSet = (JSONArray) response.get("resultSet");
+                        if (page == 0) {
+                            list.clear();
+                        } else {
+                            if (resultSet.length() == 0) {
+                                removeFootView(listView, footView);
+                            } else {
+                                addFootView(listView, footView);
+                            }
+                        }
+                        for (int i = 0; i < resultSet.length(); i = i + 2) {
+                            JSONObject json = (JSONObject) resultSet.get(i);
+                            WantBook wantBook = new Gson().fromJson(json.toString(), WantBook.class);
+
+                            JSONObject json1 = (JSONObject) resultSet.get(i + 1);
+                            String userSex = json1.getString("UserSex");
+                            String userName = json1.getString("UserName");
+                            String locationRange = json1.getString("locationRange");
+                            wantBook.setUserSex(userSex);
+                            wantBook.setUserName(userName);
+                            wantBook.setLocationRange(locationRange);
+                            Log.i("Log12", "WantFragment加载后的数据为:" + wantBook.toString());
+                            list.add(wantBook);
+                        }
+                        handler.sendMessage(message);
+                    }else{
+                        message.obj = result;
+                        message.what = -1;
+                        handler.sendMessage(message);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+                Message message = new Message();
+                message.obj = responseString;
+                message.what = -1;
+                handler.sendMessage(message);
+            }
+        });
+    }
+
     @Override
     public void onCheckedChanged(RadioGroup group, int checkedId) {
-        switch (checkedId){
+        switch (checkedId) {
             case R.id.fragment_want_rbtn_all:
-                WantBookType="";
+                WantBookType = "";
                 loadData(0);
                 break;
             case R.id.fragment_want_rbtn_magazine:
-                WantBookType=RBtn_magazine.getText().toString();
-                loadData(0);
+                WantBookType = RBtn_magazine.getText().toString();
+                loadSomeData(0);
                 break;
             case R.id.fragment_want_rbtn_novel:
-                WantBookType=RBtn_novel.getText().toString();
-                loadData(0);
+                WantBookType = RBtn_novel.getText().toString();
+                loadSomeData(0);
                 break;
             case R.id.fragment_want_rbtn_other:
-                WantBookType=RBtn_other.getText().toString();
-                loadData(0);
+                WantBookType = RBtn_other.getText().toString();
+                loadSomeData(0);
                 break;
             case R.id.fragment_want_rbtn_textbook:
-                WantBookType=RBtn_textBook.getText().toString();
-                loadData(0);
+                WantBookType = RBtn_textBook.getText().toString();
+                loadSomeData(0);
                 break;
             default:
                 break;

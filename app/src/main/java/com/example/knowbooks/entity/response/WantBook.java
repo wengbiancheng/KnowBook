@@ -19,12 +19,13 @@ public class WantBook implements Parcelable{
     private String bookClass;
     private String UserSex;
     private String UserName;
+    private String locationRange;
 
     @Override
     public String toString() {
         return "id:"+getId()+";distance:"+getDistance()+";Author:"+getWantBookAuthor()+";bookName:"+getWantBookName()+";image:"+getWantBookPicture()
                 +";repay:"+getWishPay()+";time:"+getCreateDate()+";content:"+getWishContent()+";type:"+getBookClass()+";sex:"+getUserSex()
-                +";userName:"+getUserName();
+                +";userName:"+getUserName()+";locationRange:"+getLocationRange();
     }
 
     public WantBook(){
@@ -42,6 +43,7 @@ public class WantBook implements Parcelable{
         bookClass = in.readString();
         UserSex = in.readString();
         UserName = in.readString();
+        locationRange=in.readString();
     }
 
     public static final Creator<WantBook> CREATOR = new Creator<WantBook>() {
@@ -55,6 +57,14 @@ public class WantBook implements Parcelable{
             return new WantBook[size];
         }
     };
+
+    public String getLocationRange() {
+        return locationRange;
+    }
+
+    public void setLocationRange(String locationRange) {
+        this.locationRange = locationRange;
+    }
 
     public Long getId() {
         return id;
@@ -162,5 +172,6 @@ public class WantBook implements Parcelable{
         dest.writeString(bookClass);
         dest.writeString(UserSex);
         dest.writeString(UserName);
+        dest.writeString(locationRange);
     }
 }

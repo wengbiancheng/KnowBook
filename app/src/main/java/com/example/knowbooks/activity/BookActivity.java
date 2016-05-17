@@ -108,7 +108,7 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
     private String token;
     private String headImage;
 
-    private String PhoneNumber;
+    private static String PhoneNumber;
     private String LocalUserName;
     private String Localsex;
     private User user = new User();
@@ -156,6 +156,7 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
         if (!TextUtils.isEmpty(getIntent().getStringExtra("PhoneNumber"))) {
             PhoneNumber = getIntent().getStringExtra("PhoneNumber");
         }
+        Log.i("Special",PhoneNumber);
 
         //判断是否要进行AlertDialog的跳转
         if (!TextUtils.isEmpty(getIntent().getStringExtra("LoginToBook"))) {
@@ -187,6 +188,10 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
                 mLocationClient.start();
             }
         }
+    }
+    public static String getPhone(){
+        Log.i("Special------",PhoneNumber);
+        return PhoneNumber;
     }
 
     /**

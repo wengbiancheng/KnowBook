@@ -63,10 +63,10 @@ public class BuyFragment extends BaseFragment {
 
     private List<String> listType = new ArrayList<>();
     private List<String> listSellType = new ArrayList<>();
-    private String bookTypeData="";
-    private String SellTypeData="";
-    private String item1[]={"全部","卖书","换书","借书","送书"};
-    private String item2[]={"全部","校园教材","杂志","小说","考研材料","托福材料"};
+    private String bookTypeData = "";
+    private String SellTypeData = "";
+    private String item1[] = {"全部", "卖书", "换书", "借书", "送书"};
+    private String item2[] = {"全部", "校园教材", "杂志", "小说", "考研材料", "托福材料"};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -106,9 +106,8 @@ public class BuyFragment extends BaseFragment {
      * 进行购买书籍的选择操作
      */
 //    private AlertDialog alert;
-
     private void ShowAlertDialogSome(final String flag) {
-        if (flag.equals("booktype")){
+        if (flag.equals("booktype")) {
             new AlertDialog.Builder(Baseactivity)
                     .setItems(item2, new DialogInterface.OnClickListener() {
 
@@ -119,7 +118,11 @@ public class BuyFragment extends BaseFragment {
                                 case 0:
                                     bookTypeData = "";
                                     BookType.setText("全部");
-                                    loadData(0);
+                                    if(!TextUtils.isEmpty(SellTypeData)){
+                                        loadDataSome(0);
+                                    }else {
+                                        loadData(0);
+                                    }
                                     break;
                                 case 1:
                                 case 2:
@@ -128,14 +131,14 @@ public class BuyFragment extends BaseFragment {
                                 case 5:
                                     bookTypeData = item2[which];
                                     BookType.setText(bookTypeData);
-                                    loadData(0);
+                                    loadDataSome(0);
                                 default:
                                     break;
                             }
                         }
                     })
                     .show();
-        }else{
+        } else {
             new AlertDialog.Builder(Baseactivity)
                     .setItems(item1, new DialogInterface.OnClickListener() {
 
@@ -146,7 +149,11 @@ public class BuyFragment extends BaseFragment {
                                 case 0:
                                     SellTypeData = "";
                                     SellType.setText("全部");
-                                    loadData(0);
+                                    if(!TextUtils.isEmpty(bookTypeData)){
+                                        loadDataSome(0);
+                                    }else {
+                                        loadData(0);
+                                    }
                                     break;
                                 case 1:
                                 case 2:
@@ -154,7 +161,7 @@ public class BuyFragment extends BaseFragment {
                                 case 4:
                                     SellTypeData = item1[which];
                                     SellType.setText(SellTypeData);
-                                    loadData(0);
+                                    loadDataSome(0);
                                 default:
                                     break;
                             }
@@ -178,13 +185,21 @@ public class BuyFragment extends BaseFragment {
         listView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
             public void onRefresh(PullToRefreshBase<ListView> refreshView) {
-                loadData(0);
+                if (!TextUtils.isEmpty(bookTypeData) || !TextUtils.isEmpty(SellTypeData)) {
+                    loadDataSome(curPage + 1);
+                } else {
+                    loadData(0);
+                }
             }
         });
         listView.setOnLastItemVisibleListener(new PullToRefreshBase.OnLastItemVisibleListener() {
             @Override
             public void onLastItemVisible() {
-                loadData(curPage + 1);
+                if (!TextUtils.isEmpty(bookTypeData) || !TextUtils.isEmpty(SellTypeData)) {
+                    loadDataSome(curPage + 1);
+                } else {
+                    loadData(curPage + 1);
+                }
             }
         });
 
@@ -248,16 +263,16 @@ public class BuyFragment extends BaseFragment {
         });
     }
 
-    private void loadData(final int page) {
+    private void loadDataSome(final int page) {
         RequestParams requestParams = new RequestParams();
         requestParams.put("page", page);
         requestParams.put("pageSize", 10);
-        String url=UrlConstant.FragmentBuyUrl;
-        if(!TextUtils.isEmpty(bookTypeData)||!TextUtils.isEmpty(SellTypeData)){
-            requestParams.put("Type",bookTypeData);
-            requestParams.put("sellType",SellTypeData);
-            url=UrlConstant.FragmentBuySomeUrl;
-            Log.i("Log11", "进行buyFragment界面的筛选活动:书本的类型是"+bookTypeData+";售卖的类型是:"+SellTypeData);
+        String url = "";
+        if (!TextUtils.isEmpty(bookTypeData) || !TextUtils.isEmpty(SellTypeData)) {
+            requestParams.put("Type", bookTypeData);
+            requestParams.put("sellType", SellTypeData);
+            url = UrlConstant.FragmentBuySomeUrl;
+            Log.i("Log11", "进行buyFragment界面的筛选活动:书本的类型是" + bookTypeData + ";售卖的类型是:" + SellTypeData);
         }
 
         HttpUtil.getInstance(Baseactivity).get(Baseactivity, url, requestParams, new JsonHttpResponseHandler() {
@@ -266,8 +281,9 @@ public class BuyFragment extends BaseFragment {
                 super.onSuccess(statusCode, headers, response);
                 Log.i("Log11", "进行BuyFragment数据加载的结果是:" + response.toString());
                 try {
-                    String result = (String) response.get("result");
+                    String result = response.get("result").toString();
                     Message message = new Message();
+                    Log.i("Log11", "进行BuyFragment数据加载的数组结果是:" + result);
                     if (result.equals("success")) {
                         message.what = 200;
                         curPage = page;
@@ -275,6 +291,7 @@ public class BuyFragment extends BaseFragment {
 
 
                         Log.i("Log11", "进行BuyFragment数据加载的数组结果是:" + resultSet.toString());
+                        Log.i("Log11", "进行BuyFragment数据加载的数组的----长度是:" + resultSet.length());
                         if (page == 0) {
                             list.clear();
                         } else {
@@ -293,17 +310,19 @@ public class BuyFragment extends BaseFragment {
                             JSONObject json2 = (JSONObject) resultSet.get(i + 1);
                             String UserName = json2.getString("BuyBookUser");
                             String UserSex = json2.getString("BuyBookUserSex");
+                            String locationRange=json2.getString("locationRange");
+                            buyBook.setLocationRange(locationRange);
                             buyBook.setBuyBookUser(UserName);
                             buyBook.setBuyBookUserSex(UserSex);
 
-                            Log.i("Log11", "进行BuyFragment数据加载的子结果是:" + json1.toString());
-                            Log.i("Log11", "进行BuyFragment数据加载的子结果是:" + json2.toString());
+                            Log.i("Log11", "进行BuyFragment数据加载的数据是:" + buyBook.toString());
 
                             list.add(buyBook);
                         }
                         message.what = 200;
                         handler.sendMessage(message);
                     } else {
+                        Log.i("Log11", "loadData(curpage+1)");
                         message.obj = result;
                         message.what = -1;
                         handler.sendMessage(message);
@@ -326,6 +345,106 @@ public class BuyFragment extends BaseFragment {
         });
     }
 
+
+    private void loadData(final int page) {
+        Log.i("Log11", "page:" + page);
+        RequestParams requestParams = new RequestParams();
+        int locationRange = 8 - page;
+        if (locationRange >= 1) {
+            requestParams.put("locationRange", locationRange);
+            requestParams.put("page", page);
+            requestParams.put("pageSize", 10);
+            Log.i("Log11", "locationRange:" + locationRange);
+            String url = UrlConstant.FragmentBuyUrl;
+//            if (!TextUtils.isEmpty(bookTypeData) || !TextUtils.isEmpty(SellTypeData)) {
+//                requestParams.put("Type", bookTypeData);
+//                requestParams.put("sellType", SellTypeData);
+//                url = UrlConstant.FragmentBuySomeUrl;
+//                Log.i("Log11", "进行buyFragment界面的筛选活动:书本的类型是" + bookTypeData + ";售卖的类型是:" + SellTypeData);
+//            }
+
+            HttpUtil.getInstance(Baseactivity).get(Baseactivity, url, requestParams, new JsonHttpResponseHandler() {
+                @Override
+                public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                    super.onSuccess(statusCode, headers, response);
+                    Log.i("Log11", "进行BuyFragment数据加载的结果是:" + response.toString());
+                    try {
+                        String result = response.get("result").toString();
+                        Message message = new Message();
+                        Log.i("Log11", "进行BuyFragment数据加载的数组结果是:" + result);
+                        if (result.equals("success")) {
+                            message.what = 200;
+                            curPage = page;
+                            JSONArray resultSet = (JSONArray) response.get("resultSet");
+
+
+                            Log.i("Log11", "进行BuyFragment数据加载的数组结果是:" + resultSet.toString());
+                            Log.i("Log11", "进行BuyFragment数据加载的数组的----长度是:" + resultSet.length());
+                            if (page == 0) {
+                                list.clear();
+                            } else {
+                                if (resultSet.length() == 0) {
+                                    removeFootView(listView, footView);
+                                } else {
+                                    addFootView(listView, footView);
+                                }
+                            }
+                            for (int i = 0; i < resultSet.length(); i = i + 2) {
+
+                                JSONObject json1 = (JSONObject) resultSet.get(i);
+                                JSONObject json11 = (JSONObject) json1.get("userinfo");
+
+                                BuyBook buyBook = new Gson().fromJson(json1.toString(), BuyBook.class);
+                                JSONObject json2 = (JSONObject) resultSet.get(i + 1);
+                                String UserName = json2.getString("BuyBookUser");
+                                String UserSex = json2.getString("BuyBookUserSex");
+                                String locationRange=json2.getString("locationRange");
+                                buyBook.setLocationRange(locationRange);
+                                buyBook.setBuyBookUser(UserName);
+                                buyBook.setBuyBookUserSex(UserSex);
+
+                                Log.i("Log11", "进行BuyFragment数据加载的id是:" + buyBook.getId());
+
+                                list.add(buyBook);
+                            }
+                            if (list.size() < 10) {
+                                loadData(curPage + 1);
+                            } else {
+                                message.what = 200;
+                                handler.sendMessage(message);
+                            }
+                        } else if (result.equals("nodata")) {
+                            Log.i("Log11", "loadData(curpage+1)" + curPage);
+                            curPage = page;
+                            loadData(curPage + 1);
+                        } else {
+                            Log.i("Log11", "loadData(curpage+1)");
+                            message.obj = result;
+                            message.what = -1;
+                            handler.sendMessage(message);
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
+                @Override
+                public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                    super.onFailure(statusCode, headers, responseString, throwable);
+                    Log.i("Log11", "进行BuyFragment数据加载失败:原因是" + responseString.toString());
+                    Message message = new Message();
+                    message.obj = responseString;
+                    message.what = -1;
+                    handleMessage(message);
+                }
+            });
+        } else {
+            listView.onRefreshComplete();
+        }
+        removeFootView(listView, footView);
+    }
+
     private Handler handler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
@@ -335,9 +454,10 @@ public class BuyFragment extends BaseFragment {
             } else if (msg.what == 300) {
                 list.remove(msg.arg1);
                 adapter.notifyDataSetChanged();
-            }else if(msg.what==201) {
+            } else if (msg.what == 201) {
                 ShowAlertDialogSome((String) msg.obj);
-            }else{Toast.makeText(Baseactivity, "错误信息为:" + msg.obj, Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(Baseactivity, "错误信息为:" + msg.obj, Toast.LENGTH_SHORT).show();
             }
 
             return false;

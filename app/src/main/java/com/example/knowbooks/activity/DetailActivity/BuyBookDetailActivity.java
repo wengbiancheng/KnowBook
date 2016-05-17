@@ -31,6 +31,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import io.rong.imkit.RongIM;
+
 /**
  * Created by qq on 2016/4/25.
  */
@@ -156,6 +158,8 @@ public class BuyBookDetailActivity extends Activity implements View.OnClickListe
                 startActivity(intent1);
                 break;
             case R.id.detail_want_btn://聊天
+                if (RongIM.getInstance() != null)
+                    RongIM.getInstance().startPrivateChat(this,detailBuyBook.getPhoneNumber(),"title");
                 break;
         }
     }

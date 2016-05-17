@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import com.example.knowbooks.BaseFragment;
 import com.example.knowbooks.R;
 import com.example.knowbooks.activity.BookActivity;
+import com.example.knowbooks.activity.MyActivity.ChatMessage;
 import com.example.knowbooks.activity.MyActivity.MyBookListAty;
 import com.example.knowbooks.activity.MyActivity.MyBuyBookAty;
 import com.example.knowbooks.activity.MyActivity.MyShowBookAty;
@@ -26,6 +27,8 @@ public class LeftSlideMenu extends BaseFragment implements View.OnClickListener{
     private LinearLayout myBookList;
     private LinearLayout myBuyBook;
     private LinearLayout myWantBook;
+
+    private LinearLayout myMessage;
     private BookActivity BaseActivity;
 
     @Override
@@ -47,6 +50,9 @@ public class LeftSlideMenu extends BaseFragment implements View.OnClickListener{
         myBookList= (LinearLayout) view.findViewById(R.id.left_menu_myBookList);
         myBuyBook= (LinearLayout) view.findViewById(R.id.left_menu_myBuyBook);
         myWantBook= (LinearLayout) view.findViewById(R.id.left_menu_myWantBook);
+
+        myMessage= (LinearLayout) view.findViewById(R.id.left_menu_myMessage);
+        myMessage.setOnClickListener(this);
         myBook.setOnClickListener(this);
         myBookList.setOnClickListener(this);
         myBuyBook.setOnClickListener(this);
@@ -76,6 +82,11 @@ public class LeftSlideMenu extends BaseFragment implements View.OnClickListener{
                 startActivity(intent3);
                 Baseactivity.finish();
                 break;
+            case R.id.left_menu_myMessage:
+                Intent intent4=new Intent(getActivity(), ChatMessage.class);
+                intent4.putExtra("phone",BaseActivity.getPhone());
+                startActivity(intent4);
+                Baseactivity.finish();
         }
     }
 }

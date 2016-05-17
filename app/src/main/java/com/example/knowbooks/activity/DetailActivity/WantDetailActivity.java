@@ -32,6 +32,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import io.rong.imkit.RongIM;
+
 /**
  * Created by qq on 2016/4/25.
  */
@@ -100,6 +102,8 @@ public class WantDetailActivity extends Activity implements View.OnClickListener
                 startActivity(intent1);
                 break;
             case R.id.detail_want_btn://聊天
+                if (RongIM.getInstance() != null)
+                    RongIM.getInstance().startPrivateChat(this,detailWantBook.getPhoneNumber(),"title");
                 break;
             default:
                 break;
