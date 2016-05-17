@@ -202,7 +202,7 @@ public class MyBuyBookAty extends Activity implements View.OnClickListener {
                         for (int i = 0; i < resultSet.length(); i = i + 2) {
 
                             JSONObject json1 = (JSONObject) resultSet.get(i);
-                            JSONObject json11 = (JSONObject) json1.get("user_info");
+                            JSONObject json11 = (JSONObject) json1.get("userinfo");
 
                             BuyBook buyBook = new Gson().fromJson(json1.toString(), BuyBook.class);
                             JSONObject json2 = (JSONObject) resultSet.get(i + 1);

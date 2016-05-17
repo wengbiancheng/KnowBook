@@ -103,15 +103,15 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
     private String PhoneNumber;
     private String LocalUserName;
     private String Localsex;
-    private User user=new User();
+    private User user = new User();
 
     private DButil db;
 
-    private String Connect_image="";
+    private String Connect_image = "";
     private String Connect_phone;
     private String Connect_QQ;
     private String Connect_weixin;
-    private boolean Connect_Flag=false;
+    private boolean Connect_Flag = false;
 
 
     @Override
@@ -127,8 +127,8 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
         controller.showFragment(0);
         //由标题栏左边控件结束按钮导致的界面重新恢复到具体的fragment
         if (!TextUtils.isEmpty(getIntent().getStringExtra("onStart"))) {
+            Log.i("Log2","重新恢复界面1");
             int postion = Integer.parseInt(getIntent().getStringExtra("onStart"));
-            controller.showFragment(postion);
             rb_show.setChecked(false);
             if (postion == 1) {
                 rb_list.setChecked(true);
@@ -137,6 +137,7 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
             } else if (postion == 3) {
                 rb_want.setChecked(true);
             }
+            controller.showFragment(postion);
         }
 
         mLocationClient = ((BaseApplication) getApplication()).getInstance();
@@ -156,10 +157,10 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
                 //从数据库获取User，如果是首次登陆，则获取到null
                 Log.i("LoginAdd1", "登陆后传来的电话号码是:---------" + PhoneNumber);
                 user = db.getUser(PhoneNumber);
-                if(user!=null) {
+                if (user != null) {
                     Log.i("LoginAdd1", "登陆后读取到的数据时:---------" + user.toString());
                 }
-                if ((user == null)||!user.getPhoneNumber().equals(PhoneNumber)) {
+                if ((user == null) || !user.getPhoneNumber().equals(PhoneNumber)) {
                     flag = 0;
                     Log.i("LoginAdd1", "数据库找不到该电话号码");
                     initAlertDialog();
@@ -172,6 +173,7 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
             }
         }
     }
+
 
     /**
      * 初始化侧滑菜单
@@ -281,23 +283,13 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
                     startActivity(intent);
                     BookActivity.this.finish();
                 } else if (status == 2) {
-                    if(TextUtils.isEmpty(user.getConnectPhone())){
-                        Log.i("Test", "启动更新联系人操作");
-                        initAlertDialog();
-//                        ConnectAlertDialog();
-                    }else{
-                        Intent intent = new Intent(BookActivity.this, WriteBuyBookAty.class);
-                        startActivity(intent);
-                        BookActivity.this.finish();
-                    }
+                    Intent intent = new Intent(BookActivity.this, WriteBuyBookAty.class);
+                    startActivity(intent);
+                    BookActivity.this.finish();
                 } else if (status == 3) {
-                    if(TextUtils.isEmpty(user.getConnectPhone())){
-                        ConnectAlertDialog();
-                    }else{
-                        Intent intent = new Intent(BookActivity.this, WriteWantBookAty.class);
-                        startActivity(intent);
-                        BookActivity.this.finish();
-                    }
+                    Intent intent = new Intent(BookActivity.this, WriteWantBookAty.class);
+                    startActivity(intent);
+                    BookActivity.this.finish();
                 }
                 break;
         }
@@ -315,7 +307,7 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
     /**
      * 更新头像
      */
-    private void ConnectAlertDialog(){
+    private void ConnectAlertDialog() {
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.alertdialog_connect, null);
         alertDialog1 = new AlertDialog.Builder(BookActivity.this).setView(view)
@@ -324,16 +316,16 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
         alertDialog1.setCanceledOnTouchOutside(false);
         Log.i("Test", "启动更新联系人操作 alertDialog1显示");
 
-        Connect_imageView= (ImageView) view.findViewById(R.id.iv_image);
-        Connect_deleteImageView= (ImageView) view.findViewById(R.id.iv_delete_image);
-        Connect_image_btn= (Button) view.findViewById(connect_image_btn);
+        Connect_imageView = (ImageView) view.findViewById(R.id.iv_image);
+        Connect_deleteImageView = (ImageView) view.findViewById(R.id.iv_delete_image);
+        Connect_image_btn = (Button) view.findViewById(connect_image_btn);
 
         Connect_image_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 alertDialog1.dismiss();
                 ConnectAlertDialog1();
-             //--------------------------------------------------------------------------------------------------
+                //--------------------------------------------------------------------------------------------------
 //               SendToServlet();//进行个人信息的更新，就是那个昵称，性别和图片
 // --------------------------------------------------------------------------------------------------
             }
@@ -361,7 +353,7 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
     /**
      * 更新三个联系方式ＱＱ，微信
      */
-    private void ConnectAlertDialog1(){
+    private void ConnectAlertDialog1() {
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.alertdialog_connect1, null);
         alertDialog2 = new AlertDialog.Builder(BookActivity.this).setView(view)
@@ -369,10 +361,10 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
         alertDialog2.show();
         Log.i("Test", "启动更新联系人操作 alertDialog2显示");
 
-        final EditText Phone= (EditText) view.findViewById(R.id.connect_phoneNumber);
-        final EditText QQ= (EditText) view.findViewById(R.id.connect_QQ);
-        final EditText Weixin= (EditText) view.findViewById(R.id.connect_weixin);
-        Button button= (Button) view.findViewById(R.id.connect_image_btn);
+        final EditText Phone = (EditText) view.findViewById(R.id.connect_phoneNumber);
+        final EditText QQ = (EditText) view.findViewById(R.id.connect_QQ);
+        final EditText Weixin = (EditText) view.findViewById(R.id.connect_weixin);
+        Button button = (Button) view.findViewById(R.id.connect_image_btn);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -388,27 +380,27 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
         });
     }
 
-    private void SendToAddServlet(){
+    private void SendToAddServlet() {
 
-        RequestParams requestParams=new RequestParams();
+        RequestParams requestParams = new RequestParams();
 
-        Uri uri=Uri.parse(Connect_image);
-        String img_path= ImageUtils.getImageAbsolutePath19(this, uri);
-        File file=new File(img_path);
-        if(file.exists()){
-            Log.i("Log1","用户自己创建的照片is exist");
-        }else{
-            Log.i("Log1","用户自己创建的照片 not exist");
+        Uri uri = Uri.parse(Connect_image);
+        String img_path = ImageUtils.getImageAbsolutePath19(this, uri);
+        File file = new File(img_path);
+        if (file.exists()) {
+            Log.i("Log1", "用户自己创建的照片is exist");
+        } else {
+            Log.i("Log1", "用户自己创建的照片 not exist");
         }
         try {
-            requestParams.put("headPicture",file);
+            requestParams.put("headPicture", file);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
 
-        requestParams.put("ConnectPhone",Connect_phone);
-        requestParams.put("ConnectPhone",Connect_QQ);
-        requestParams.put("ConnectPhone",Connect_weixin);
+        requestParams.put("ConnectPhone", Connect_phone);
+        requestParams.put("ConnectPhone", Connect_QQ);
+        requestParams.put("ConnectPhone", Connect_weixin);
 
         HttpUtil.getInstance(this).get(this, UrlConstant.UserAdd, requestParams, new JsonHttpResponseHandler() {
             @Override
@@ -443,6 +435,7 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
             }
         });
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -450,14 +443,14 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
         switch (requestCode) {
             case ImageUtils.REQUEST_CODE_FROM_ALBUM:
                 if (resultCode == BookActivity.RESULT_CANCELED) {
-                    Log.i("ImagePICTURE","fail");
+                    Log.i("ImagePICTURE", "fail");
                     return;
                 }
                 Uri imageUri = data.getData();
 
-                String url=imageUri.toString();
-                Log.i("ImagePICTURE",url);
-                Connect_image=url;
+                String url = imageUri.toString();
+                Log.i("ImagePICTURE", url);
+                Connect_image = url;
                 Connect_imageView.setImageURI(imageUri);
                 upConnectImgs();
                 break;
@@ -468,8 +461,8 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
                 } else {
                     Uri imageUriCamera = ImageUtils.imageUriFromCamera;
 
-                    Log.i("ImagePICTURE",imageUriCamera.toString());
-                    Connect_image=imageUriCamera.toString();
+                    Log.i("ImagePICTURE", imageUriCamera.toString());
+                    Connect_image = imageUriCamera.toString();
                     Connect_imageView.setImageURI(imageUriCamera);
                     upConnectImgs();
                 }
@@ -479,11 +472,12 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
                 break;
         }
     }
-    private void upConnectImgs(){
-        if(TextUtils.isEmpty(Connect_image)){
+
+    private void upConnectImgs() {
+        if (TextUtils.isEmpty(Connect_image)) {
             Connect_imageView.setImageResource(R.drawable.compose_pic_add_more);
             Connect_deleteImageView.setVisibility(View.GONE);
-        }else{
+        } else {
             Connect_deleteImageView.setVisibility(View.VISIBLE);
         }
     }
@@ -540,34 +534,36 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
         if (!TextUtils.isEmpty(Name) && !TextUtils.isEmpty(Sex)) {//第一次登陆
             requestParams.put("userName", Name);
             requestParams.put("sex", Sex);
-            Log.i("LoginAdd1","第一次登陆");
+            Log.i("LoginAdd1", "第一次登陆");
         } else {//第二次登陆，因为x和y不同而刷新服务器
             requestParams.put("userName", user.getUserName());
             requestParams.put("sex", user.getSex());
 //            requestParams.put("x", user.getX());
 //            requestParams.put("y", user.getY());
-            Log.i("LoginAdd1","第二次登陆，刷新服务器");
+            Log.i("LoginAdd1", "第二次登陆，刷新服务器");
         }
-        requestParams.put("location",x+","+y);
+        requestParams.put("location", x + "," + y);
 
 
-        Uri uri=Uri.parse(Connect_image);
-        String img_path= ImageUtils.getImageAbsolutePath19(this, uri);
-        File file=new File(img_path);
-        if(file.exists()){
-            Log.i("Log1", "用户自己创建的照片is exist");
-        }else{
-            Log.i("Log1", "用户自己创建的照片 not exist");
+        if (!TextUtils.isEmpty(Connect_image)) {
+            Uri uri = Uri.parse(Connect_image);
+            String img_path = ImageUtils.getImageAbsolutePath19(this, uri);
+            File file = new File(img_path);
+            if (file.exists()) {
+                Log.i("Log1", "用户自己创建的照片is exist");
+            } else {
+                Log.i("Log1", "用户自己创建的照片 not exist");
+            }
+            try {
+                requestParams.put("headPicture", file);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
-        try {
-            requestParams.put("headPicture",file);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
 
 
-        requestParams.put("weixin",Connect_weixin);
-        requestParams.put("qq",Connect_QQ);
+        requestParams.put("weixin", Connect_weixin);
+        requestParams.put("qq", Connect_QQ);
 
 
         HttpUtil.getInstance(BookActivity.this).post(BookActivity.this, UrlConstant.LoginAddUrl, requestParams, new JsonHttpResponseHandler() {
@@ -582,9 +578,9 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
                     String result = response.getString("result");
                     if (result.equals("success")) {
                         Log.i("LoginAdd1", "result:" + result);
-                        JSONArray jsonArray= (JSONArray) response.get("resultSet");
-                        JSONObject jsonObject= (JSONObject) jsonArray.get(0);
-                        headImage=jsonObject.getString("headPicture");
+                        JSONArray jsonArray = (JSONArray) response.get("resultSet");
+                        JSONObject jsonObject = (JSONObject) jsonArray.get(0);
+                        headImage = jsonObject.getString("headPicture");
                         message.what = 200;
                         handler.sendMessage(message);
                     } else {
@@ -619,18 +615,20 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
             if (msg.what == -5) {
                 flag++;
                 if (flag == 2) {
+                    Log.i("LoginAdd1", "位置信息准备完毕，准备验证个人的信息");
                     SendToServlet();
                 }
             } else if (msg.what == -10) {
                 flag++;
                 if (flag == 2) {
-                    Log.i("LoginAdd1","个人信息准备完毕，准备验证位置信息");
+                    Log.i("LoginAdd1", "个人信息准备完毕，准备验证位置信息");
                     if (!TextUtils.isEmpty(user.getX())) {
                         if (!user.getX().equals(x) || !user.getY().equals(y)) {
-                            SendToServlet();
-                            Log.i("LoginAdd1","因为定位进行服务器的更新操作");
+                            UpdateLocation();
+                            Log.i("LoginAdd1", "因为定位进行服务器的更新操作");
+                        } else {
+                            Log.i("LoginAdd1", "不用因为定位进行服务器的更新操作");
                         }
-                        Log.i("LoginAdd1","不用因为定位进行服务器的更新操作");
                     } else {
                         SendToServlet();
                         Log.i("LoginAdd1", "因为定位进行服务器的更新操作");
@@ -651,28 +649,72 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
                 user.setConnectPhone(PhoneNumber);
                 user.setQQ(Connect_QQ);
                 user.setWeixin(Connect_weixin);
-                Log.i("LoginAdd1","返回succeed后的user是(准备写入数据库):"+user.toString());
+                Log.i("LoginAdd1", "返回succeed后的user是(准备写入数据库):" + user.toString());
 
                 //------------------------------------------------------------------------------------------//
 //                user.setToken(token);
                 db.addUser(user);
 //                AccessTokenKeeper.writeAccessData(BookActivity.this,PhoneNumber,Name,Sex,x,y);
-                if(alertDialog2!=null){
+                if (alertDialog2 != null) {
                     alertDialog2.dismiss();
                 }
+            } else if (msg.what == 210) {
+                user.setX(x);
+                user.setY(y);
+                db.addUser(user);
+                Log.i("LoginAdd1", "单纯更新位置信息成功：数据库成功");
             } else if (msg.what == -1) {
                 Toast.makeText(BookActivity.this, "材料上传失败,请重新填写资料", Toast.LENGTH_SHORT).show();
                 Log.i("LoginAddFail", (String) msg.obj);
                 Log.i("LoginAdd1", "nowLocation:x:" + x + ",y:" + y);
                 flag = 1;
-            }else if(msg.what==2000){
+            } else if (msg.what == 2000) {
                 alertDialog2.dismiss();
-                Toast.makeText(BookActivity.this,"用户信息上传成功",Toast.LENGTH_SHORT).show();
+                Toast.makeText(BookActivity.this, "用户信息上传成功", Toast.LENGTH_SHORT).show();
             }
 
             return false;
         }
     });
+
+    private void UpdateLocation() {
+        RequestParams requestParams = new RequestParams();
+        requestParams.put("location", x + "," + y);
+
+        HttpUtil.getInstance(BookActivity.this).get(BookActivity.this, UrlConstant.UpdateLocation, requestParams, new JsonHttpResponseHandler() {
+
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                Log.i("LoginAdd1", "单纯位置更新操作成功:" + response.toString());
+                try {
+                    Message message = new Message();
+                    String result = response.getString("result");
+                    if (result.equals("success")) {
+                        message.what = 210;
+                        handler.sendMessage(message);
+                    } else {
+                        message.what = -1;
+                        message.obj = result;
+                        handler.sendMessage(message);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+                Log.i("LoginAdd1", "单纯位置更新操作失败:" + responseString);
+                Message message = new Message();
+                message.what = -1;
+                message.obj = responseString.toString();
+                handler.sendMessage(message);
+            }
+        });
+
+    }
 
 
     @Override

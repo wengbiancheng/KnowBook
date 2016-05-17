@@ -1,53 +1,5 @@
 [
     {
-        "outputFile": "E:\\KnowBooks\\slidingmenu_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\values\\values.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 903,
-                    "endColumn": 42,
-                    "endOffset": 941
-                },
-                "from": {
-                    "file": "E:\\KnowBooks\\slidingmenu_library\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 903,
-                        "endColumn": 42,
-                        "endOffset": 941
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "C:\\Users\\qq\\Desktop\\KnowBooks-7bc38f03e9172fc3311ee1d39f1fc06f5963aa4b\\slidingmenu_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\values\\values.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 903,
-                    "endColumn": 42,
-                    "endOffset": 941
-                },
-                "from": {
-                    "file": "C:\\Users\\qq\\Desktop\\KnowBooks-7bc38f03e9172fc3311ee1d39f1fc06f5963aa4b\\slidingmenu_library\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 903,
-                        "endColumn": 42,
-                        "endOffset": 941
-                    }
-                }
-            }
-        ]
-    },
-    {
         "outputFile": "C:\\Users\\qq\\Desktop\\KnowBooks\\slidingmenu_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\values\\values.xml",
         "map": [
             {

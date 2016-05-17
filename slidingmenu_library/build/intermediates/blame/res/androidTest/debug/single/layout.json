@@ -1,14 +1,6 @@
 [
     {
-        "merged": "E:\\KnowBooks\\slidingmenu_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\slidingmenumain.xml",
-        "source": "E:\\KnowBooks\\slidingmenu_library\\build\\intermediates\\bundles\\debug\\res\\layout\\slidingmenumain.xml"
-    },
-    {
         "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\slidingmenu_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\slidingmenumain.xml",
         "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\slidingmenu_library\\build\\intermediates\\bundles\\debug\\res\\layout\\slidingmenumain.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks-7bc38f03e9172fc3311ee1d39f1fc06f5963aa4b\\slidingmenu_library\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\slidingmenumain.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks-7bc38f03e9172fc3311ee1d39f1fc06f5963aa4b\\slidingmenu_library\\build\\intermediates\\bundles\\debug\\res\\layout\\slidingmenumain.xml"
     }
 ]

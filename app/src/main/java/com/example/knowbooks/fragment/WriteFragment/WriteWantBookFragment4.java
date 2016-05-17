@@ -165,8 +165,9 @@ public class WriteWantBookFragment4 extends Fragment implements View.OnClickList
                 try {
                     String result = (String) response.get("result");
                     if (result.equals("success")) {
+                        Toast.makeText(BaseActivity,"创建心愿书单成功",Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(BaseActivity, BookActivity.class);
-                        intent.putExtra("onStart", 3);
+                        intent.putExtra("onStart", "3");
                         startActivity(intent);
                         BaseActivity.finish();
                     }

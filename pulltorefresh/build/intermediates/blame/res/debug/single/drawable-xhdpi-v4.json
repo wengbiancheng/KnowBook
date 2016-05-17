@@ -1,35 +1,11 @@
 [
     {
-        "merged": "E:\\KnowBooks\\pulltorefresh\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\indicator_arrow.png",
-        "source": "E:\\KnowBooks\\pulltorefresh\\src\\main\\res\\drawable-xhdpi\\indicator_arrow.png"
-    },
-    {
-        "merged": "E:\\KnowBooks\\pulltorefresh\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\default_ptr_flip.png",
-        "source": "E:\\KnowBooks\\pulltorefresh\\src\\main\\res\\drawable-xhdpi\\default_ptr_flip.png"
-    },
-    {
         "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\pulltorefresh\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\default_ptr_flip.png",
         "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\pulltorefresh\\src\\main\\res\\drawable-xhdpi\\default_ptr_flip.png"
     },
     {
         "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\pulltorefresh\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\default_ptr_rotate.png",
         "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\pulltorefresh\\src\\main\\res\\drawable-xhdpi\\default_ptr_rotate.png"
-    },
-    {
-        "merged": "E:\\KnowBooks\\pulltorefresh\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\default_ptr_rotate.png",
-        "source": "E:\\KnowBooks\\pulltorefresh\\src\\main\\res\\drawable-xhdpi\\default_ptr_rotate.png"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks-7bc38f03e9172fc3311ee1d39f1fc06f5963aa4b\\pulltorefresh\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\indicator_arrow.png",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks-7bc38f03e9172fc3311ee1d39f1fc06f5963aa4b\\pulltorefresh\\src\\main\\res\\drawable-xhdpi\\indicator_arrow.png"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks-7bc38f03e9172fc3311ee1d39f1fc06f5963aa4b\\pulltorefresh\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\default_ptr_flip.png",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks-7bc38f03e9172fc3311ee1d39f1fc06f5963aa4b\\pulltorefresh\\src\\main\\res\\drawable-xhdpi\\default_ptr_flip.png"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks-7bc38f03e9172fc3311ee1d39f1fc06f5963aa4b\\pulltorefresh\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\default_ptr_rotate.png",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks-7bc38f03e9172fc3311ee1d39f1fc06f5963aa4b\\pulltorefresh\\src\\main\\res\\drawable-xhdpi\\default_ptr_rotate.png"
     },
     {
         "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\pulltorefresh\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4\\indicator_arrow.png",

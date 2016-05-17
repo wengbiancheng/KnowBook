@@ -257,14 +257,14 @@ public class BuyFragment extends BaseFragment {
             requestParams.put("Type",bookTypeData);
             requestParams.put("sellType",SellTypeData);
             url=UrlConstant.FragmentBuySomeUrl;
-            Log.i("Log1", "进行buyFragment界面的筛选活动:书本的类型是"+bookTypeData+";售卖的类型是:"+SellTypeData);
+            Log.i("Log11", "进行buyFragment界面的筛选活动:书本的类型是"+bookTypeData+";售卖的类型是:"+SellTypeData);
         }
 
         HttpUtil.getInstance(Baseactivity).get(Baseactivity, url, requestParams, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
-                Log.i("Log1", "进行BuyFragment数据加载的结果是:" + response.toString());
+                Log.i("Log11", "进行BuyFragment数据加载的结果是:" + response.toString());
                 try {
                     String result = (String) response.get("result");
                     Message message = new Message();
@@ -273,6 +273,8 @@ public class BuyFragment extends BaseFragment {
                         curPage = page;
                         JSONArray resultSet = (JSONArray) response.get("resultSet");
 
+
+                        Log.i("Log11", "进行BuyFragment数据加载的数组结果是:" + resultSet.toString());
                         if (page == 0) {
                             list.clear();
                         } else {
@@ -285,7 +287,7 @@ public class BuyFragment extends BaseFragment {
                         for (int i = 0; i < resultSet.length(); i = i + 2) {
 
                             JSONObject json1 = (JSONObject) resultSet.get(i);
-                            JSONObject json11 = (JSONObject) json1.get("user_info");
+                            JSONObject json11 = (JSONObject) json1.get("userinfo");
 
                             BuyBook buyBook = new Gson().fromJson(json1.toString(), BuyBook.class);
                             JSONObject json2 = (JSONObject) resultSet.get(i + 1);
@@ -294,8 +296,8 @@ public class BuyFragment extends BaseFragment {
                             buyBook.setBuyBookUser(UserName);
                             buyBook.setBuyBookUserSex(UserSex);
 
-                            Log.i("Log1", "进行BuyFragment数据加载的子结果是:" + json1.toString());
-                            Log.i("Log1", "进行BuyFragment数据加载的子结果是:" + json2.toString());
+                            Log.i("Log11", "进行BuyFragment数据加载的子结果是:" + json1.toString());
+                            Log.i("Log11", "进行BuyFragment数据加载的子结果是:" + json2.toString());
 
                             list.add(buyBook);
                         }
@@ -315,7 +317,7 @@ public class BuyFragment extends BaseFragment {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-                Log.i("Log1", "进行BuyFragment数据加载失败:原因是" + responseString.toString());
+                Log.i("Log11", "进行BuyFragment数据加载失败:原因是" + responseString.toString());
                 Message message = new Message();
                 message.obj = responseString;
                 message.what = -1;

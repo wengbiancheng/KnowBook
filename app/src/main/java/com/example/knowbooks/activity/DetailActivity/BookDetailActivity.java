@@ -200,7 +200,7 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
-                Log.i("Log1", "加载更多评论传来的数据时:"+response.toString());
+                Log.i("Log1", "详情界面book的初始数据:"+response.toString());
 
                 JSONArray jsonArray = new JSONArray();
                 try {
@@ -220,7 +220,7 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
                         book = new Gson().fromJson(json11.toString(), Book.class);
                         book.setNumOfComments((int) json22.get("commentCount"));
 
-                        Log.i("BOOKDETAILATY", "bookDetail获得的书本数据是:" + book.toString());
+                        Log.i("Log1", "bookDetail获得的书本数据是:" + book.toString());
 
                         for (int i = 2; i < jsonArray.length(); i = i + 2) {
                             JSONObject json1 = (JSONObject) jsonArray.get(i);
@@ -231,8 +231,8 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
                             detailComment.setSonCommentCount((Integer) json2.get("sonCommentCount"));
                             detailComment.setHeadPicture((String) json2.get("headPicture"));
                             list.add(detailComment);
+                            Log.i("Log1", "bookDetail获得的初始评论是:" + detailComment.toString());
                         }
-                        Log.i("BOOKDETAILATY", list.size() + "");
                         Message message = new Message();
                         message.what = 200;
                         handler.sendMessage(message);
@@ -250,7 +250,7 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-                Log.i("BOOKDETAILATY", "fail:" + responseString);
+                Log.i("Log1", "详情界面book的初始数据失败:" + responseString);
             }
         });
     }
@@ -393,6 +393,7 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
         RequestParams requestParams = new RequestParams();
         requestParams.put("id", bookid);
         requestParams.put("page",page);
+        Log.i("Log1", "BookDetailAty加载更多评论开始");
         HttpUtil.getInstance(BookDetailActivity.this).get(BookDetailActivity.this, UrlConstant.ShowbookCommentUrl, requestParams, new JsonHttpResponseHandler() {
 
             @Override
@@ -400,12 +401,15 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
                 super.onSuccess(statusCode, headers, response);
                 Log.i("Log1", "BookDetailAty加载更多评论传来的数据时:"+response.toString());
 
-                JSONArray jsonArray = new JSONArray();
                 try {
                     String result = (String) response.get("result");
                     if (result.equals("success")) {
 
+                        JSONArray jsonArray = (JSONArray) response.get("resultSet");
                         curPage=page;
+                        if(curPage==0){
+                            list.clear();
+                        }
 
                         for (int i = 0; i < jsonArray.length(); i = i+2) {
                             JSONObject json1 = (JSONObject) jsonArray.get(i);

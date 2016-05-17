@@ -68,5 +68,6 @@ public class UrlConstant {
     public final static String UserAdd=url+"";
 
     public final static String CommentDel=url+"/showBook/deleteComment";
-    public final static String SonCommentDel=url+"/showBook/deleteSonComment  ";
+    public final static String SonCommentDel=url+"/showBook/deleteSonComment";
+    public final static String UpdateLocation=url+"/users/myLocation";
 }
