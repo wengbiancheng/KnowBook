@@ -181,7 +181,7 @@ public class MyBuyBookAty extends Activity implements View.OnClickListener {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
-                Log.i("Log1", "MyBuyBook数据加载的结果是:" + response.toString());
+                Log.i("mybuybook1", "MyBuyBook数据加载的结果是:" + response.toString());
                 try {
                     String result = (String) response.get("result");
                     Message message = new Message();
@@ -211,7 +211,7 @@ public class MyBuyBookAty extends Activity implements View.OnClickListener {
                             buyBook.setBuyBookUser(UserName);
                             buyBook.setBuyBookUserSex(UserSex);
 
-                            Log.i("Log1","MyBuyBook界面最终获得的数据为:"+buyBook.toString());
+                            Log.i("mybuybook1","MyBuyBook界面最终获得的子数据为:"+buyBook.toString());
 
                             list.add(buyBook);
                         }
@@ -231,7 +231,7 @@ public class MyBuyBookAty extends Activity implements View.OnClickListener {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-                Log.i("Log1", "进行BuyFragment数据加载失败:原因是" + responseString.toString());
+                Log.i("mybuybook1", "进行BuyFragment数据加载失败:原因是" + responseString.toString());
                 Message message = new Message();
                 message.obj = responseString;
                 message.what = -1;

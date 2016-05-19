@@ -36,6 +36,7 @@ public class Book implements Parcelable {
     private String bookClass;//书的类型
     private String userName;//书的推荐人的昵称
     private String userSex;//书的推荐人的行呗
+    private String phoneNumber;
 
     protected Book(Parcel in) {
         bookScore = in.readDouble();
@@ -52,6 +53,7 @@ public class Book implements Parcelable {
         bookClass = in.readString();
         userName = in.readString();
         userSex = in.readString();
+        phoneNumber=in.readString();
     }
     public Book(){
         super();
@@ -68,6 +70,14 @@ public class Book implements Parcelable {
             return new Book[size];
         }
     };
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     public String getUserName() {
         return userName;
@@ -185,7 +195,8 @@ public class Book implements Parcelable {
     public String toString() {
         return "bookScore:"+getBookScore()+";id:"+getId()+";bookAuthor:"+getBookAuthor()+";titleImage:"+getTitleImage()
                 +";reason:"+getRecommenReason()+";location:"+getBookLocation()+";time:"+getCreateDate()+";summary:"+getBookSummary()
-                +";bookName:"+getBookName()+";isCollect:"+getIsCollect()+";numOfComments:"+getNumOfComments()+";bookClass:"+getBookClass();
+                +";bookName:"+getBookName()+";isCollect:"+getIsCollect()+";numOfComments:"+getNumOfComments()+";bookClass:"+getBookClass()
+                +";phoneNumber:"+getPhoneNumber();
     }
 
     @Override
@@ -209,6 +220,7 @@ public class Book implements Parcelable {
         dest.writeString(bookClass);
         dest.writeString(userName);
         dest.writeString(userSex);
+        dest.writeString(phoneNumber);
     }
 
 }

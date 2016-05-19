@@ -5,15 +5,10 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
-import com.example.knowbooks.fragment.WriteFragment.WriteBookFragment1;
-import com.example.knowbooks.fragment.WriteFragment.WriteBookFragment2;
-import com.example.knowbooks.fragment.WriteFragment.WriteBookFragment3;
-import com.example.knowbooks.fragment.WriteFragment.WriteBookFragment4;
 import com.example.knowbooks.fragment.WriteFragment.WriteBuyBookFragment1;
 import com.example.knowbooks.fragment.WriteFragment.WriteBuyBookFragment2;
 import com.example.knowbooks.fragment.WriteFragment.WriteBuyBookFragment3;
 import com.example.knowbooks.fragment.WriteFragment.WriteBuyBookFragment4;
-import com.example.knowbooks.fragment.WriteFragment.WriteBuyBookFragment5;
 
 import java.util.ArrayList;
 
@@ -56,7 +51,6 @@ public class WriteBuyAtyFragmentController {
         fragmentList.add(new WriteBuyBookFragment2());
         fragmentList.add(new WriteBuyBookFragment3());
         fragmentList.add(new WriteBuyBookFragment4());
-        fragmentList.add(new WriteBuyBookFragment5());
 
         FragmentTransaction ft=fm.beginTransaction();
         for(Fragment fragment:fragmentList){

@@ -52,8 +52,7 @@
             android:layout_height="28dp"
             android:layout_alignParentRight="true"
             android:padding="2dp"
-            android:src="@mipmap/image_delete"
-            />
+            android:src="@mipmap/image_delete" />
 
     </RelativeLayout>
 
@@ -69,6 +68,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="@android:color/holo_green_light"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:clickable="false"
             android:enabled="false"
             android:text="上一页" />
@@ -78,7 +80,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="下一页" />
+            android:background="@android:color/holo_green_light"
+            android:text="下一页"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"/>
     </LinearLayout>
 
 

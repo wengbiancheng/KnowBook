@@ -20,6 +20,7 @@ public class DetailComment implements Parcelable{
     private String commentUser;
     private int sonCommentCount;
     private String headPicture;
+    private String phoneNumber1;
 
     public DetailComment(){
         super();
@@ -36,6 +37,7 @@ public class DetailComment implements Parcelable{
         commentUser = in.readString();
         sonCommentCount = in.readInt();
         headPicture = in.readString();
+        phoneNumber1=in.readString();
     }
 
     public static final Creator<DetailComment> CREATOR = new Creator<DetailComment>() {
@@ -49,6 +51,15 @@ public class DetailComment implements Parcelable{
             return new DetailComment[size];
         }
     };
+
+
+    public String getPhoneNumber1() {
+        return phoneNumber1;
+    }
+
+    public void setPhoneNumber1(String phoneNumber1) {
+        this.phoneNumber1 = phoneNumber1;
+    }
 
     public String getCommentContent() {
         return commentContent;
@@ -127,7 +138,7 @@ public class DetailComment implements Parcelable{
     @Override
     public String toString() {
         return "id:"+id+";content:"+commentContent+";numOfLike:"+numOfLike+";numOfDislike:"+numOfDislike+";time:"+createDate+
-                ";UserName:"+commentUser+";commentCount:"+sonCommentCount+";pictureUrl:"+headPicture;
+                ";UserName:"+commentUser+";commentCount:"+sonCommentCount+";pictureUrl:"+headPicture+";phoneNumber:"+getPhoneNumber1();
     }
 
     @Override
@@ -146,5 +157,6 @@ public class DetailComment implements Parcelable{
         dest.writeString(commentUser);
         dest.writeInt(sonCommentCount);
         dest.writeString(headPicture);
+        dest.writeString(phoneNumber1);
     }
 }

@@ -10,6 +10,15 @@ public class SonComment {
     private String sonCommentUserName;
     private Long createDate;
     private String commentContent;
+    private String phoneNumber;
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     public Long getId() {
         return id;

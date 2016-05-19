@@ -80,7 +80,7 @@ public class book_show_adapter extends BaseAdapter {
             viewHolder.book_score = (TextView) convertView.findViewById(R.id.show_booknumScore);
             viewHolder.book_commentCount = (TextView) convertView.findViewById(R.id.show_bookCommentCount);
             viewHolder.book_content = (TextView) convertView.findViewById(R.id.show_bookContent);
-            viewHolder.book_location = (TextView) convertView.findViewById(R.id.show_distance);
+//            viewHolder.book_location = (TextView) convertView.findViewById(R.id.show_distance);
             viewHolder.book_pic = (ImageView) convertView.findViewById(R.id.show_leftImageView);
             viewHolder.book_author = (TextView) convertView.findViewById(R.id.show_bookAuthor);
             viewHolder.book_sex = (ImageView) convertView.findViewById(R.id.show_userSex);
@@ -90,13 +90,12 @@ public class book_show_adapter extends BaseAdapter {
         } else {
             viewHolder = (ViewHolder) convertView.getTag();
         }
-        Log.i("SHOWFragmentitem", list.get(position).toString());
         viewHolder.book_name.setText(list.get(position).getBookName());
         viewHolder.book_userName.setText(list.get(position).getUserName());
         viewHolder.book_score.setText(list.get(position).getBookScore() + "");
         viewHolder.book_commentCount.setText(list.get(position).getNumOfComments() + "");
         viewHolder.book_content.setText(list.get(position).getBookSummary());
-        viewHolder.book_location.setText(list.get(position).getBookLocation());
+//        viewHolder.book_location.setText(list.get(position).getBookLocation());
         viewHolder.book_author.setText(list.get(position).getBookAuthor()+" 著");
         viewHolder.ratingBar_score = (RatingBar) convertView.findViewById(R.id.show_RatingScore);
         LayerDrawable starts = (LayerDrawable) viewHolder.ratingBar_score.getProgressDrawable();
@@ -105,7 +104,7 @@ public class book_show_adapter extends BaseAdapter {
         if (list.get(position).getUserSex().equals("男")) {
             viewHolder.book_sex.setImageResource(R.mipmap.man);
         } else {
-
+            viewHolder.book_sex.setImageResource(R.mipmap.woman);
         }
         //还缺少个收藏后的图标颜色变化
         if (list.get(position).getIsCollect() == 0) {
@@ -121,6 +120,7 @@ public class book_show_adapter extends BaseAdapter {
                 message.what=5;
                 message.obj= ItemBookId;
                 message.arg1=list.get(position).getIsCollect();
+                Log.i("show1","点击收藏按钮的是书本名字是" + list.get(position).getBookName());
                 handler.sendMessage(message);
             }
         });
@@ -129,7 +129,7 @@ public class book_show_adapter extends BaseAdapter {
         } else {
             viewHolder.ratingBar_score.setRating(Float.parseFloat(String.valueOf(list.get(position).getBookScore())));
         }
-        Log.i("fragmentShow", "ImageUrl:" + list.get(position).getTitleImage());
+        Log.i("show1","show界面ListView进行的图书照片的url"+"ImageUrl:" + list.get(position).getTitleImage());
         imageLoader.displayImage(UrlConstant.url + list.get(position).getTitleImage(), viewHolder.book_pic);
 
 

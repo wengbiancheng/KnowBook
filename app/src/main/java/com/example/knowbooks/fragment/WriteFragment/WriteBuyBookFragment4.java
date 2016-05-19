@@ -111,19 +111,41 @@ public class WriteBuyBookFragment4 extends Fragment implements View.OnClickListe
                 break;
             case R.id.write_book_rightBtn:
                 if(!TextUtils.isEmpty(BaseActivity.getBook().getBookSituation())&&!TextUtils.isEmpty(BaseActivity.getBook().getBookClass())){
-                    Double price=Integer.parseInt(price1.getText().toString())+Integer.parseInt(price2.getText().toString())*0.01;
-                    String price1=String.valueOf(price);
-                    BaseActivity.getBook().setBookPrice(price1);
-                    Log.i("Log1","BuyBook的价格是:"+price1);
-                    SendToServlet();
+                   if(TextUtils.isEmpty(price1.getText().toString()))
+                   {
+                       if(TextUtils.isEmpty(price2.getText().toString())){
+                           Toast.makeText(BaseActivity,"请补全信息",Toast.LENGTH_SHORT).show();
+                       }else{
+                           Double price = Double.parseDouble(price1.getText().toString());
+                           String price1 = String.valueOf(price);
+                           BaseActivity.getBook().setBookPrice(price1);
+                           Log.i("Log1", "BuyBook的价格是:" + price1);
+                           SendToServlet();
+                       }
+                   }else if(TextUtils.isEmpty(price2.getText().toString())){
+                       if(TextUtils.isEmpty(price1.getText().toString())){
+                           Toast.makeText(BaseActivity,"请补全信息",Toast.LENGTH_SHORT).show();
+                       }else{
+                           Double price = Double.parseDouble(price2.getText().toString()) * 0.01;
+                           String price1 = String.valueOf(price);
+                           BaseActivity.getBook().setBookPrice(price1);
+                           Log.i("Log1", "BuyBook的价格是:" + price1);
+                           SendToServlet();
+                       }
+                   }else{
+                       Double price = Double.parseDouble(price1.getText().toString()) + Double.parseDouble(price2.getText().toString()) * 0.01;
+                       String price1 = String.valueOf(price);
+                       BaseActivity.getBook().setBookPrice(price1);
+                       Log.i("Log1", "BuyBook的价格是:" + price1);
+                       SendToServlet();
+                   }
                 }else{
                     Toast.makeText(BaseActivity,"请补全信息",Toast.LENGTH_SHORT).show();
                 }
-//                BaseActivity.getFragmentControl().showFragment(4);
                 break;
             case R.id.write_buybook_priceBtn://价格后面的按钮
-                price1.setText("0");
-                price2.setText("00");
+                price1.setText("");
+                price2.setText("");
                 break;
             case R.id.write_buybook_newold1:
                 bookNewOrOld.setText(bookNewOrOld1.getText().toString());
@@ -147,7 +169,6 @@ public class WriteBuyBookFragment4 extends Fragment implements View.OnClickListe
     private void SendToServlet(){
         RequestParams requestParams=new RequestParams();
         requestParams.put("BuyBookName",BaseActivity.getBook().getBookName());
-//        requestParams.put("BuyBookPicture",BaseActivity.getBook().getBookPicture());
         requestParams.put("BuyBookAuthor",BaseActivity.getBook().getBookAuthor());
         requestParams.put("Type",BaseActivity.getBook().getBookClass());
         requestParams.put("BuyBookDescript",BaseActivity.getBuyBook().getBookDescript());

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Window;
 
 import com.example.knowbooks.entity.User;
 import com.example.knowbooks.utils.DButil;

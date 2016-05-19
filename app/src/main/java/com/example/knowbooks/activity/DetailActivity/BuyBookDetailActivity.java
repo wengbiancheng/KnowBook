@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +22,7 @@ import com.example.knowbooks.entity.response.DetailBuyBook;
 import com.example.knowbooks.entity.response.DetailComment;
 import com.example.knowbooks.utils.DateUtils;
 import com.example.knowbooks.utils.HttpUtil;
+import com.example.knowbooks.widget.CircleImageView;
 import com.google.gson.Gson;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -46,10 +48,15 @@ public class BuyBookDetailActivity extends Activity implements View.OnClickListe
     private BuyBook buyBook;
 
     private ImageView bookPicture;
-    private TextView bookName,bookAuthor,bookClass,bookLocation,bookPrice,bookTime,bookContent,qq,weixin,phoneNumber;
+    private TextView bookName,bookAuthor,bookClass,bookLocation,bookPrice,bookTime,bookContent,qq,weixin,phoneNumber,SellType;
     private Button SentBtn;
 
+    private TextView userName;
+    private CircleImageView userImage;
+
     private ImageLoader imageLoader;
+
+    private String PhoneNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +64,11 @@ public class BuyBookDetailActivity extends Activity implements View.OnClickListe
         setContentView(R.layout.activity_detail_buybook);
         buyBook=getIntent().getParcelableExtra("BuyBook");
         Log.i("Log1","buyBook传过来的值为:"+buyBook.toString());
+
+        //进行PhoneNumber的传输
+        if (!TextUtils.isEmpty(getIntent().getStringExtra("PhoneNumber"))) {
+            PhoneNumber = getIntent().getStringExtra("PhoneNumber");
+        }
         initView();
         SendToServlet();
     }
@@ -82,24 +94,51 @@ public class BuyBookDetailActivity extends Activity implements View.OnClickListe
         SentBtn= (Button) findViewById(R.id.detail_want_btn);
         SentBtn.setOnClickListener(this);
 
+        SellType= (TextView) findViewById(R.id.detail_buy_sellType);
+        userImage= (CircleImageView) findViewById(R.id.detail_buy_UserPicture);
+        userName= (TextView) findViewById(R.id.detail_buy_userName);
+
         imageLoader=ImageLoader.getInstance();
     }
     private Handler handler=new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
             if(msg.what==200){
-
-                imageLoader.displayImage(UrlConstant.url+detailBuyBook.getBook().getBookPicture(),bookPicture);
+                Log.i("detailbuy", "书本want详情界面的Url是:" + UrlConstant.url + detailBuyBook.getBook().getBookPicture());
+                imageLoader.displayImage(UrlConstant.url + detailBuyBook.getBook().getBookPicture(), bookPicture);
                 bookName.setText(detailBuyBook.getBook().getBookName());
-                bookAuthor.setText(detailBuyBook.getBook().getBookAuthor());
-                bookClass.setText(detailBuyBook.getBook().getBookClass());
-//                bookLocation.setText(detailBuyBook.getBook().get);
-                bookPrice.setText(detailBuyBook.getBook().getBookPrice()+" 元");
+                bookAuthor.setText("作者/"+detailBuyBook.getBook().getBookAuthor());
+                bookClass.setText("类型/"+detailBuyBook.getBook().getBookClass());
+
+                String locationRange=detailBuyBook.getBook().getLocationRange();
+                if(locationRange.equals("8")){
+                    bookLocation.setText("距离您约20m内");
+                }else if(locationRange.equals("7")){
+                    bookLocation.setText("距离您约80m内");
+                }else if(locationRange.equals("6")){
+                    bookLocation.setText("距离您约610m内");
+                }else if(locationRange.equals("5")){
+                    bookLocation.setText("距离您约2.4km内");
+                }else if(locationRange.equals("4")){
+                    bookLocation.setText("距离您约20km内");
+                }else if(locationRange.equals("3")){
+                    bookLocation.setText("距离您约80km内");
+                }else if(locationRange.equals("2")){
+                    bookLocation.setText("距离您约630km内");
+                }else if(locationRange.equals("1")){
+                    bookLocation.setText("距离您约2500km内");
+                }
+
+                bookPrice.setText("￥ "+detailBuyBook.getBook().getBookPrice());
                 bookTime.setText(DateUtils.getShortTime(detailBuyBook.getBook().getCreateDate()));
                 bookContent.setText(detailBuyBook.getBookDescript());
+                SellType.setText("售卖类型/"+detailBuyBook.getSellingWay());
                 qq.setText(detailBuyBook.getQq());
                 weixin.setText(detailBuyBook.getWeixin());
                 phoneNumber.setText(detailBuyBook.getPhoneNumber());
+
+                imageLoader.displayImage(UrlConstant.url+detailBuyBook.getUserPicture(),userImage);
+                userName.setText(detailBuyBook.getBook().getBuyBookUser());
             }
             return false;
         }

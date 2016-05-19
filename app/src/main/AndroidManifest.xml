@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.knowbooks">
 
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -115,6 +116,9 @@
                     android:scheme="rong" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".activity.MyActivity.My"></activity>
+        <activity android:name=".activity.MyActivity.MyCollectBookListAty"></activity>
 
     </application>
 

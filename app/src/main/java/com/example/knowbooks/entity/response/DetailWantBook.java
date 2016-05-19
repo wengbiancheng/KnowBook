@@ -10,9 +10,29 @@ public class DetailWantBook {
     private String weixin;
     private String phoneNumber;
 
+    private String UserPicture;
+    private String userName;
+
     @Override
     public String toString() {
-        return wantBook.toString()+";qq:"+getQq()+";weixin:"+getWeixin()+";phoneNumber:"+getPhoneNumber();
+        return wantBook.toString()+";qq:"+getQq()+";weixin:"+getWeixin()+";phoneNumber:"+getPhoneNumber()+";userImage:"+getUserPicture()+";userName:"+getUserName();
+    }
+
+
+    public String getUserPicture() {
+        return UserPicture;
+    }
+
+    public void setUserPicture(String userPicture) {
+        UserPicture = userPicture;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public WantBook getWantBook() {

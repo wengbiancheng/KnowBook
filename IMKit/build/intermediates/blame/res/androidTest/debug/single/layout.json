@@ -1,255 +1,11 @@
 [
     {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_text_btn.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_text_btn.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_ui_voice_cover.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_ui_voice_cover.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_input_menu.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_input_menu.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_cs_alert_robot_evaluation.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_cs_alert_robot_evaluation.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fragment_base_setting.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fragment_base_setting.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_input_menu.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_input_menu.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_information_notification_message.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_information_notification_message.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_photo.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_photo.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_public_service_search.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_public_service_search.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_conversationlist.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_conversationlist.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_txt_provider.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_txt_provider.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_preview_fragment.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_preview_fragment.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_location_message.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_location_message.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_system_conversation.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_system_conversation.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_public_service_sub_list.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_public_service_sub_list.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_messagelist.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_messagelist.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_dialog_alter.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_dialog_alter.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_text_message.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_text_message.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_group_conversation.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_group_conversation.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_list.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_list.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_ac_albums.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_ac_albums.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_conversation.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_conversation.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_ext_pager.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_ext_pager.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_discussion_conversation.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_discussion_conversation.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_multi_rich_content_message.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_multi_rich_content_message.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_input.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_input.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_cs_alert_human_evaluation.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_cs_alert_human_evaluation.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_vo_provider.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_vo_provider.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_conversation_member.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_conversation_member.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_multi_rich_content_message.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_multi_rich_content_message.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_photo2.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_photo2.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_ac_camera.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_ac_camera.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_public_service_sub_list.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_public_service_sub_list.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_block.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_block.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_rich_content_message.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_rich_content_message.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_emoji_txt.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_emoji_txt.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_block_popup.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_block_popup.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_vo_popup.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_vo_popup.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_test.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_test.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_message.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_message.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_emoji_txt.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_emoji_txt.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_dialog_alter.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_dialog_alter.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_progress.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_progress.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_input_menus.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_input_menus.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_emoji_grid.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_emoji_grid.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_cs_alert_warning.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_cs_alert_warning.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_activity.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_activity.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_image_message.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_image_message.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_vo_provider.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_vo_provider.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_ac_selected_pictrue.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_ac_selected_pictrue.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_input_menu_item.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_input_menu_item.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_voice_message.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_voice_message.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_photo2.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_photo2.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_discussion_conversation.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_discussion_conversation.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_albums.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_albums.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_rich_content_message.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_rich_content_message.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_messageinput.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_messageinput.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_text_btn.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_text_btn.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_public_service_inf.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_public_service_inf.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_txt_provider.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_txt_provider.xml"
-    },
-    {
-        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_conversation_member.xml",
-        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_conversation_member.xml"
-    },
-    {
         "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fragment_base_setting.xml",
         "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fragment_base_setting.xml"
     },
     {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_ext_pager.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_ext_pager.xml"
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_input_menu.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_input_menu.xml"
     },
     {
         "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_system_conversation.xml",
@@ -264,20 +20,36 @@
         "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_cs_alert_robot_evaluation.xml"
     },
     {
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_information_notification_message.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_information_notification_message.xml"
+    },
+    {
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_public_service_search.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_public_service_search.xml"
+    },
+    {
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_conversationlist.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_conversationlist.xml"
+    },
+    {
         "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_ac_camera.xml",
         "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_ac_camera.xml"
+    },
+    {
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_preview_fragment.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_preview_fragment.xml"
+    },
+    {
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_location_message.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_location_message.xml"
     },
     {
         "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_notification_loading.xml",
         "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_notification_loading.xml"
     },
     {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_information_notification_message.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_information_notification_message.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_progress.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_progress.xml"
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_text_message.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_text_message.xml"
     },
     {
         "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_group_conversation.xml",
@@ -288,8 +60,8 @@
         "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_discussion_notification_message.xml"
     },
     {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_cs_alert_human_evaluation.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_cs_alert_human_evaluation.xml"
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_list.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_list.xml"
     },
     {
         "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_cs_alert_warning.xml",
@@ -300,40 +72,44 @@
         "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_input_menus.xml"
     },
     {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_search.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_search.xml"
-    },
-    {
         "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_photo.xml",
         "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_photo.xml"
     },
     {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_text_message.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_text_message.xml"
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_conversation.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_conversation.xml"
     },
     {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_conversation.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_conversation.xml"
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_ext_pager.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_ext_pager.xml"
     },
     {
         "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_ac_selected_pictrue.xml",
         "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_ac_selected_pictrue.xml"
     },
     {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_list.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_list.xml"
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_discussion_conversation.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_discussion_conversation.xml"
+    },
+    {
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_multi_rich_content_message.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_multi_rich_content_message.xml"
+    },
+    {
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_input.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_input.xml"
     },
     {
         "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_messagelist.xml",
         "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_messagelist.xml"
     },
     {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_ac_preview.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_ac_preview.xml"
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_cs_alert_human_evaluation.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_cs_alert_human_evaluation.xml"
     },
     {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_notice.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_notice.xml"
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_vo_provider.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_vo_provider.xml"
     },
     {
         "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_test.xml",
@@ -344,68 +120,40 @@
         "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_conversation_member_list.xml"
     },
     {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_rich_content_message.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_rich_content_message.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_activity.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_activity.xml"
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_public_service_sub_list.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_public_service_sub_list.xml"
     },
     {
         "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_ui_voice_cover.xml",
         "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_ui_voice_cover.xml"
     },
     {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_location_message.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_location_message.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_public_service_search.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_public_service_search.xml"
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_block.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_block.xml"
     },
     {
         "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_conversation.xml",
         "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_conversation.xml"
     },
     {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_albums.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_albums.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_discussion_notification_message.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_discussion_notification_message.xml"
-    },
-    {
         "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_search.xml",
         "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_search.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_preview_fragment.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_preview_fragment.xml"
     },
     {
         "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_notice.xml",
         "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_notice.xml"
     },
     {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_base_conversation.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_base_conversation.xml"
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_rich_content_message.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_rich_content_message.xml"
     },
     {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_conversation.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_conversation.xml"
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_block_popup.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_block_popup.xml"
     },
     {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_public_service_inf.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_public_service_inf.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_input.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_input.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_app_service_conversation.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_app_service_conversation.xml"
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_emoji_txt.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_emoji_txt.xml"
     },
     {
         "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_app_service_conversation.xml",
@@ -416,24 +164,20 @@
         "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_message.xml"
     },
     {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_messageinput.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_messageinput.xml"
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_dialog_alter.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_dialog_alter.xml"
     },
     {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_plugins.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_plugins.xml"
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_progress.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_progress.xml"
     },
     {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_input_menu_item.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_input_menu_item.xml"
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_activity.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_activity.xml"
     },
     {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_conversation_member_list.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_conversation_member_list.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_block.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_block.xml"
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_image_message.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_image_message.xml"
     },
     {
         "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_message.xml",
@@ -444,16 +188,16 @@
         "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_rich_content_message.xml"
     },
     {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_message.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_message.xml"
-    },
-    {
         "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_emoji_grid.xml",
         "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_emoji_grid.xml"
     },
     {
         "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_plugins.xml",
         "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_plugins.xml"
+    },
+    {
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_input_menu_item.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_input_menu_item.xml"
     },
     {
         "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_ac_albums.xml",
@@ -468,39 +212,43 @@
         "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_base_conversation.xml"
     },
     {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_image_message.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_image_message.xml"
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_photo2.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_photo2.xml"
     },
     {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_ac_webview.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_ac_webview.xml"
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_albums.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_albums.xml"
     },
     {
         "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_conversation.xml",
         "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_conversation.xml"
     },
     {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_conversationlist.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_conversationlist.xml"
-    },
-    {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_public_service_conversation.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_public_service_conversation.xml"
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_messageinput.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_messageinput.xml"
     },
     {
         "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_ac_preview.xml",
         "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_ac_preview.xml"
     },
     {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_notification_loading.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_notification_loading.xml"
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_text_btn.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_text_btn.xml"
+    },
+    {
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_fr_public_service_inf.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_fr_public_service_inf.xml"
     },
     {
         "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_vo_popup.xml",
         "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_vo_popup.xml"
     },
     {
-        "merged": "E:\\ChatMessage\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_block_popup.xml",
-        "source": "E:\\ChatMessage\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_block_popup.xml"
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_wi_txt_provider.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_wi_txt_provider.xml"
+    },
+    {
+        "merged": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\rc_item_conversation_member.xml",
+        "source": "C:\\Users\\qq\\Desktop\\KnowBooks\\IMKit\\build\\intermediates\\bundles\\debug\\res\\layout\\rc_item_conversation_member.xml"
     }
 ]

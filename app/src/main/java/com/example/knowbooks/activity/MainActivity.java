@@ -2,26 +2,12 @@ package com.example.knowbooks.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.example.knowbooks.BaseApplication;
 import com.example.knowbooks.R;
-import com.google.gson.Gson;
-
-import org.json.JSONObject;
-
-import io.rong.ApiHttpClient;
-import io.rong.imkit.RongIM;
-import io.rong.imlib.RongIMClient;
-import io.rong.imlib.model.UserInfo;
-import io.rong.models.FormatType;
-import io.rong.models.SdkHttpResult;
 
 public class MainActivity extends Activity {
 

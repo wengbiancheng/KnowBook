@@ -71,7 +71,8 @@ public class DetailCommentAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-//        imageLoader.displayImage(UrlConstant.url+list.get(position).getSosnCommentUserPicture(),viewHolder.imageView);
+        Log.i("detailsoncomment","加载的listView的头像是:"+UrlConstant.url+list.get(position).getSosnCommentUserPicture());
+        imageLoader.displayImage(UrlConstant.url+list.get(position).getSosnCommentUserPicture(),viewHolder.imageView);
         viewHolder.userName.setText(list.get(position).getSonCommentUserName());
         viewHolder.time.setText(DateUtils.getShortTime(list.get(position).getCreateDate()));
         viewHolder.delete.setOnClickListener(new View.OnClickListener() {

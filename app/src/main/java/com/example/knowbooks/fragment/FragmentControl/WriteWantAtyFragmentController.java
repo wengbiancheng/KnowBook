@@ -5,11 +5,6 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
-import com.example.knowbooks.fragment.WriteFragment.WriteBuyBookFragment1;
-import com.example.knowbooks.fragment.WriteFragment.WriteBuyBookFragment2;
-import com.example.knowbooks.fragment.WriteFragment.WriteBuyBookFragment3;
-import com.example.knowbooks.fragment.WriteFragment.WriteBuyBookFragment4;
-import com.example.knowbooks.fragment.WriteFragment.WriteBuyBookFragment5;
 import com.example.knowbooks.fragment.WriteFragment.WriteWantBookFragment1;
 import com.example.knowbooks.fragment.WriteFragment.WriteWantBookFragment2;
 import com.example.knowbooks.fragment.WriteFragment.WriteWantBookFragment3;

@@ -163,16 +163,16 @@ public class ShowFragment extends BaseFragment {
             } else if (code == -1) {
                 listView.onRefreshComplete();
             } else if (code == 5) {//点击收藏按钮触发的操作
-                Log.i("Log1", "CollectButton:is click");
+                Log.i("show1", "CollectButton:is click");
                 int OldIsCollect = msg.arg1;
                 CollectBookid = (Long) msg.obj;//书籍的id
                 if (OldIsCollect == 0) {
                     //进行收藏书籍的操作,需要跳转出该书籍所在的全部书籍
-                    Log.i("Log1", "进行收藏书籍操作");
+                    Log.i("show1", "进行收藏书籍操作");
                     SendToServlet(1, 0);
                 } else if (OldIsCollect == 1) {
                     //取消收藏书籍的操作,需要跳转出该书籍所在的全部书籍
-                    Log.i("Log1", "进行取消收藏书籍操作");
+                    Log.i("show1", "进行取消收藏书籍操作");
                     SendToServlet(0, 1);
                 }
             } else if (code == 300) {
@@ -215,7 +215,7 @@ public class ShowFragment extends BaseFragment {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                             super.onSuccess(statusCode, headers, response);
-                            Log.i("Log1", "Collect is:" + response.toString());
+                            Log.i("show1", "获取相应的书单的操作的结果是:" + response.toString());
                             //进行list1的赋值操作
                             try {
                                 String result = (String) response.get("result");
@@ -223,7 +223,7 @@ public class ShowFragment extends BaseFragment {
                                     list1.clear();
                                     JSONArray jsonArray = (JSONArray) response.get("resultSet");
 
-                                    for (int i = 0; i < jsonArray.length(); i++) {
+                                    for (int i = 0; i < jsonArray.length(); i=i+2) {
                                         JSONObject json = (JSONObject) jsonArray.get(i);
 
                                         CollectBookList collectBookList = new Gson().fromJson(json.toString(), CollectBookList.class);
@@ -242,7 +242,7 @@ public class ShowFragment extends BaseFragment {
                         @Override
                         public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                             super.onFailure(statusCode, headers, responseString, throwable);
-                            Log.i("Log1", "Collect is:" + responseString.toString());
+                            Log.i("show1", "获取相应的书单的操作的结果是：" + responseString.toString());
                         }
                     }
             );
@@ -251,20 +251,20 @@ public class ShowFragment extends BaseFragment {
             {
                 url = UrlConstant.NoCollectBookUrl;
                 requestParams.put("bookId", CollectBookid);
-                Log.i("Log1", "取消收藏的书籍的id是:" + CollectBookid + ";书单id是:" + CollectbookListId);
+                Log.i("show1", "取消收藏的书籍的id是:" + CollectBookid + ";书单id是:" + CollectbookListId);
             } else if (NewisCollect == 1)//收藏该书籍的操作
             {
                 url = UrlConstant.CollectBookUrl;
                 requestParams.put("bookId", CollectBookid);
                 requestParams.put("booklistId", CollectbookListId);
-                Log.i("Log1", "要收藏的书籍的id是:" + CollectBookid + ";把书放进去的书单id是:" + CollectbookListId);
+                Log.i("show1", "要收藏的书籍的id是:" + CollectBookid + ";把书放进去的书单id是:" + CollectbookListId);
             }
 
             HttpUtil.getInstance(Baseactivity).get(Baseactivity, url, requestParams, new JsonHttpResponseHandler() {
                         @Override
                         public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                             super.onSuccess(statusCode, headers, response);
-                            Log.i("Log1", "最终的收藏书籍和取消书籍的操作 :" + response.toString());
+                            Log.i("show1", "最终的收藏书籍和取消书籍的操作 :" + response.toString());
                             try {
                                 String result = (String) response.get("result");
                                 if (result.equals("success")) {
@@ -282,7 +282,7 @@ public class ShowFragment extends BaseFragment {
                         @Override
                         public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                             super.onFailure(statusCode, headers, responseString, throwable);
-                            Log.i("Log1", "最终的收藏书籍和取消书籍的操作失败的原因是:" + responseString.toString());
+                            Log.i("show1", "最终的收藏书籍和取消书籍的操作失败的原因是:" + responseString.toString());
                         }
                     }
             );
@@ -306,7 +306,7 @@ public class ShowFragment extends BaseFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 CollectbookListId = list1.get(position).getId();
-                Log.i("Log1", "收藏进的书单的名字是:" + list1.get(position).getBookListName() + ",书单的id是:" + list1.get(position).getId());
+                Log.i("show1", "收藏进的书单的名字是:" + list1.get(position).getBookListName() + ",书单的id是:" + list1.get(position).getId());
                 SendToServlet(flag, 1);
                 alertDialog.dismiss();
             }
@@ -329,6 +329,7 @@ public class ShowFragment extends BaseFragment {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
+                Log.i("show1","loadData加载的数据是:"+response.toString());
                 try {
                     Message message = new Message();
                     String result = (String) response.get("result");
@@ -349,13 +350,13 @@ public class ShowFragment extends BaseFragment {
                             JSONObject json1 = (JSONObject) resultSet.get(i);
                             JSONObject json2 = (JSONObject) resultSet.get(i + 1);
 
-                            Book book = new Book();
-                            book = new Gson().fromJson(json1.toString(), Book.class);
+                            Book book = new Gson().fromJson(json1.toString(), Book.class);
                             book.setIsCollect((int) json2.get("isCollect"));
                             book.setNumOfComments((int) json2.get("numOfComments"));
                             book.setUserName((String) json2.get("userName"));
                             book.setUserSex((String) json2.get("sex"));
                             list.add(book);
+                            Log.i("show1", "loadData加载的数据的子集是:" + book.toString());
                         }
                         handler.sendMessage(message);
                     } else {
@@ -371,7 +372,7 @@ public class ShowFragment extends BaseFragment {
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-                Log.i("Log1", responseString);
+                Log.i("show1","loadData加载失败的原因是:"+responseString.toString());
                 Message message = new Message();
                 message.what = -1;
                 handler.sendMessage(message);

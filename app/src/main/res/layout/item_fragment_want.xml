@@ -21,7 +21,7 @@
         android:layout_height="90dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:gravity="center"
+        android:gravity="center_vertical"
         android:orientation="vertical">
 
 
@@ -120,10 +120,33 @@
             android:id="@+id/item_want_repay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="4dp"
             android:maxLines="2"
-            android:text="报答：我愿意提供35元购买书籍"
+            android:singleLine="false"
+            android:ellipsize="end"
+            android:textSize="10sp"
+            android:text="报答：我愿意提供35元购买书籍报答：我愿意提供35元购买书籍报答：我愿意提供35元购买书籍报答：我愿意提供35元购买书籍报答：我愿意提供35元购买书籍"
             android:textColor="@android:color/holo_red_dark" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/item_want_locationRange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="距离您约20m内"
+                android:textSize="10sp"
+                />
+        </LinearLayout>
+
 
     </LinearLayout>
 

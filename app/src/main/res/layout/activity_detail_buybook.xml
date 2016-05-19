@@ -79,7 +79,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginTop="3dp"
-                                    android:text="阿耐  著"
+                                    android:text="作者/阿耐  著"
                                     android:textColor="#999"
                                     android:textSize="10sp" />
 
@@ -126,7 +126,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="15dp"
                                     android:layout_marginTop="5dp"
-                                    android:text="卖书"
+                                    android:text="售卖类型/卖书"
                                     android:textColor="@android:color/holo_red_light"
                                     android:textSize="14sp" />
 
@@ -201,6 +201,7 @@
                                 />
 
                             <TextView
+                                android:id="@+id/detail_buy_userName"
                                 android:layout_width="match_parent"
                                 android:layout_height="24dp"
                                 android:gravity="center"

@@ -32,7 +32,7 @@ public class WriteBuyBookFragment2 extends Fragment implements View.OnClickListe
     private Button leftBtn;
 
     private ArrayAdapter<String> adapter;
-    private static final String[] m = {"期刊/杂志", "校园教材", "杂志", "考研材料", "托福材料"};
+    private static final String[] m = {"杂志", "校园教材", "小说", "考研材料", "托福材料"};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

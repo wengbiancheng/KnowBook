@@ -168,12 +168,12 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.register_send:
                 //进行验证码的校验
-                if (!TextUtils.isEmpty(PhoneNumber.getText().toString())
-                        && !TextUtils.isEmpty(code.getText().toString())) {
-                    SMSSDK.initSDK(RegisterActivity.this, SMSSDKConstant.AppKey, SMSSDKConstant.APPSecret);
-                    SMSSDK.submitVerificationCode("86", PhoneNumber.getText().toString(), code.getText().toString());
-                }
-//                SendToServlet(PhoneNumber.getText().toString(), PassWord.getText().toString());
+//                if (!TextUtils.isEmpty(PhoneNumber.getText().toString())
+//                        && !TextUtils.isEmpty(code.getText().toString())) {
+//                    SMSSDK.initSDK(RegisterActivity.this, SMSSDKConstant.AppKey, SMSSDKConstant.APPSecret);
+//                    SMSSDK.submitVerificationCode("86", PhoneNumber.getText().toString(), code.getText().toString());
+//                }
+                SendToServlet(PhoneNumber.getText().toString(), PassWord.getText().toString());
                 break;
         }
     }

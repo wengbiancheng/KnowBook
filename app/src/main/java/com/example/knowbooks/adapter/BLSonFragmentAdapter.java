@@ -11,7 +11,9 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.knowbooks.activity.BookActivity;
 import com.example.knowbooks.constants.UrlConstant;
 import com.example.knowbooks.entity.response.BookList;
 import com.example.knowbooks.R;
@@ -21,6 +23,7 @@ import com.loopj.android.http.RequestParams;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.apache.http.Header;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
@@ -121,14 +124,29 @@ public class BLSonFragmentAdapter extends BaseAdapter {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
-                if(flag==1){
-                    Log.i("Log1", "书单的id为：" + booklistid + "进行收藏书单的操作的结果是：" + response.toString());
-                }else if(flag==0){
-                    Log.i("Log1", "书单的id为：" + booklistid + "取消收藏书单的操作的结果是：" + response.toString());
+
+                try {
+                    String result= (String) response.get("result");
+                    if(result.equals("success")){
+                        if(flag==1){
+                            Toast.makeText(context,"收藏书单成功",Toast.LENGTH_SHORT).show();
+                            Log.i("Log1", "书单的id为：" + booklistid + "进行收藏书单的操作的结果是：" + response.toString());
+                        }else if(flag==0){
+                            Toast.makeText(context,"取消收藏书单成功",Toast.LENGTH_SHORT).show();
+                            Log.i("Log1", "书单的id为：" + booklistid + "取消收藏书单的操作的结果是：" + response.toString());
+                        }
+                        Message message=new Message();
+                        message.what=400;
+                        handler.sendMessage(message);
+                    }else{
+                        Toast.makeText(context,"操作失败",Toast.LENGTH_SHORT).show();
+                        Message message=new Message();
+                        message.what=-1;
+                        handler.sendMessage(message);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
-                Message message=new Message();
-                message.what=400;
-                handler.sendMessage(message);
             }
 
             @Override

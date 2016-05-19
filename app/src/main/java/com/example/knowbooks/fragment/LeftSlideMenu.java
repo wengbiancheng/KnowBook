@@ -11,8 +11,10 @@ import com.example.knowbooks.BaseFragment;
 import com.example.knowbooks.R;
 import com.example.knowbooks.activity.BookActivity;
 import com.example.knowbooks.activity.MyActivity.ChatMessage;
+import com.example.knowbooks.activity.MyActivity.My;
 import com.example.knowbooks.activity.MyActivity.MyBookListAty;
 import com.example.knowbooks.activity.MyActivity.MyBuyBookAty;
+import com.example.knowbooks.activity.MyActivity.MyCollectBookListAty;
 import com.example.knowbooks.activity.MyActivity.MyShowBookAty;
 import com.example.knowbooks.activity.MyActivity.MyWantBookAty;
 
@@ -27,6 +29,8 @@ public class LeftSlideMenu extends BaseFragment implements View.OnClickListener{
     private LinearLayout myBookList;
     private LinearLayout myBuyBook;
     private LinearLayout myWantBook;
+    private LinearLayout myCollectBooklist;
+    private LinearLayout my;
 
     private LinearLayout myMessage;
     private BookActivity BaseActivity;
@@ -51,12 +55,18 @@ public class LeftSlideMenu extends BaseFragment implements View.OnClickListener{
         myBuyBook= (LinearLayout) view.findViewById(R.id.left_menu_myBuyBook);
         myWantBook= (LinearLayout) view.findViewById(R.id.left_menu_myWantBook);
 
+        my= (LinearLayout) view.findViewById(R.id.left_menu_my);
+        myCollectBooklist= (LinearLayout) view.findViewById(R.id.left_menu_myCollectBooklist);
+
         myMessage= (LinearLayout) view.findViewById(R.id.left_menu_myMessage);
         myMessage.setOnClickListener(this);
         myBook.setOnClickListener(this);
         myBookList.setOnClickListener(this);
         myBuyBook.setOnClickListener(this);
         myWantBook.setOnClickListener(this);
+
+        my.setOnClickListener(this);
+        myCollectBooklist.setOnClickListener(this);
     }
 
     @Override
@@ -84,9 +94,20 @@ public class LeftSlideMenu extends BaseFragment implements View.OnClickListener{
                 break;
             case R.id.left_menu_myMessage:
                 Intent intent4=new Intent(getActivity(), ChatMessage.class);
-                intent4.putExtra("phone",BaseActivity.getPhone());
+                intent4.putExtra("phone", BaseActivity.getPhoneNumber());
                 startActivity(intent4);
                 Baseactivity.finish();
+                break;
+            case R.id.left_menu_my:
+                Intent intent6=new Intent(getActivity(), My.class);
+                startActivity(intent6);
+                Baseactivity.finish();
+                break;
+            case R.id.left_menu_myCollectBooklist:
+                Intent intent5=new Intent(getActivity(), MyCollectBookListAty.class);
+                startActivity(intent5);
+                Baseactivity.finish();
+                break;
         }
     }
 }

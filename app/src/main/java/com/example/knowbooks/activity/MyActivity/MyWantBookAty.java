@@ -157,6 +157,7 @@ public class MyWantBookAty extends Activity implements View.OnClickListener{
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
+                Log.i("mywantbook1", "加载mybooklistAty成功的信息是:" + response.toString());
                 try {
                     String result = (String) response.get("result");
                     if (result.equals("success")) {
@@ -175,6 +176,7 @@ public class MyWantBookAty extends Activity implements View.OnClickListener{
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
+                Log.i("mywantbook1", "加载mywantbookAty失败:" + responseString.toString());
                 Message message = new Message();
                 message.what = -1;
                 message.obj = "删除失败" + responseString;
@@ -192,7 +194,7 @@ public class MyWantBookAty extends Activity implements View.OnClickListener{
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
-                Log.i("Log1", "MyWantBook界面的反应为:" + response.toString());
+                Log.i("mywantbook1", "MyWantBook界面的反应为:" + response.toString());
                 try {
                     String result = (String) response.get("result");
                     Message message = new Message();
@@ -218,7 +220,7 @@ public class MyWantBookAty extends Activity implements View.OnClickListener{
                             String userName = json1.getString("UserName");
                             wantBook.setUserSex(userSex);
                             wantBook.setUserName(userName);
-                            Log.i("Log1", "MyWantBook界面的获得的数据为:" + wantBook.toString());
+                            Log.i("mywantbook1", "MyWantBook界面的获得的数据为:" + wantBook.toString());
                             list.add(wantBook);
                         }
                         handler.sendMessage(message);
@@ -236,6 +238,7 @@ public class MyWantBookAty extends Activity implements View.OnClickListener{
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
+                Log.i("mywantbook1", "MyWantBook失败:" + responseString.toString());
                 Message message = new Message();
                 message.obj = responseString;
                 message.what = -1;

@@ -58,6 +58,7 @@ public class UrlConstant {
     public final static String MyBookListUrl=url+"/booklist/myBooklist";
     public final static String MyBuyBookUrl=url+"/sellerMarket//myBuyBook";
     public final static String MyWantBookUrl=url+"/wish/myWish";
+    public final static String MyCollectBookListUrl=url+"/booklist/collectBooklist";
 
 
     public final static String DeleteShowBook=url+"/showBook/deleteBook";

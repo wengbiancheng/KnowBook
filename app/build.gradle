@@ -37,8 +37,6 @@ dependencies {
     compile 'com.android.support:cardview-v7:21.+'
     compile project(':slidingmenu_library')
     compile project(':pulltorefresh')
-    compile name: 'SMSSDK-2.0.2', ext: 'aar'
-    compile name: 'SMSSDKGUI-2.0.2', ext: 'aar'
     compile files('libs/okhttputils-2_3_9.jar')
     compile files('libs/BaiduLBS_Android.jar')
     compile files('libs/gson-1.6.jar')
@@ -48,4 +46,6 @@ dependencies {
     compile files('libs/universal-image-loader-1.9.4-with-sources.jar')
     compile project(':IMKit')
     compile files('libs/org.apache.http.legacy.jar')
+    compile name:'SMSSDK-2.0.2',ext:'aar'
+    compile name:'SMSSDKGUI-2.0.2',ext:'aar'
 }

@@ -8,9 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -39,9 +37,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by qq on 2016/5/10.
+ * Created by qq on 2016/5/18.
  */
-public class MyBookListAty extends Activity implements View.OnClickListener{
+public class MyCollectBookListAty extends Activity implements View.OnClickListener{
 
     private PullToRefreshListView listView;
     private BLSonFragmentAdapter adapter;
@@ -73,7 +71,7 @@ public class MyBookListAty extends Activity implements View.OnClickListener{
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MyBookListAty.this, BookListDetailActivity.class);
+                Intent intent = new Intent(MyCollectBookListAty.this, BookListDetailActivity.class);
                 intent.putExtra("bookListId", list.get(position - 1).getId());
                 startActivity(intent);
                 finish();
@@ -96,73 +94,18 @@ public class MyBookListAty extends Activity implements View.OnClickListener{
         title_left.setOnClickListener(this);
         title_right.setOnClickListener(this);
         title_middle.setText("我创建的书单");
-        listView.getRefreshableView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                ShowAlertDialogDelete(position);
-                return false;
-            }
-        });
-    }
 
-    private void ShowAlertDialogDelete(final int position) {
-        AlertDialog alertDialog = new AlertDialog.Builder(this).setMessage("您真的要删除这条信息吗?").setPositiveButton("取消",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                }).setNegativeButton("确定", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                SendToDelete(position);
-            }
-        }).create();
-        alertDialog.show();
-    }
-
-    private void SendToDelete(final int position) {
-        RequestParams requestParams = new RequestParams();
-        requestParams.put("booklistId", list.get(position-1).getId());
-        HttpUtil.getInstance(this).get(this, UrlConstant.DeleteBookList, requestParams, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                super.onSuccess(statusCode, headers, response);
-                try {
-                    String result = (String) response.get("result");
-                    if (result.equals("success")) {
-                        Message message = new Message();
-                        message.what = 300;
-                        message.arg1 = position;
-                        handler.sendMessage(message);
-
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-                Message message = new Message();
-                message.what = -2;
-                message.obj = "删除失败" + responseString;
-                handler.sendMessage(message);
-            }
-        });
     }
     private void loadData(final int page){
         RequestParams requestParams=new RequestParams();
         requestParams.put("page", page);
 
-        HttpUtil.getInstance(this).get(this, UrlConstant.MyBookListUrl,requestParams,new JsonHttpResponseHandler(){
+        HttpUtil.getInstance(this).get(this, UrlConstant.MyCollectBookListUrl,requestParams,new JsonHttpResponseHandler(){
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
-                Log.i("mybooklist1","加载mybooklistAty成功的信息是:"+response.toString());
+                Log.i("HotFragment1", response.toString());
                 Message message=new Message();
                 try {
                     String result= (String) response.get("result");
@@ -188,11 +131,10 @@ public class MyBookListAty extends Activity implements View.OnClickListener{
                             bookList.setCreaterId(jsonObject.getString("createrId"));
 
                             JSONObject jsonObject1= (JSONObject) json.get(i+1);
-                            bookList.setIsCollect(1);
+                            bookList.setIsCollect(jsonObject1.getInt("isCollect"));
                             bookList.setPeopleCount(jsonObject1.getInt("peopleCount"));
                             bookList.setBookCount(jsonObject1.getInt("bookCount"));
                             list.add(bookList);
-                            Log.i("mybooklist1", "加载mybooklistAty子数据是:" + bookList.toString());
                         }
                         handler.sendMessage(message);
                     }else{
@@ -207,7 +149,7 @@ public class MyBookListAty extends Activity implements View.OnClickListener{
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-                Log.i("mybooklist1","加载mybooklistAty失败:"+responseString.toString());
+                Log.i("HotFragment1", responseString.toString());
                 Message message=new Message();
                 message.what=-1;
                 handler.sendMessage(message);
@@ -220,13 +162,13 @@ public class MyBookListAty extends Activity implements View.OnClickListener{
             if(msg.what==200){
                 adapter.notifyDataSetChanged();
             }else if(msg.what==-1){
-                Log.i("mybooklist1", "fail的原因:"+msg.obj);
+                Log.i("WorthFrgment1", "fail的原因:"+msg.obj);
             }else if(msg.what==300){
-                Toast.makeText(MyBookListAty.this,"删除成功",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MyCollectBookListAty.this, "删除成功", Toast.LENGTH_SHORT).show();
                 list.remove(msg.arg1-1);
                 adapter.notifyDataSetChanged();
             }else if(msg.what==-2){
-                Toast.makeText(MyBookListAty.this, "错误信息为:" + msg.obj, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MyCollectBookListAty.this, "错误信息为:" + msg.obj, Toast.LENGTH_SHORT).show();
             }
             return false;
         }

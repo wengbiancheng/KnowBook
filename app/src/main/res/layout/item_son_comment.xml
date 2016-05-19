@@ -46,7 +46,8 @@
             android:layout_height="wrap_content"
             android:text="删除"
             android:textSize="14dp"
-            android:background="@color/transparent"/>
+            android:background="@drawable/radiogroup_background"
+            android:textColor="@color/white"/>
     </LinearLayout>
 
     <TextView

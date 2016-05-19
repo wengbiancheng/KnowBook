@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="120dp"
-    android:paddingBottom="10dp"
-    android:paddingTop="10dp"
+    android:background="@color/white"
     android:gravity="center"
-    android:background="@color/white">
+    android:orientation="horizontal"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp">
 
     <ImageView
         android:id="@+id/item_buyfragment_bookImage"
@@ -14,72 +15,108 @@
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="10dp"
         android:src="@mipmap/show_book6" />
-    <TextView
-        android:id="@+id/item_buyfragment_bookName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="极简宇宙史"
-        android:layout_marginLeft="10dp"
-        android:textSize="15sp"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/black"
-        android:layout_toRightOf="@id/item_buyfragment_bookImage"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/item_buyfragment_bookAuthor"
-        android:text="[法]克里斯托弗·加尔法德  著"
-        android:layout_marginLeft="10dp"
-        android:textColor="#999"
-        android:textSize="10sp"
-        android:layout_marginTop="3dp"
-        android:layout_toRightOf="@id/item_buyfragment_bookImage"
-        android:layout_below="@id/item_buyfragment_bookName"/>
 
-    <ImageView
-        android:id="@+id/item_buyfragment_sex"
-        android:src="@mipmap/man"
-        android:layout_width="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_height="10dp"
-        android:layout_marginTop="3dp"
-        android:layout_below="@id/item_buyfragment_bookAuthor"
-        android:layout_toRightOf="@id/item_buyfragment_bookImage"
-        />
-    <TextView
-        android:id="@+id/item_buyfragment_userName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nox"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
 
-        android:layout_marginLeft="3dp"
-        android:layout_below="@id/item_buyfragment_bookAuthor"
-        android:layout_toRightOf="@id/item_buyfragment_sex"/>
-
-    <TextView
-        android:id="@+id/item_buyfragment_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="￥12.0"
-        android:textSize="20sp"
-        android:textColor="@android:color/holo_red_light"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="15dp"/>
-    <TextView
-        android:id="@+id/item_buyfragment_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="2016-01-13"
-        android:textSize="10sp"
-        android:layout_marginRight="15dp"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/item_buyfragment_price"
-        android:layout_marginTop="5dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
 
 
+            <TextView
+                android:id="@+id/item_buyfragment_bookName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:text="极简宇宙史"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/item_buyfragment_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:text="￥12.0"
+                android:textColor="@android:color/holo_red_light"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
 
 
+            <TextView
+                android:id="@+id/item_buyfragment_bookAuthor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="[法]克里斯托弗·加尔法德  著"
+                android:textColor="#999"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/item_buyfragment_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:text="2016-01-13"
+                android:textSize="12sp" />
 
 
-</RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <ImageView
+                android:id="@+id/item_buyfragment_sex"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginLeft="10dp"
+                android:src="@mipmap/man" />
+
+            <TextView
+                android:id="@+id/item_buyfragment_userName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:text="男生"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/item_buyfragment_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:text="距离你约20m内"
+                android:textSize="12sp" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

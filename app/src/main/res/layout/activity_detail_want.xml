@@ -97,37 +97,31 @@
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="90dp"
-                                android:gravity="right|center"
-                                android:orientation="vertical">
+                                android:gravity="right"
+                                android:orientation="vertical"
+                                android:layout_marginTop="20dp"
+                                >
 
 
-                                <TextView
-                                    android:id="@+id/detail_want_sellType"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginRight="15dp"
-                                    android:text="卖书"
-                                    android:textColor="@android:color/holo_red_light"
-                                    android:textSize="14sp" />
 
                                 <TextView
                                     android:id="@+id/detail_want_time"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="15dp"
-                                    android:layout_marginTop="5dp"
                                     android:text="2016-01-13"
-                                    android:textSize="10sp" />
+                                    android:textSize="12sp"
+                                    />
 
                                 <TextView
                                     android:id="@+id/detail_want_location"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginRight="15dp"
-                                    android:layout_marginTop="3dp"
+                                    android:layout_marginTop="10dp"
                                     android:text="距离您2.4km"
                                     android:textColor="#999"
-                                    android:textSize="10sp" />
+                                    android:textSize="12sp" />
 
                             </LinearLayout>
 
@@ -211,11 +205,13 @@
                             android:orientation="vertical">
 
                             <com.example.knowbooks.widget.CircleImageView
+                                android:id="@+id/detail_want_userImage"
                                 android:layout_width="match_parent"
                                 android:layout_height="60dp"
                                 android:src="@drawable/touxiang" />
 
                             <TextView
+                                android:id="@+id/detail_want_userName"
                                 android:layout_width="match_parent"
                                 android:layout_height="24dp"
                                 android:gravity="center"

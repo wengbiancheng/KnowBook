@@ -251,9 +251,10 @@ public class CommentDetailActivity extends Activity implements View.OnClickListe
 
 
     private void setData() {
-//        imageLoader.displayImage(UrlConstant.url+detailComment.getHeadPicture(),top_image);
+        Log.i("detailsoncomment","加载的最上面头像的Url是:"+UrlConstant.url+detailComment.getHeadPicture());
+        imageLoader.displayImage(UrlConstant.url+detailComment.getHeadPicture(),top_image);
         top_name.setText(detailComment.getCommentUser());
-        top_bookName.setText(bookName);
+        top_bookName.setText("《"+bookName+"》");
 
         score.setRating(Float.parseFloat(String.valueOf(detailComment.getCommentScore())));
         time.setText(DateUtils.getShortTime(detailComment.getCreateDate()));
@@ -311,6 +312,7 @@ public class CommentDetailActivity extends Activity implements View.OnClickListe
                             sonComment.setId(json1.getLong("id"));
                             sonComment.setSonCommentUserName(json2.getString("sonCommentUser"));
                             sonComment.setSosnCommentUserPicture(json2.getString("headPicture"));
+                            sonComment.setPhoneNumber(json2.getString("phoneNumber"));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -340,6 +342,7 @@ public class CommentDetailActivity extends Activity implements View.OnClickListe
         public boolean handleMessage(Message msg) {
             if (msg.what == 200) {
                 adapter.notifyDataSetChanged();
+                listView.onRefreshComplete();
             } else if (msg.what == -1) {
                 Toast.makeText(CommentDetailActivity.this,"操作失败",Toast.LENGTH_SHORT).show();
             } else if (msg.what == -100) {

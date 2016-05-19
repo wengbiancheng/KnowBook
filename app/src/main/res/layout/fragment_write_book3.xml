@@ -40,6 +40,9 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="上一页"
+            android:background="@android:color/holo_green_light"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             />
 
         <Button
@@ -47,7 +50,10 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="下一页"/>
+            android:text="下一页"
+            android:background="@android:color/holo_green_light"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"/>
     </LinearLayout>
 
 

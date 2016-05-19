@@ -12,14 +12,23 @@ public class DetailBuyBook {
     private String weixin;
     private String bookDescript;
 
+    private String userPicture;
+
 
 
     @Override
     public String toString() {
         return book.toString()+",sellingWay:"+getSellingWay()+",phoneNumber:"+getPhoneNumber()+
-                ",sellingWay:"+getSellingWay()+",qq:"+getQq()+",weixin:"+getWeixin()+",bookDescript:"+getBookDescript();
+                ",sellingWay:"+getSellingWay()+",qq:"+getQq()+",weixin:"+getWeixin()+",bookDescript:"+getBookDescript()+";userPicture:"+getUserPicture();
     }
 
+    public String getUserPicture() {
+        return userPicture;
+    }
+
+    public void setUserPicture(String userPicture) {
+        this.userPicture = userPicture;
+    }
 
     public BuyBook getBook() {
         return book;

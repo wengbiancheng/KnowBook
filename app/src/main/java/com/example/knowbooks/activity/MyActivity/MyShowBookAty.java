@@ -202,11 +202,12 @@ public class MyShowBookAty  extends Activity implements View.OnClickListener{
     private void LoadData(final int page) {
         RequestParams requestParams = new RequestParams();
         requestParams.add("page", page + "");
-        HttpUtil.getInstance(this).get(this, UrlConstant.FragmentshowUrl, requestParams, new JsonHttpResponseHandler() {
+        HttpUtil.getInstance(this).get(this, UrlConstant.MyShowBookUrl, requestParams, new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
+                Log.i("myshow1","加载mySHowBookAty成功的信息是:"+response.toString());
                 try {
                     Message message = new Message();
                     String result = (String) response.get("result");
@@ -233,6 +234,8 @@ public class MyShowBookAty  extends Activity implements View.OnClickListener{
                             book.setNumOfComments((int) json2.get("numOfComments"));
                             book.setUserName((String) json2.get("userName"));
                             book.setUserSex((String) json2.get("sex"));
+
+                            Log.i("myshow1","加载的myshow的子数据为:"+book.toString());
                             list.add(book);
                         }
                         handler.sendMessage(message);
@@ -249,7 +252,7 @@ public class MyShowBookAty  extends Activity implements View.OnClickListener{
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-                Log.i("Log1", responseString);
+                Log.i("myshow1","加载mySHowBookAty成功的信息是:"+responseString.toString());
                 Message message = new Message();
                 message.what = -1;
                 handler.sendMessage(message);

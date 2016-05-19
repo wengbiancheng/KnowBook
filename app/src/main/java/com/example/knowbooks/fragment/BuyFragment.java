@@ -178,6 +178,7 @@ public class BuyFragment extends BaseFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(Baseactivity, BuyBookDetailActivity.class);
                 intent.putExtra("BuyBook", list.get(position - 1));
+                intent.putExtra("PhoneNumber",Baseactivity.getPhoneNumber());
                 startActivity(intent);
                 Baseactivity.finish();
             }

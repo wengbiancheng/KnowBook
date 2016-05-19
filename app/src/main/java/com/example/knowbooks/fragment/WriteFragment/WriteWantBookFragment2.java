@@ -31,7 +31,7 @@ public class WriteWantBookFragment2 extends Fragment implements View.OnClickList
     private Button leftBtn;
 
     private ArrayAdapter<String> adapter;
-    private static final String[] m = {"杂志", "校园教材", "小说", "考研材料", "托福材料"};
+    private static final String[] m = {"杂志", "小说","校园教材","其他"};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

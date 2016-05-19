@@ -109,6 +109,9 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
     private String headImage;
 
     private static String PhoneNumber;
+    public static String getPhoneNumber(){
+        return PhoneNumber;
+    }
     private String LocalUserName;
     private String Localsex;
     private User user = new User();
@@ -147,51 +150,53 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
             }
             controller.showFragment(postion);
         }
-
         mLocationClient = ((BaseApplication) getApplication()).getInstance();
         mLocationClient.registerLocationListener(this);
-
-
         //进行PhoneNumber的传输
         if (!TextUtils.isEmpty(getIntent().getStringExtra("PhoneNumber"))) {
             PhoneNumber = getIntent().getStringExtra("PhoneNumber");
         }
-        Log.i("Special",PhoneNumber);
+        Log.i("Special", PhoneNumber);
 
-        //判断是否要进行AlertDialog的跳转
-        if (!TextUtils.isEmpty(getIntent().getStringExtra("LoginToBook"))) {
-            if (getIntent().getStringExtra("LoginToBook").equals("1")) {
+        if(!TextUtils.isEmpty(getIntent().getStringExtra("UpUser"))){
+            if(getIntent().getStringExtra("UpUser").equals("yes")){
+                flag = 0;
+                Log.i("LoginAdd1", "更新操作");
+                initAlertDialog();
+            }
+            mLocationClient.start();
+        }else {
+            //判断是否要进行AlertDialog的跳转
+            if (!TextUtils.isEmpty(getIntent().getStringExtra("LoginToBook"))) {
+                if (getIntent().getStringExtra("LoginToBook").equals("1")) {
 
 //                user=AccessTokenKeeper.readAccessDate(this);,nbh
-                //从数据库获取User，如果是首次登陆，则获取到null
-                Log.i("LoginAdd1", "登陆后传来的电话号码是:---------" + PhoneNumber);
-                user = db.getUser(PhoneNumber);
-                if (user != null) {
-                    Log.i("LoginAdd1", "登陆后读取到的数据时:---------" + user.toString());
-                }
-                if ((user == null) || !user.getPhoneNumber().equals(PhoneNumber)) {
-                    flag = 0;
-                    Log.i("LoginAdd1", "数据库找不到该电话号码");
-                    initAlertDialog();
-                } else {
-                    flag = 1;
-                    Log.i("LoginAdd1", "数据库找到了该电话号码");
-                    if (!TextUtils.isEmpty(user.getToken())) {
-                        Log.i("LoginAdd1", "进行IM的连接操作");
-                     connect(user.getToken());
-                    }else{
-                        Log.i("LoginAdd1", "进行IM的GetToken(token过期或者不存在)");
-                       GetTokenForIncorrect();
+                    //从数据库获取User，如果是首次登陆，则获取到null
+                    Log.i("LoginAdd1", "登陆后传来的电话号码是:---------" + PhoneNumber);
+                    user = db.getUser(PhoneNumber);
+                    if (user != null) {
+                        Log.i("LoginAdd1", "登陆后读取到的数据时:---------" + user.toString());
                     }
-                }
+                    if ((user == null) || !user.getPhoneNumber().equals(PhoneNumber)) {
+                        flag = 0;
+                        Log.i("LoginAdd1", "数据库找不到该电话号码");
+                        initAlertDialog();
+                    } else {
+                        flag = 1;
+                        Log.i("LoginAdd1", "数据库找到了该电话号码");
+                        if (!TextUtils.isEmpty(user.getToken())) {
+                            Log.i("LoginAdd1", "进行IM的连接操作");
+                            connect(user.getToken());
+                        } else {
+                            Log.i("LoginAdd1", "进行IM的GetToken(token过期或者不存在)");
+                            GetTokenForIncorrect();
+                        }
+                    }
 
-                mLocationClient.start();
+                    mLocationClient.start();
+                }
             }
         }
-    }
-    public static String getPhone(){
-        Log.i("Special------",PhoneNumber);
-        return PhoneNumber;
     }
 
     /**

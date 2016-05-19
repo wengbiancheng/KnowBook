@@ -16,6 +16,12 @@ public class BookList {
     private Long createDate;
     private String createrId;
 
+    @Override
+    public String toString() {
+        return "peopleCount:"+getPeopleCount()+";bookCount:"+getBookCount()+";isCollect:"+getIsCollect()+";id:"+getId()
+                +";bookListName:"+getBookListName()+";image:"+getBooklistPicture()+";time:"+getCreateDate()+";createId:"+getCreaterId();
+    }
+
     public int getPeopleCount() {
         return peopleCount;
     }
