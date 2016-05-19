@@ -106,45 +106,13 @@ public class HotFragment extends BaseFragment{
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                SendToDelete(position);
+                list.remove(position-1);
+                adapter.notifyDataSetChanged();
             }
         }).create();
         alertDialog.show();
     }
 
-
-    private void SendToDelete(final int position) {
-        RequestParams requestParams = new RequestParams();
-        requestParams.put("id", list.get(position).getId());
-        HttpUtil.getInstance(Baseactivity).post(Baseactivity, UrlConstant.FragmentbooklistHotUrl, requestParams, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                super.onSuccess(statusCode, headers, response);
-                try {
-                    String result = (String) response.get("result");
-                    if (result.equals("success")) {
-                        Message message = new Message();
-                        message.what = 300;
-                        message.arg1 = position;
-                        handler.sendMessage(message);
-
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-                Message message = new Message();
-                message.what = -2;
-                message.obj = "删除失败" + responseString;
-                handler.sendMessage(message);
-            }
-        });
-    }
     private void loadData(final int page){
         RequestParams requestParams=new RequestParams();
         requestParams.put("page", page);

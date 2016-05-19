@@ -224,47 +224,15 @@ public class BuyFragment extends BaseFragment {
 
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                SendToDelete(position);
+                list.remove(position-1);
+                adapter.notifyDataSetChanged();
             }
         }).create();
         alertDialog.show();
     }
 
-    private void SendToDelete(final int position) {
-        RequestParams requestParams = new RequestParams();
-        requestParams.put("id", list.get(position).getId());
-        HttpUtil.getInstance(Baseactivity).get(Baseactivity, UrlConstant.DetailWantUrl, requestParams, new JsonHttpResponseHandler() {
-            @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                super.onSuccess(statusCode, headers, response);
-                Log.i("Log1", "删除数据buyBook后返回的参数是:" + response.toString());
-                try {
-                    String result = (String) response.get("result");
-                    if (result.equals("success")) {
-                        Message message = new Message();
-                        message.what = 300;
-                        message.arg1 = position;
-                        handler.sendMessage(message);
-
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-            }
-
-            @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-                Message message = new Message();
-                message.what = -1;
-                message.obj = "删除失败" + responseString;
-                handler.sendMessage(message);
-            }
-        });
-    }
-
     private void loadDataSome(final int page) {
+        Log.i("Log11","进行buyfragment的筛选数据操作");
         RequestParams requestParams = new RequestParams();
         requestParams.put("page", page);
         requestParams.put("pageSize", 10);
@@ -348,7 +316,7 @@ public class BuyFragment extends BaseFragment {
 
 
     private void loadData(final int page) {
-        Log.i("Log11", "page:" + page);
+        Log.i("Log11","进行buyfragment的全部数据操作:"+page);
         RequestParams requestParams = new RequestParams();
         int locationRange = 8 - page;
         if (locationRange >= 1) {

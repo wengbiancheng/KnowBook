@@ -193,6 +193,7 @@ public class WriteBookListAty extends Activity implements View.OnClickListener {
                 try {
                     String result= (String) response.get("result");
                     if(result.equals("success")){
+                        Toast.makeText(WriteBookListAty.this,"书单创建成功",Toast.LENGTH_SHORT).show();
                         Intent intent=new Intent(WriteBookListAty.this, BookActivity.class);
                         intent.putExtra("onStart","1");
                         startActivity(intent);

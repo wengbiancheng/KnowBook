@@ -21,6 +21,7 @@
             android:layout_weight="1"
             android:background="@color/s_black"
             android:spinnerMode="dialog"
+            android:textSize="12sp"
             android:textColor="@color/white" />
 
         <View
@@ -32,8 +33,9 @@
             android:id="@+id/fragment_buy_spinner2"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_weight="1"
             android:background="@color/s_black"
+            android:layout_weight="1"
+            android:textSize="12sp"
             android:spinnerMode="dialog"
             android:textColor="@color/white" />
 

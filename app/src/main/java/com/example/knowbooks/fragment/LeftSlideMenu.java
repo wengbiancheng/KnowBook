@@ -29,7 +29,6 @@ public class LeftSlideMenu extends BaseFragment implements View.OnClickListener{
     private LinearLayout myBookList;
     private LinearLayout myBuyBook;
     private LinearLayout myWantBook;
-    private LinearLayout myCollectBooklist;
     private LinearLayout my;
 
     private LinearLayout myMessage;
@@ -56,7 +55,6 @@ public class LeftSlideMenu extends BaseFragment implements View.OnClickListener{
         myWantBook= (LinearLayout) view.findViewById(R.id.left_menu_myWantBook);
 
         my= (LinearLayout) view.findViewById(R.id.left_menu_my);
-        myCollectBooklist= (LinearLayout) view.findViewById(R.id.left_menu_myCollectBooklist);
 
         myMessage= (LinearLayout) view.findViewById(R.id.left_menu_myMessage);
         myMessage.setOnClickListener(this);
@@ -66,7 +64,6 @@ public class LeftSlideMenu extends BaseFragment implements View.OnClickListener{
         myWantBook.setOnClickListener(this);
 
         my.setOnClickListener(this);
-        myCollectBooklist.setOnClickListener(this);
     }
 
     @Override
@@ -101,11 +98,6 @@ public class LeftSlideMenu extends BaseFragment implements View.OnClickListener{
             case R.id.left_menu_my:
                 Intent intent6=new Intent(getActivity(), My.class);
                 startActivity(intent6);
-                Baseactivity.finish();
-                break;
-            case R.id.left_menu_myCollectBooklist:
-                Intent intent5=new Intent(getActivity(), MyCollectBookListAty.class);
-                startActivity(intent5);
                 Baseactivity.finish();
                 break;
         }

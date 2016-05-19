@@ -17,7 +17,6 @@ import io.rong.imlib.model.UserInfo;
  */
 public class ChatMessage extends Activity{
 
-
     private User user;
     private DButil db;
     private String phoneNumber;
