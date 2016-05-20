@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Window;
 
+import com.example.knowbooks.constants.UrlConstant;
 import com.example.knowbooks.entity.User;
 import com.example.knowbooks.utils.DButil;
 
@@ -30,7 +31,7 @@ public class ChatMessage extends Activity{
             @Override
             public UserInfo getUserInfo(String s) {
                 if (s.equals(user.getPhoneNumber())) {
-                    return new UserInfo(s, user.getUserName(), Uri.parse(user.getImageUrl()));
+                    return new UserInfo(s, user.getUserName(), Uri.parse(UrlConstant.url+user.getImageUrl()));
                 }
                 return null;
             }

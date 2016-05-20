@@ -50,15 +50,17 @@ public class BookListDetailActivity extends Activity implements View.OnClickList
     private Button title_right;
 
     private Long BookListId;
+    private String LoginUserPhone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_booklist_detail);
+        LoginUserPhone=getIntent().getStringExtra("phoneNumber");
 
         gridView= (GridView) findViewById(R.id.detail_booklist_gridview);
-        adapter=new GridViewAdapter(this,list,gridView);
+        adapter=new GridViewAdapter(this,list,gridView,LoginUserPhone);
         gridView.setAdapter(adapter);
 
         title_left = (ImageButton) findViewById(R.id.title_leftImageBtn);
@@ -68,7 +70,7 @@ public class BookListDetailActivity extends Activity implements View.OnClickList
         title_right.setOnClickListener(this);
         title_middle.setText("书单详情");
 
-        BookListId=getIntent().getLongExtra("bookListId",0);
+        BookListId=getIntent().getLongExtra("bookListId", 0);
         loadData();
     }
     private void loadData(){
@@ -142,6 +144,7 @@ public class BookListDetailActivity extends Activity implements View.OnClickList
             case R.id.title_leftImageBtn:
                 Intent intent=new Intent(BookListDetailActivity.this, BookActivity.class);
                 intent.putExtra("onStart","1");
+                intent.putExtra("PhoneNumber",LoginUserPhone);
                 startActivity(intent);
                 BookListDetailActivity.this.finish();
                 break;

@@ -101,6 +101,12 @@ public class BuyFragment extends BaseFragment {
 
         return view;
     }
+    @Override
+    public void onResume() {
+        loadData(0);
+        super.onResume();
+    }
+
 
     /**
      * 进行购买书籍的选择操作
@@ -248,7 +254,7 @@ public class BuyFragment extends BaseFragment {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
-                Log.i("Log11", "进行BuyFragment数据加载的结果是:" + response.toString());
+                Log.i("Log11", "进行BuyFragment数据加载(Some)的结果是:" + response.toString());
                 try {
                     String result = response.get("result").toString();
                     Message message = new Message();

@@ -29,14 +29,16 @@ public class GridViewAdapter extends BaseAdapter{
     private Context context;
     private List<DetailBookList> list=new ArrayList<>();
     private GridView gv;
+    private String phoneNumber;
 
     private ImageLoader imageLoader;
 
-    public GridViewAdapter(Context context,List<DetailBookList> list,GridView gv){
+    public GridViewAdapter(Context context,List<DetailBookList> list,GridView gv,String phoneNumber){
         this.context=context;
         this.list=list;
         this.gv=gv;
         this.imageLoader=ImageLoader.getInstance();
+        this.phoneNumber=phoneNumber;
     }
 
     @Override
@@ -83,6 +85,7 @@ public class GridViewAdapter extends BaseAdapter{
                 Intent intent=new Intent(context, BookDetailActivity.class);
                 intent.putExtra("id",list.get(position).getId());
                 intent.putExtra("OldActivity","BookListDetail");
+                intent.putExtra("phoneNumber",phoneNumber);
                 context.startActivity(intent);
             }
         });

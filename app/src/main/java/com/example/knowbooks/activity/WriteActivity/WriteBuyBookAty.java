@@ -32,6 +32,10 @@ public class WriteBuyBookAty extends FragmentActivity implements View.OnClickLis
     private Button title_right;
 
     private Fragment mMainActivity;
+    private static String phoneNumber;
+    public static String getPhoneNumber(){
+        return phoneNumber;
+    }
 
 
 
@@ -49,6 +53,7 @@ public class WriteBuyBookAty extends FragmentActivity implements View.OnClickLis
 
         controller= WriteBuyAtyFragmentController.getInstance(WriteBuyBookAty.this, R.id.write_book_framelayout);
         controller.showFragment(0);
+        phoneNumber=getIntent().getStringExtra("phoneNumber");
 
     }
     public WriteBuyAtyFragmentController getFragmentControl(){

@@ -1,6 +1,7 @@
 package com.example.knowbooks.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
@@ -38,12 +39,14 @@ public class BLSonFragmentAdapter extends BaseAdapter {
     private List<BookList> lists;
     private ImageLoader imageLoader;
     private Handler handler;
+    private String phoneNumber;
 
-    public BLSonFragmentAdapter(Context mContext, List<BookList> lists,Handler handler) {
+    public BLSonFragmentAdapter(Context mContext, List<BookList> lists,Handler handler,String phoneNumber) {
         this.context = mContext;
         this.lists = lists;
         this.imageLoader = ImageLoader.getInstance();
         this.handler=handler;
+        this.phoneNumber=phoneNumber;
     }
 
     @Override
@@ -104,6 +107,11 @@ public class BLSonFragmentAdapter extends BaseAdapter {
             viewHolder.right_btn.setText("点击收藏");
         }else{
             viewHolder.right_btn.setText("取消收藏");
+        }
+        if(lists.get(position).getCreaterId().equals(phoneNumber)){
+            viewHolder.right_btn.setEnabled(false);
+            viewHolder.right_btn.setClickable(false);
+            viewHolder.right_btn.setBackgroundColor(Color.WHITE);
         }
         return convertView;
     }

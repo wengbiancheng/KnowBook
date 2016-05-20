@@ -167,6 +167,7 @@ public class WriteWantBookFragment4 extends Fragment implements View.OnClickList
                     if (result.equals("success")) {
                         Toast.makeText(BaseActivity,"创建心愿书单成功",Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(BaseActivity, BookActivity.class);
+                        intent.putExtra("PhoneNumber",BaseActivity.getPhoneNumber());
                         intent.putExtra("onStart", "3");
                         startActivity(intent);
                         BaseActivity.finish();
@@ -217,7 +218,6 @@ public class WriteWantBookFragment4 extends Fragment implements View.OnClickList
             sb.append("\ndescribe : ");
             sb.append("gps定位成功");
 
-            Toast.makeText(BaseActivity, "gps定位成功", Toast.LENGTH_LONG).show();
 
         } else if (location.getLocType() == BDLocation.TypeNetWorkLocation) {// 网络定位结果
             sb.append("\naddr : ");
@@ -227,7 +227,6 @@ public class WriteWantBookFragment4 extends Fragment implements View.OnClickList
             sb.append(location.getOperators());
             sb.append("\ndescribe : ");
             sb.append("网络定位成功");
-            Toast.makeText(BaseActivity, "网路定位成功", Toast.LENGTH_LONG).show();
         } else if (location.getLocType() == BDLocation.TypeOffLineLocation) {// 离线定位结果
             sb.append("\ndescribe : ");
             sb.append("离线定位成功，离线定位结果也是有效的");
@@ -237,11 +236,9 @@ public class WriteWantBookFragment4 extends Fragment implements View.OnClickList
         } else if (location.getLocType() == BDLocation.TypeNetWorkException) {
             sb.append("\ndescribe : ");
             sb.append("网络不同导致定位失败，请检查网络是否通畅");
-            Toast.makeText(BaseActivity, "定位失败", Toast.LENGTH_LONG).show();
         } else if (location.getLocType() == BDLocation.TypeCriteriaException) {
             sb.append("\ndescribe : ");
             sb.append("无法获取有效定位依据导致定位失败，一般是由于手机的原因，处于飞行模式下一般会造成这种结果，可以试着重启手机");
-            Toast.makeText(BaseActivity, "定位失败", Toast.LENGTH_LONG).show();
         }
         sb.append("\nlocationdescribe : ");
         sb.append(location.getLocationDescribe());// 位置语义化信息
@@ -254,7 +251,6 @@ public class WriteWantBookFragment4 extends Fragment implements View.OnClickList
                 sb.append(p.getId() + " " + p.getName() + " " + p.getRank());
             }
         }
-        Toast.makeText(BaseActivity, "定位成功", Toast.LENGTH_LONG).show();
         handler.sendEmptyMessage(-10);
         Log.i("BaiduLocationApiDem", sb.toString());
     }

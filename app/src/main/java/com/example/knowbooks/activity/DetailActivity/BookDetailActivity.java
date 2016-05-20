@@ -97,11 +97,14 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
 
     private Long bookid;
 
+    private String loginUserPhoneNumber;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_detail_book);
+        loginUserPhoneNumber=getIntent().getStringExtra("phoneNumber");
         //获取Intent传入的数据
 //        book = getIntent().getParcelableExtra("book");
 //        Log.i("BOOKDETAILATY","getIntent:book:"+book.toString());
@@ -111,6 +114,7 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
         initView();
         loadDate();;//加载第一页的评论
         initListener();
+
 
         adapter = new ShowDetailCommentAdapter(BookDetailActivity.this, list);
         listView.setAdapter(adapter);
@@ -231,8 +235,9 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
                             detailComment.setCommentUser((String) json2.get("commentUser"));
                             detailComment.setSonCommentCount((Integer) json2.get("sonCommentCount"));
                             detailComment.setHeadPicture((String) json2.get("headPicture"));
+                            detailComment.setPhoneNumber1(json2.getString("phoneNumber1"));
                             list.add(detailComment);
-                            Log.i("detailshow", "bookDetail获得的初始评论是:" + detailComment.toString());
+                            Log.i("detailshow", "bookDetail获得的评论内容是:" + detailComment.toString());
                         }
                         Message message = new Message();
                         message.what = 200;
@@ -291,6 +296,7 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
                 Bundle bundle = new Bundle();
                 bundle.putParcelable("Comment", detailComment);
                 bundle.putString("bookName", book.getBookName());
+                bundle.putString("phoneNumber",loginUserPhoneNumber);
                 Log.i("detailshow", "setIntent:detailComment:" + detailComment.toString());
                 intent.putExtras(bundle);
                 startActivity(intent);
@@ -300,7 +306,15 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
         listView.getRefreshableView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
-                ShowAlertDialogDelete(position);
+
+                Log.i("Test1","将要删除的数据为:"+"loginPhoneNumber:"+loginUserPhoneNumber+";bookPhone:"+book.getPhoneNumber()+";commentPhone:"+list.get(position-2).getPhoneNumber1());
+                if(book.getPhoneNumber().equals(loginUserPhoneNumber)) {
+                    ShowAlertDialogDelete(position);
+                }else if(list.get(position-2).getPhoneNumber1().equals(loginUserPhoneNumber)){
+                    ShowAlertDialogDelete(position);
+                }else{
+
+                }
                 return true;
             }
         });
@@ -466,11 +480,13 @@ public class BookDetailActivity extends Activity implements View.OnClickListener
                     }
                 } else {
                     Intent intent = new Intent(BookDetailActivity.this, BookActivity.class);
+                    intent.putExtra("PhoneNumber",loginUserPhoneNumber);
                     startActivity(intent);
                 }
                 break;
             case R.id.title_rightBtn:
                 Intent intent1 = new Intent(BookDetailActivity.this, WriteBookCommentAty.class);
+                intent1.putExtra("phoneNumber",loginUserPhoneNumber);
                 intent1.putExtra("book",book);
                 startActivity(intent1);
                 break;

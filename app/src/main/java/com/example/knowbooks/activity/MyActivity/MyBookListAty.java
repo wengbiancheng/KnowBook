@@ -41,28 +41,31 @@ import java.util.List;
 /**
  * Created by qq on 2016/5/10.
  */
-public class MyBookListAty extends Activity implements View.OnClickListener{
+public class MyBookListAty extends Activity implements View.OnClickListener {
 
     private PullToRefreshListView listView;
     private BLSonFragmentAdapter adapter;
 
 
     private View footView;
-    private int curPage=0;
+    private int curPage = 0;
 
-    private List<BookList> list=new ArrayList<>();
+    private List<BookList> list = new ArrayList<>();
 
     //标题栏控件初始化
     private ImageButton title_left;
     private TextView title_middle;
     private Button title_right;
 
+    private String phoneNumber;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_booklist);
-        listView= (PullToRefreshListView)findViewById(R.id.sonfragment_listView);
-        adapter=new BLSonFragmentAdapter(this,list,handler);
+        phoneNumber = getIntent().getStringExtra("phoneNumber");
+        listView = (PullToRefreshListView) findViewById(R.id.sonfragment_listView);
+        adapter = new BLSonFragmentAdapter(this, list, handler,phoneNumber);
         listView.setAdapter(adapter);
         listView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
@@ -75,6 +78,7 @@ public class MyBookListAty extends Activity implements View.OnClickListener{
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(MyBookListAty.this, BookListDetailActivity.class);
                 intent.putExtra("bookListId", list.get(position - 1).getId());
+                intent.putExtra("phoneNumber",BookActivity.getPhoneNumber());
                 startActivity(intent);
                 finish();
             }
@@ -88,7 +92,8 @@ public class MyBookListAty extends Activity implements View.OnClickListener{
         loadData(0);
         initListener();
     }
-    private void initListener(){
+
+    private void initListener() {
 
         title_left = (ImageButton) findViewById(R.id.title_leftImageBtn);
         title_middle = (TextView) findViewById(R.id.title_middleTextView);
@@ -115,7 +120,30 @@ public class MyBookListAty extends Activity implements View.OnClickListener{
                 }).setNegativeButton("确定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                SendToDelete(position);
+                if (list.get(position - 1).getCreaterId().equals(phoneNumber)) {
+                    SendToDelete(position);
+                } else {
+                    DeleteListView(position);
+                }
+            }
+        }).create();
+        alertDialog.show();
+    }
+
+    private void DeleteListView(final int position) {
+        AlertDialog alertDialog = new AlertDialog.Builder(MyBookListAty.this).setMessage("您要移除这条信息吗?").setPositiveButton("取消",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).setNegativeButton("确定", new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                list.remove(position - 1);
+                adapter.notifyDataSetChanged();
+                Toast.makeText(MyBookListAty.this,"移除成功",Toast.LENGTH_SHORT).show();
             }
         }).create();
         alertDialog.show();
@@ -123,7 +151,7 @@ public class MyBookListAty extends Activity implements View.OnClickListener{
 
     private void SendToDelete(final int position) {
         RequestParams requestParams = new RequestParams();
-        requestParams.put("booklistId", list.get(position-1).getId());
+        requestParams.put("booklistId", list.get(position - 1).getId());
         HttpUtil.getInstance(this).get(this, UrlConstant.DeleteBookList, requestParams, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
@@ -153,41 +181,40 @@ public class MyBookListAty extends Activity implements View.OnClickListener{
             }
         });
     }
-    private void loadData(final int page){
-        RequestParams requestParams=new RequestParams();
+
+    private void loadData(final int page) {
+        RequestParams requestParams = new RequestParams();
         requestParams.put("page", page);
 
-        HttpUtil.getInstance(this).get(this, UrlConstant.MyBookListUrl,requestParams,new JsonHttpResponseHandler(){
+        HttpUtil.getInstance(this).get(this, UrlConstant.MyBookListUrl, requestParams, new JsonHttpResponseHandler() {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                 super.onSuccess(statusCode, headers, response);
-                Log.i("mybooklist1","加载mybooklistAty成功的信息是:"+response.toString());
-                Message message=new Message();
+                Log.i("mybooklist1", "加载mybooklistAty成功的信息是:" + response.toString());
+                Message message = new Message();
                 try {
-                    String result= (String) response.get("result");
-                    message.obj=result;
-                    if(result.equals("success"))
-                    {
-                        message.what=200;
+                    String result = (String) response.get("result");
+                    message.obj = result;
+                    if (result.equals("success")) {
+                        message.what = 200;
 
-                        JSONArray json= (JSONArray) response.get("resultSet");
+                        JSONArray json = (JSONArray) response.get("resultSet");
                         if (page == 0) {
                             list.clear();
                         }
 
                         curPage = page;
-                        for(int i=0;i<json.length();i=i+2)
-                        {
-                            JSONObject jsonObject= (JSONObject) json.get(i);
-                            BookList bookList=new BookList();
+                        for (int i = 0; i < json.length(); i = i + 2) {
+                            JSONObject jsonObject = (JSONObject) json.get(i);
+                            BookList bookList = new BookList();
                             bookList.setId(jsonObject.getLong("id"));
                             bookList.setBooklistPicture(jsonObject.getString("booklistPicture"));
                             bookList.setCreateDate(jsonObject.getLong("createDate"));
                             bookList.setBookListName(jsonObject.getString("bookListName"));
                             bookList.setCreaterId(jsonObject.getString("createrId"));
 
-                            JSONObject jsonObject1= (JSONObject) json.get(i+1);
+                            JSONObject jsonObject1 = (JSONObject) json.get(i + 1);
                             bookList.setIsCollect(1);
                             bookList.setPeopleCount(jsonObject1.getInt("peopleCount"));
                             bookList.setBookCount(jsonObject1.getInt("bookCount"));
@@ -195,8 +222,8 @@ public class MyBookListAty extends Activity implements View.OnClickListener{
                             Log.i("mybooklist1", "加载mybooklistAty子数据是:" + bookList.toString());
                         }
                         handler.sendMessage(message);
-                    }else{
-                        message.what=-1;
+                    } else {
+                        message.what = -1;
                         handler.sendMessage(message);
                     }
                 } catch (JSONException e) {
@@ -207,25 +234,26 @@ public class MyBookListAty extends Activity implements View.OnClickListener{
             @Override
             public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
                 super.onFailure(statusCode, headers, responseString, throwable);
-                Log.i("mybooklist1","加载mybooklistAty失败:"+responseString.toString());
-                Message message=new Message();
-                message.what=-1;
+                Log.i("mybooklist1", "加载mybooklistAty失败:" + responseString.toString());
+                Message message = new Message();
+                message.what = -1;
                 handler.sendMessage(message);
             }
         });
     }
-    private Handler handler=new Handler(new Handler.Callback() {
+
+    private Handler handler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
-            if(msg.what==200){
+            if (msg.what == 200) {
                 adapter.notifyDataSetChanged();
-            }else if(msg.what==-1){
-                Log.i("mybooklist1", "fail的原因:"+msg.obj);
-            }else if(msg.what==300){
-                Toast.makeText(MyBookListAty.this,"删除成功",Toast.LENGTH_SHORT).show();
-                list.remove(msg.arg1-1);
+            } else if (msg.what == -1) {
+                Log.i("mybooklist1", "fail的原因:" + msg.obj);
+            } else if (msg.what == 300) {
+                Toast.makeText(MyBookListAty.this, "删除成功", Toast.LENGTH_SHORT).show();
+                list.remove(msg.arg1 - 1);
                 adapter.notifyDataSetChanged();
-            }else if(msg.what==-2){
+            } else if (msg.what == -2) {
                 Toast.makeText(MyBookListAty.this, "错误信息为:" + msg.obj, Toast.LENGTH_SHORT).show();
             }
             return false;
@@ -234,9 +262,9 @@ public class MyBookListAty extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.title_leftImageBtn:
-                Intent intent=new Intent(this, BookActivity.class);
+                Intent intent = new Intent(this, BookActivity.class);
                 startActivity(intent);
                 break;
             case R.id.title_rightBtn:

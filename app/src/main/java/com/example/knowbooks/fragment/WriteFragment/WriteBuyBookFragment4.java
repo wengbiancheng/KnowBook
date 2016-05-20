@@ -205,6 +205,7 @@ public class WriteBuyBookFragment4 extends Fragment implements View.OnClickListe
                     {
                         Toast.makeText(BaseActivity,"创建书籍成功",Toast.LENGTH_SHORT).show();
                         Intent intent=new Intent(BaseActivity, BookActivity.class);
+                        intent.putExtra("PhoneNumber",BaseActivity.getPhoneNumber());
                         intent.putExtra("onStart","2");
                         startActivity(intent);
                     }

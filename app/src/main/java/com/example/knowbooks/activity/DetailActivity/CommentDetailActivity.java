@@ -98,6 +98,7 @@ public class CommentDetailActivity extends Activity implements View.OnClickListe
     private int curPage;
 
     private Bundle bundle;
+    private String loginUserPhone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,12 +110,15 @@ public class CommentDetailActivity extends Activity implements View.OnClickListe
         detailComment = bundle.getParcelable("Comment");
         bookName = bundle.getString("bookName");
         scroll2Comment = getIntent().getBooleanExtra("scroll2Comment", false);
+        loginUserPhone=bundle.getString("phoneNumber");
 
         initView();
         initListener();
 
         setData();//对评论上面的tab部分进行赋值
         loadSonComment(0);
+        adapter = new DetailCommentAdapter(this, list, handler);
+        listView.setAdapter(adapter);
     }
 
     private void initView() {
@@ -158,8 +162,7 @@ public class CommentDetailActivity extends Activity implements View.OnClickListe
         lv.addHeaderView(view);
 
 
-        adapter = new DetailCommentAdapter(this, list, handler);
-        listView.setAdapter(adapter);
+
 
         imageLoader = ImageLoader.getInstance();
     }
@@ -346,7 +349,16 @@ public class CommentDetailActivity extends Activity implements View.OnClickListe
             } else if (msg.what == -1) {
                 Toast.makeText(CommentDetailActivity.this,"操作失败",Toast.LENGTH_SHORT).show();
             } else if (msg.what == -100) {
-                SendToDelete(msg.arg1);
+                int postion=msg.arg1;
+                String sonCommentId=list.get(postion).getPhoneNumber();
+                String commentId=detailComment.getPhoneNumber1();
+                if(loginUserPhone.equals(commentId)){
+                    SendToDelete(postion);
+                }else if(loginUserPhone.equals(sonCommentId)){
+                    SendToDelete(postion);
+                }else{
+                    Toast.makeText(CommentDetailActivity.this,"你没有权限删除",Toast.LENGTH_SHORT).show();
+                }
             }else if(msg.what==300){
                 list.remove(msg.arg1);
                 adapter.notifyDataSetChanged();

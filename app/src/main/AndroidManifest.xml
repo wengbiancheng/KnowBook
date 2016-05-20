@@ -118,7 +118,6 @@
         </activity>
 
         <activity android:name=".activity.MyActivity.My"></activity>
-        <activity android:name=".activity.MyActivity.MyCollectBookListAty"></activity>
 
     </application>
 

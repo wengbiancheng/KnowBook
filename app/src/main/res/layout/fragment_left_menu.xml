@@ -52,14 +52,16 @@
             android:id="@+id/left_menu_myShowBook"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="1dp"
             android:orientation="horizontal"
             android:paddingLeft="43dp">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:src="@mipmap/book" />
+                android:layout_width="25dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/mybook"
+                android:layout_marginRight="2dp"/>
 
             <TextView
                 android:id="@+id/message_1"
@@ -73,14 +75,16 @@
             android:id="@+id/left_menu_myBookList"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="3dp"
             android:orientation="horizontal"
             android:paddingLeft="40dp">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:src="@mipmap/booklist" />
+                android:layout_width="25dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/mybooklist"
+                android:layout_marginRight="2dp"/>
 
             <TextView
                 android:id="@+id/message_3"
@@ -94,14 +98,14 @@
             android:id="@+id/left_menu_myBuyBook"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal"
             android:paddingLeft="40dp">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:src="@mipmap/buybook" />
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/mybuy" />
 
             <TextView
                 android:id="@+id/message_5"
@@ -115,14 +119,14 @@
             android:id="@+id/left_menu_myWantBook"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:orientation="horizontal"
             android:paddingLeft="40dp">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:src="@mipmap/want" />
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/myheart" />
 
             <TextView
                 android:id="@+id/message_7"
@@ -136,14 +140,15 @@
             android:id="@+id/left_menu_myMessage"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="4dp"
             android:orientation="horizontal"
             android:paddingLeft="40dp">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:src="@mipmap/message" />
+                android:layout_width="25dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/mymessage" />
 
             <TextView
                 android:id="@+id/message_4"
@@ -156,19 +161,19 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="3dp"
             android:orientation="horizontal"
             android:paddingLeft="40dp">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:src="@mipmap/setting1" />
+                android:layout_width="25dp"
+                android:layout_height="30dp"
+                android:src="@mipmap/setting" />
 
             <TextView
                 style="@style/Message_ListView_item"
                 android:text="个人设置" />
-
 
         </LinearLayout>
 

@@ -66,6 +66,7 @@ public class WriteBookCommentAty extends Activity implements View.OnClickListene
 
         book = getIntent().getParcelableExtra("book");
         Bookid = book.getId();
+        phoneNumber=getIntent().getStringExtra("phoneNumber");
     }
 
     private void initView() {
@@ -165,6 +166,7 @@ public class WriteBookCommentAty extends Activity implements View.OnClickListene
                 Intent intent = new Intent(WriteBookCommentAty.this, BookDetailActivity.class);
                 intent.putExtra("id", book.getId());
                 intent.putExtra("scroll2Comment", true);
+                intent.putExtra("phoneNumber",phoneNumber);
                 startActivity(intent);
             } else {
                 Toast.makeText(WriteBookCommentAty.this, "评论发表失败,原因为:" + msg.obj, Toast.LENGTH_SHORT).show();

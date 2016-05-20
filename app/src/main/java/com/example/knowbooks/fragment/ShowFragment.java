@@ -69,6 +69,12 @@ public class ShowFragment extends BaseFragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        LoadData(0);
+        super.onResume();
+    }
+
     private void initListener() {
         listView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
@@ -82,6 +88,7 @@ public class ShowFragment extends BaseFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(Baseactivity, BookDetailActivity.class);
                 intent.putExtra("id", list.get(position - 1).getId());
+                intent.putExtra("phoneNumber",Baseactivity.getPhoneNumber());
                 startActivity(intent);
 
                 Baseactivity.finish();

@@ -146,6 +146,12 @@ public class WantFragment extends BaseFragment implements RadioGroup.OnCheckedCh
         alertDialog.show();
     }
 
+    @Override
+    public void onResume() {
+        loadData(0);
+        super.onResume();
+    }
+
 
 
     private void loadData(final int page) {

@@ -16,6 +16,7 @@ public class My extends Activity {
         super.onCreate(savedInstanceState);
         Intent intent=new Intent(this, BookActivity.class);
         intent.putExtra("UpUser","yes");
+        intent.putExtra("PhoneNumber",getIntent().getStringExtra("phoneNumber"));
         startActivity(intent);
         this.finish();
     }

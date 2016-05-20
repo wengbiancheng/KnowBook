@@ -31,6 +31,10 @@ public class WriteWantBookAty  extends FragmentActivity implements View.OnClickL
     private Button title_right;
 
     private Fragment mMainActivity;
+    private static String phoneNumber;
+    public static String getPhoneNumber(){
+        return phoneNumber;
+    }
 
     //    private Button rightBtn;
 //    private Button leftBtn;
@@ -43,6 +47,7 @@ public class WriteWantBookAty  extends FragmentActivity implements View.OnClickL
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_write_book);
         initView();
+        phoneNumber=getIntent().getStringExtra("phoneNumber");
 
         controller= WriteWantAtyFragmentController.getInstance(WriteWantBookAty.this, R.id.write_book_framelayout);
         controller.showFragment(0);

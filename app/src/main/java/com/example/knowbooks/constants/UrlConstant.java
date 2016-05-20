@@ -5,8 +5,8 @@ package com.example.knowbooks.constants;
  */
 public class UrlConstant {
 
-//    public final static String url="http://115.28.139.214:8080/knowbook";
-    public final static String url="http://192.168.1.103:8080/KnowBook";
+    public final static String url="http://115.28.139.214:8080/knowbook";
+//    public final static String url="http://192.168.1.103:8080/KnowBook";
     public final static String RegisterUrl=url+"/users/registe";
     public final static String LoginUrl=url+"/users/login";
     public final static String ReloginUrl=url+"/relogin";
@@ -40,7 +40,7 @@ public class UrlConstant {
     public final static String CollectBooklistUrl=url+"/booklist/collectBooklist";
     public final static String NoCollectBooklistUrl=url+"/booklist/noCollectBooklist";
     //得到书单列表
-    public final static String GetBookListView=url+"/booklist/myBooklist";
+    public final static String GetBookListView=url+"/booklist/myCreateBooklist";
 
     //售卖书籍的url
     public final static String CreateBuyUrl=url+"/sellerMarket/createBuy";
@@ -66,7 +66,7 @@ public class UrlConstant {
     public final static String DeleteBuyBook=url+"/ sellerMarket/deleteSellBook";
     public final static String DeleteWantBook=url+"/wish/deleteWish";
 
-    public final static String UserAdd=url+"";
+    public final static String UserAdd=url+"/users/getinfo";
 
     public final static String CommentDel=url+"/showBook/deleteComment";
     public final static String SonCommentDel=url+"/showBook/deleteSonComment";

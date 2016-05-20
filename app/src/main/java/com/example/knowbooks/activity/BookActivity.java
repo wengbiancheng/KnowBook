@@ -43,6 +43,7 @@ import com.example.knowbooks.fragment.WriteFragment.WriteBookFragment1;
 import com.example.knowbooks.utils.DButil;
 import com.example.knowbooks.utils.HttpUtil;
 import com.example.knowbooks.utils.ImageUtils;
+import com.google.gson.Gson;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 
@@ -101,12 +102,12 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
 
     private AlertDialog alertDialog = null;
 
-    private String Name;
+    private static String Name="";
     private String Sex;
     private String x;
     private String y;
     private String token;
-    private String headImage;
+    private static String headImage="";
 
     private static String PhoneNumber;
     public static String getPhoneNumber(){
@@ -114,8 +115,10 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
     }
     private String LocalUserName;
     private String Localsex;
-    private User user = new User();
-
+    private static User user = new User();
+    public User getUser(){
+        return user;
+    }
     private DButil db;
 
     private String Connect_image = "";
@@ -125,15 +128,15 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
     private boolean Connect_Flag = false;
 
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_book);
         controller = BookAtyFragmentController.getInstance(BookActivity.this, R.id.fl_content);
-
         //初始化侧滑菜单
-        initSlidingMenu(savedInstanceState);
+
         initView();
         controller.showFragment(0);
         //由标题栏左边控件结束按钮导致的界面重新恢复到具体的fragment
@@ -177,10 +180,11 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
                     if (user != null) {
                         Log.i("LoginAdd1", "登陆后读取到的数据时:---------" + user.toString());
                     }
-                    if ((user == null) || !user.getPhoneNumber().equals(PhoneNumber)) {
+                    if ((user == null) || !user.getPhoneNumber().equals(PhoneNumber)) {//数据库找不到该信息可能是因为换了手机
                         flag = 0;
                         Log.i("LoginAdd1", "数据库找不到该电话号码");
                         initAlertDialog();
+//                        SendToUserServlet();
                     } else {
                         flag = 1;
                         Log.i("LoginAdd1", "数据库找到了该电话号码");
@@ -191,13 +195,62 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
                             Log.i("LoginAdd1", "进行IM的GetToken(token过期或者不存在)");
                             GetTokenForIncorrect();
                         }
+
                     }
 
                     mLocationClient.start();
                 }
             }
         }
+        initSlidingMenu(savedInstanceState);
+//        SendToUserServlet();
     }
+    public void SendToUserServlet(){
+        HttpUtil.getInstance(this).get(this,UrlConstant.UserAdd,null,new JsonHttpResponseHandler(){
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                super.onSuccess(statusCode, headers, response);
+                Log.i("LoginAdd1","getUserInof:"+response.toString());
+                try {
+                    String result= (String) response.get("result");
+                    if(result.equals("success")){
+                        JSONArray json= (JSONArray) response.get("resultSet");
+                        JSONObject json1= (JSONObject) json.get(0);
+                        user.setPhoneNumber(PhoneNumber);
+                        user.setUserName(json1.getString("username"));
+                        user.setImageUrl(json1.getString("headPicture"));
+                        user.setWeixin(json1.getString("weixin"));
+                        user.setQQ(json1.getString("qq"));
+                        user.setSex(json1.getString("sex"));
+                        Log.i("LoginAdd1","User----"+user.toString());
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+                super.onFailure(statusCode, headers, responseString, throwable);
+            }
+        });
+    }
+
+//    public static String  getImageUrl(){
+//        if(TextUtils.isEmpty(headImage)){
+//            if(!TextUtils.isEmpty(user.getImageUrl())){
+//                headImage=user.getImageUrl();
+//            }
+//        }
+//        return headImage;
+//    }
+//    public static String getUserName(){
+//        if(TextUtils.isEmpty(Name)){
+//            if(TextUtils)
+//            Name=user.getUserName();
+//        }
+//        return Name;
+//    }
 
     /**
      * 初始化侧滑菜单
@@ -308,10 +361,12 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
                     BookActivity.this.finish();
                 } else if (status == 2) {
                     Intent intent = new Intent(BookActivity.this, WriteBuyBookAty.class);
+                    intent.putExtra("phoneNumber",getPhoneNumber());
                     startActivity(intent);
                     BookActivity.this.finish();
                 } else if (status == 3) {
                     Intent intent = new Intent(BookActivity.this, WriteWantBookAty.class);
+                    intent.putExtra("phoneNumber",getPhoneNumber());
                     startActivity(intent);
                     BookActivity.this.finish();
                 }
@@ -336,6 +391,8 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
         View view = inflater.inflate(R.layout.alertdialog_connect, null);
         alertDialog1 = new AlertDialog.Builder(BookActivity.this).setView(view)
                 .setTitle("完善个人信息").create();
+        TextView textView= (TextView) view.findViewById(R.id.dialog_text);
+        textView.setText("个人头像");
         alertDialog1.show();
         alertDialog1.setCanceledOnTouchOutside(false);
         Log.i("Test", "启动更新联系人操作 alertDialog1显示");
@@ -739,7 +796,7 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
         user.setSex(Sex);
         user.setX(x);
         user.setY(y);
-        user.setImageUrl(UrlConstant.url + headImage);
+        user.setImageUrl(headImage);
         user.setConnectPhone(PhoneNumber);
         user.setQQ(Connect_QQ);
         user.setWeixin(Connect_weixin);

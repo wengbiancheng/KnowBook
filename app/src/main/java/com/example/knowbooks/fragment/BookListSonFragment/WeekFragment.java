@@ -58,7 +58,7 @@ public class WeekFragment extends BaseFragment {
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_booklist_sonfragment, null);
         listView= (PullToRefreshListView) view.findViewById(R.id.sonfragment_listView);
-        adapter=new BLSonFragmentAdapter(Baseactivity,list,handler);
+        adapter=new BLSonFragmentAdapter(Baseactivity,list,handler,BaseActivity.getPhoneNumber());
         listView.setAdapter(adapter);
         listView.setOnRefreshListener(new PullToRefreshBase.OnRefreshListener<ListView>() {
             @Override
@@ -71,6 +71,7 @@ public class WeekFragment extends BaseFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getActivity(), BookListDetailActivity.class);
                 intent.putExtra("bookListId", list.get(position - 1).getId());
+                intent.putExtra("phoneNumber",BookActivity.getPhoneNumber());
                 startActivity(intent);
                 getActivity().finish();
             }
@@ -84,6 +85,11 @@ public class WeekFragment extends BaseFragment {
         loadData(0);
         initListener();
         return view;
+    }
+    @Override
+    public void onResume() {
+        loadData(0);
+        super.onResume();
     }
     private void initListener(){
         listView.getRefreshableView().setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {

@@ -62,6 +62,7 @@ public class LoginActivity extends Activity implements View.OnClickListener{
         title_right= (Button) findViewById(R.id.title_rightBtn);
         title_middle.setText("使用知书账号登陆");
         title_right.setText("注册");
+
         initListener();
     }
     private void initListener(){
@@ -75,8 +76,6 @@ public class LoginActivity extends Activity implements View.OnClickListener{
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.login_btn:
-                PhoneNumber.setText("18814122731");
-                PassWord.setText("123456");
                 String phone=PhoneNumber.getText().toString();
                 String password=PassWord.getText().toString();
                 if(!TextUtils.isEmpty(phone)&&!TextUtils.isEmpty(password)){
