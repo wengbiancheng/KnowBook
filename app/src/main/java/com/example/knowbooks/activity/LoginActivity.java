@@ -63,6 +63,9 @@ public class LoginActivity extends Activity implements View.OnClickListener{
         title_middle.setText("使用知书账号登陆");
         title_right.setText("注册");
 
+        PhoneNumber.setText("18814122731");
+        PassWord.setText("123456");
+
         initListener();
     }
     private void initListener(){

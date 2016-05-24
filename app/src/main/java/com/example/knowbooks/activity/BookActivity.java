@@ -183,10 +183,10 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
                     if ((user == null) || !user.getPhoneNumber().equals(PhoneNumber)) {//数据库找不到该信息可能是因为换了手机
                         flag = 0;
                         Log.i("LoginAdd1", "数据库找不到该电话号码");
-                        initAlertDialog();
-//                        SendToUserServlet();
+//                        initAlertDialog();
+                        SendToUserServlet();
                     } else {
-                        flag = 1;
+                        flag ++;
                         Log.i("LoginAdd1", "数据库找到了该电话号码");
                         if (!TextUtils.isEmpty(user.getToken())) {
                             Log.i("LoginAdd1", "进行IM的连接操作");
@@ -203,7 +203,6 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
             }
         }
         initSlidingMenu(savedInstanceState);
-//        SendToUserServlet();
     }
     public void SendToUserServlet(){
         HttpUtil.getInstance(this).get(this,UrlConstant.UserAdd,null,new JsonHttpResponseHandler(){
@@ -216,13 +215,31 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
                     if(result.equals("success")){
                         JSONArray json= (JSONArray) response.get("resultSet");
                         JSONObject json1= (JSONObject) json.get(0);
-                        user.setPhoneNumber(PhoneNumber);
-                        user.setUserName(json1.getString("username"));
-                        user.setImageUrl(json1.getString("headPicture"));
-                        user.setWeixin(json1.getString("weixin"));
-                        user.setQQ(json1.getString("qq"));
-                        user.setSex(json1.getString("sex"));
+                        User user1=new User();
+                        String userName=json1.getString("username");
+                        String imageUrl=json1.getString("headPicture");
+                        String weixin=json1.getString("weixin");
+                        String qq=json1.getString("qq");
+                        String sex=json1.getString("sex");
+                        user1.setPhoneNumber(PhoneNumber);
+                        user1.setUserName(userName);
+                        user1.setImageUrl(imageUrl);
+                        user1.setWeixin(weixin);
+                        user1.setConnectPhone(PhoneNumber);
+                        user1.setQQ(qq);
+                        user1.setSex(sex);
+                        user=user1;
                         Log.i("LoginAdd1","User----"+user.toString());
+                        if ((user == null) || !user.getPhoneNumber().equals(PhoneNumber)){
+                            initAlertDialog();//找不到，说明是第一次创建这个id
+                        }else{
+                            Log.i("LoginAdd1","虽然数据库找不到电话号码，但是在服务器找到了，那就算找到了");
+                            db.addUser(user);
+                            Message message=new Message();//找得到，说明只是换了手机
+                            message.what=-10;
+                            handler.sendMessage(message);
+
+                        }
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -697,7 +714,18 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
                 flag++;
                 if (flag == 2) {
                     Log.i("LoginAdd1", "位置信息准备完毕，准备验证个人的信息");
-                    SendToServlet();
+//                    SendToServlet();
+                    if (!TextUtils.isEmpty(user.getX())) {
+                        if (!user.getX().equals(x) || !user.getY().equals(y)) {
+                            UpdateLocation();
+                            Log.i("LoginAdd1", "因为定位进行服务器的单纯位置更新操作");
+                        } else {
+                            Log.i("LoginAdd1", "不用因为定位进行服务器的更新操作");
+                        }
+                    } else {
+//                        SendToServlet();
+                        Log.i("LoginAdd1", "不用定位进行服务器的更新操作");
+                    }
                 }
             } else if (msg.what == -10) {
                 flag++;
@@ -706,13 +734,13 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
                     if (!TextUtils.isEmpty(user.getX())) {
                         if (!user.getX().equals(x) || !user.getY().equals(y)) {
                             UpdateLocation();
-                            Log.i("LoginAdd1", "因为定位进行服务器的更新操作");
+                            Log.i("LoginAdd1", "因为定位进行服务器的单纯位置更新操作");
                         } else {
                             Log.i("LoginAdd1", "不用因为定位进行服务器的更新操作");
                         }
                     } else {
-                        SendToServlet();
-                        Log.i("LoginAdd1", "因为定位进行服务器的更新操作");
+//                        SendToServlet();
+                        Log.i("LoginAdd1", "不用定位进行服务器的更新操作");
                     }
                 }
                 mLocationClient.stop();
@@ -894,6 +922,7 @@ public class BookActivity extends SlidingFragmentActivity implements View.OnClic
         RequestParams requestParams = new RequestParams();
         requestParams.put("location", x + "," + y);
 
+        Log.i("LoginAdd1","进行位置更新的是："+x+","+y);
         HttpUtil.getInstance(BookActivity.this).get(BookActivity.this, UrlConstant.UpdateLocation, requestParams, new JsonHttpResponseHandler() {
 
             @Override
