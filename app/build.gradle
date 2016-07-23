@@ -46,6 +46,7 @@ dependencies {
     compile files('libs/universal-image-loader-1.9.4-with-sources.jar')
     compile project(':IMKit')
     compile files('libs/org.apache.http.legacy.jar')
-    compile name:'SMSSDK-2.0.2',ext:'aar'
-    compile name:'SMSSDKGUI-2.0.2',ext:'aar'
+    compile name: 'SMSSDK-2.0.2', ext: 'aar'
+    compile name: 'SMSSDKGUI-2.0.2', ext: 'aar'
+    compile files('libs/volly-1.0.11.jar')
 }

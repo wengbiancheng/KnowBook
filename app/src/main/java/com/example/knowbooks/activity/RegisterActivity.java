@@ -2,6 +2,7 @@ package com.example.knowbooks.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -15,9 +16,14 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.Volley;
 import com.example.knowbooks.constants.SMSSDKConstant;
 import com.example.knowbooks.constants.UrlConstant;
 import com.example.knowbooks.R;
+import com.example.knowbooks.volley.NoImageRequest;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
@@ -26,6 +32,8 @@ import org.apache.http.Header;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -57,6 +65,9 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
     private Timer timer;
     private TimerTask timerTask;
 
+    //网络的框架的队列
+    private RequestQueue queue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +87,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                 title_middle.setText("重置密码");
             }
         }
+        queue= Volley.newRequestQueue(getApplicationContext());
     }
 
     private void initView() {
@@ -236,20 +248,20 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
 
     /**
      * 与服务器进行注册的连接
+     * 第一个是重构后的Volley网络框架,第二个是原先使用的Async-http网络框架
      * @param phone
      * @param password
      */
-    private void SendToServlet(final String phone, final String password) {
+    private void SendToServlet(final String phone,final String password){
+        Map<String,String> params=new HashMap<>();
+        params.put("phoneNumber", phone);
+        params.put("password", password);
 
-        RequestParams requestParams=new RequestParams();
-        requestParams.put("phoneNumber", phone);
-        requestParams.put("password", password);
-        AsyncHttpClient httpClient=new AsyncHttpClient();
-        httpClient.post(RegisterActivity.this, UrlConstant.RegisterUrl, requestParams, new JsonHttpResponseHandler() {
+        String requestParams=appendParameter(UrlConstant.RegisterUrl,params);
 
+        NoImageRequest RegisterRequest=new NoImageRequest(UrlConstant.RegisterUrl, requestParams, new Response.Listener<JSONObject>() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                super.onSuccess(statusCode, headers, response);
+            public void onResponse(JSONObject response) {
                 Log.i("Register1","succeed:"+response.toString());
                 try {
                     Message message=new Message();
@@ -268,15 +280,61 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                     e.printStackTrace();
                 }
             }
-
+        }, new Response.ErrorListener() {
             @Override
-            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-                super.onFailure(statusCode, headers, responseString, throwable);
-                Log.i("Register2", responseString);
+            public void onErrorResponse(VolleyError volleyError) {
+                Log.i("Register2", volleyError.toString());
             }
         });
 
+        queue.add(RegisterRequest);
     }
+    private String appendParameter(String url,Map<String,String> map){
+        Uri uri=Uri.parse(url);
+        Uri.Builder builder=uri.buildUpon();
+        for(Map.Entry<String,String> entry:map.entrySet()){
+            builder.appendQueryParameter(entry.getKey(),entry.getValue());
+        }
+        return builder.build().toString();
+    }
+//    private void SendToServlet(final String phone, final String password) {
+//
+//        RequestParams requestParams=new RequestParams();
+//        requestParams.put("phoneNumber", phone);
+//        requestParams.put("password", password);
+//        AsyncHttpClient httpClient=new AsyncHttpClient();
+//        httpClient.post(RegisterActivity.this, UrlConstant.RegisterUrl, requestParams, new JsonHttpResponseHandler() {
+//
+//            @Override
+//            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+//                super.onSuccess(statusCode, headers, response);
+//                Log.i("Register1","succeed:"+response.toString());
+//                try {
+//                    Message message=new Message();
+//                    String result=response.getString("result");
+//                    if(result.equals("success"))
+//                    {
+//                        Log.i("Register1","result:"+result);
+//                        message.what=200;
+//                        handler1.sendMessage(message);
+//                    }else{
+//                        message.what=-1;
+//                        message.obj=response.toString();
+//                        handler1.sendMessage(message);
+//                    }
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
+//                super.onFailure(statusCode, headers, responseString, throwable);
+//                Log.i("Register2", responseString);
+//            }
+//        });
+//
+//    }
 
     @Override
     protected void onDestroy() {

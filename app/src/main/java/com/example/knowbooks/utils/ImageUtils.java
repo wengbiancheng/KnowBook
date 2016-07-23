@@ -118,7 +118,7 @@ public class ImageUtils {
 		}
 		// 将图片压缩至文件对应的流里,即保存图片至该文件中
 		BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(myCaptureFile));
-		bm.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+		bm.compress(Bitmap.CompressFormat.JPEG, 100, bos);//100表示原来的品质
 		bos.flush();
 		bos.close();
 	}
